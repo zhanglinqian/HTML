@@ -1,32 +1,32 @@
 
 .ccc{
      width:100%;
-     height:10rem;
+     height:5rem;
      background-color:#5fc0cd;
-     margin:7rem 0 0 0 ;
+     margin:rem 0 0 0 ;
 }
 .ccb{ 
-     width:12rem;
-      height:8rem; 
+     width:6rem;
+      height:4rem; 
       background-color:chartreuse;
       margin:0 auto;
-      padding:1rem; 
+      padding:0.5rem; 
 }
 .cca{
-     font-size:4rem; 
-     line-height:8rem; 
+     font-size:2rem; 
+     line-height:4rem; 
      margin:0;
      text-align:center;
 }
 .ccd{
      float:right;
-     width:21rem;
-     height:7rem;
+     width:10.5rem;
+     height:3.5rem;
      background-color:#5fc0cd; 
     }
     .txt{
          margin:0;
-         font-size:3rem; 
-         line-height:7rem;
+         font-size:1.5rem; 
+         line-height:3.5rem;
          text-align:center;
         }

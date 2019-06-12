@@ -1,5 +1,5 @@
      html {
-          font-size:62.5%;
+          font-size:20px;
          }
      body{
           margin:0;
@@ -18,9 +18,9 @@
               }
   .block1{
       background-color:#5fc0cd;
-      font:3.4rem/9rem"微软黑雅";
+      font:1.7rem/4.5rem"微软黑雅";
       text-align:center;
-      height:9rem;
+      height:4.5rem;
       width:100%;
          }
   .p0{
@@ -29,13 +29,13 @@
   .p1{
       float:left;
       text-align:left;
-      font:3rem/9rem"微软雅黑";
-      margin:0 3rem;    
+      font:1.5rem/4.5rem"微软雅黑";
+      margin:0 1.5rem;    
 
     }
   .p2{
       float:right;
       text-align: right;
-      font:3rem/9rem"微软雅黑"; 
-      margin:0 3rem;
+      font:1.5rem/4.5rem"微软雅黑"; 
+      margin:0 1.5rem;
   }
