@@ -4,25 +4,34 @@
      appearance:none;
      outline:0; 
       }
-.input1{
+.block2{
     widows:100%;
-    height:100px;
-    margin:16px 0;
-    border:10px;
+    height:10rem;
+    margin:1.6rem 0;
+    border:1rem;
     background-color:#ffffff;
 }
    
 .input3{
-    height:80px;
-    font:30px/40px "微软雅黑" ;
-    color:black;
-    padding:10px;
+    height:10rem;
+    width:53.5rem;
+    font:3rem/10rem "微软雅黑"; 
+    padding-left:1rem;
     border:transparent;
 }
-.img{
-  width:110px;
-  height:100px;  
+.img1{
+  background:url(img/iphone.png)
+              no-repeat center;
+  border:transparent;            
+  width:10rem;
+  height:10rem;  
 }
+.img2{
+  background:url(img/locked.png)
+                 no-repeat center;
+                 width:10rem;
+                 height:10rem; 
+             }
 .position1{
   position:relative;
   top:0;
@@ -31,15 +40,15 @@
 .position2{
   position:absolute;
   top:0;
-  left:120px;
+  left:12rem;
 }
 .position3{
     position:absolute;
-    top:20px;
-    left:110px;
+    top:2rem;
+    left:10rem;
 }
 .div{
-    height:60px;
-    width:5px;
+    height:6rem;
+    width:0.5rem;
     background-color:#eaedee;
 }

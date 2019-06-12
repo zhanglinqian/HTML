@@ -1,32 +1,32 @@
 
 .ccc{
      width:100%;
-     height:100px;
+     height:10rem;
      background-color:#5fc0cd;
-     margin:70px 0 0 0 ;
+     margin:7rem 0 0 0 ;
 }
 .ccb{ 
-     width:120px;
-      height:80px; 
+     width:12rem;
+      height:8rem; 
       background-color:chartreuse;
       margin:0 auto;
-      padding:10px; 
+      padding:1rem; 
 }
 .cca{
-     font-size:40px; 
-     line-height:80px; 
+     font-size:4rem; 
+     line-height:8rem; 
      margin:0;
      text-align:center;
 }
 .ccd{
      float:right;
-     width:210px;
-     height:70px;
+     width:21rem;
+     height:7rem;
      background-color:#5fc0cd; 
     }
     .txt{
          margin:0;
-         font-size:30px; 
-         line-height:70px;
+         font-size:3rem; 
+         line-height:7rem;
          text-align:center;
         }
