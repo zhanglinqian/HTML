@@ -7,17 +7,17 @@
 .block2{
     widows:100%;
     height:5rem;
-    margin:0.8rem 0;
+    margin:0.8rem 0 3rem;
     border:0.5rem;
     background-color:#ffffff;
 }
    
 .input3{
     height:5rem;
-    width:60%;
+    widows:2rem;
     font:1.5rem/5rem "微软雅黑"; 
-    padding-left:1rem;
-    border:transparent;
+    padding:0  0  0 0.2rem;
+    border:transparent; 
 }
 .img1{
   background:url(img/iphone.png)
@@ -46,7 +46,7 @@
     top:1rem;
     left:5rem;
 }
-.div{
+.div1{
     height:3rem;
     width:0.25rem;
     background-color:#eaedee;

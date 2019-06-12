@@ -1,30 +1,32 @@
 
-.ccc{
-     width:100%;
-     height:5rem;
-     background-color:#5fc0cd;
-     margin:rem 0 0 0 ;
-}
-.ccb{ 
-     width:6rem;
-      height:4rem; 
-      background-color:chartreuse;
-      margin:0 auto;
-      padding:0.5rem; 
-}
 .cca{
-     font-size:2rem; 
-     line-height:4rem; 
-     margin:0;
-     text-align:center;
+     -webkit-appearance:none;
+     -moz-appearance:none;
+      appearance:none;
+      outline:0; 
+      border:0;
+      background-color:#5fc0cd;
+      color:#ffffff;
+      text-align:center; 
+      letter-spacing:0.5rem;
+      font-size:2rem; 
+      line-height:5rem;  
+      width:100%;
+      height:5rem; 
+      margin:0;
 }
-.ccd{
-     float:right;
-     width:10.5rem;
-     height:3.5rem;
-     background-color:#5fc0cd; 
-    }
-    .txt{
+
+    .txt{   
+        -webkit-appearance:none;
+        -moz-appearance:none;
+         appearance:none;
+         outline:0; 
+         background-color:transparent;
+         float:right;
+         width:10.5rem;
+         height:3.5rem;
+         color:#5fc0cd;
+         border:0;
          margin:0;
          font-size:1.5rem; 
          line-height:3.5rem;
