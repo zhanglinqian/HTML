@@ -81,7 +81,8 @@ body{
         background:url(img/2.png);
         background-repeat:no-repeat;
         background-position:center;       
-        display:inline-block;        
+        display:inline-block; 
+        vertical-align:middle;       
          }
 .text1{
     width:200px;
@@ -90,7 +91,7 @@ body{
     margin-left:10px;
     margin-top:100px;
     margin-bottom:100px;
-    vertical-align:top;
+    vertical-align:middle;
     color:#ffffff;
        }
 .name1{
@@ -99,7 +100,8 @@ body{
     margin:0;
     font-size:36px;
     line-height:60px;     
-    display:inline-block;  
+    display:inline-block;
+    vertical-align:middle;    
        }
 .name2{
     height:60px;
@@ -107,7 +109,8 @@ body{
     margin:0 0 0 10px;
     font-size:28px;
     line-height:60px;
-    text-align: center;       
+    text-align: center;
+    vertical-align:middle;         
        }
 .name3{
     width:200px;
@@ -116,15 +119,18 @@ body{
     font-size:24px;
     line-height:25px; 
     text-align: center;
+    
       }
 .name4{
      display:inline-block;      
      background-image:url(img/5.png);
      background-repeat:no-repeat;
      background-position:contain;
+     vertical-align:middle;  
      height:25px;
      width:25px;
-      }      
+      } 
+.name5{ vertical-align:middle; }     
  .confent{
         widows:100%;
         border-bottom:1px solid #e1e5e7;       
@@ -157,11 +163,6 @@ body{
     border-bottom:1px solid #e1e5e7;       
     background-color:#5fc0cd;
         }
-.border2{
-    margin:0 28px;
-    border-right:1px solid;
-    border-color:#e1e5e7;
-        }
 
 
 
@@ -172,18 +173,31 @@ body{
      border-bottom:1px solid #e1e5e7;       
      background-color:#5fc0cd;
      font-size:32px;
-     line-height:100px;
-
+     position: relative;
+     top:0;
+     left:0;     
      } 
+.span1{
+      position: absolute;
+      top:50%;
+      left:60px;
+
+}
+     .border2{       
+        margin:0 28px;
+        border-right:1px solid;
+        border-color:#e1e5e7;
+
+            }
 .p1{
     display:inline-block;
-    vertical-align: middle;
-    margin:0;
-} 
-.span1{
-    vertical-align: middle;
-}
-.div3{
     
+    margin:0;
+
+} 
+.apsn{
+    text-align: center;
 }
+   
+
               
