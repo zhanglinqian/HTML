@@ -80,13 +80,13 @@ body{
         background-image:url(../img/2.png);
         background-repeat:no-repeat;
         background-position:center; 
-        background-size: 70%;
+        background-size: 60%;
         display:inline-block; 
         vertical-align:middle;       
          }
 
 .text1{
-    width:10rem;
+    width:11rem;
     height:6rem;
     display:inline-block;   
     vertical-align:middle;
@@ -94,7 +94,7 @@ body{
        }
 
 .name1{
-    width:5rem;
+    width:6rem;
     margin:0;
     font-size:1.8rem;
     line-height:3rem;     
@@ -103,7 +103,7 @@ body{
        }
 .name2{
     width:4rem;
-    margin:0 0 0 1rem;
+   
     font-size:1.4rem;
     line-height:3rem;
     text-align: center;
@@ -111,7 +111,7 @@ body{
     display:inline-block;        
        }
 .name3{
-    width:10rem;
+    width:11rem;
     padding:1rem 0 1rem 0;    
       }
 .name4{
