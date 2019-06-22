@@ -103,7 +103,7 @@ body{
     outline: none;
 }
 .select-1{
-    height:40px;
+    height:38px;
     width: 100%;
     border:0;
     color:#999;
@@ -112,10 +112,13 @@ body{
     border-right: 1px solid;
     border-image:linear-gradient(#f3f5f6,#c6c8c9,#f3f5f6)1;
 }
-select {
+select{
     text-align: center; 
     text-align-last: center;   
-    }      
+    }  
+    option{
+        width: 100%;
+    }       
  /*内容列表*/
 .content{
     display: flex;
