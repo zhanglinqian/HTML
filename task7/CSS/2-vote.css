@@ -1,0 +1,109 @@
+html{
+    font-size: 62.5%;
+    max-width: 1024px;
+    min-width: 300px;
+    margin: 0 auto;
+}
+body{
+    padding-top: 12rem;
+    margin: 0;
+    background-color: #29bde0;
+}
+/*导航栏*/
+.header{
+    width: 100%;
+    max-width: 1024px;
+    position: fixed;
+    top: 0;
+}
+.header1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.8rem;
+    line-height: 4.4rem;
+    text-align: center;
+    color: #fff;
+    background-color:#29bde0;
+}
+.header-1{
+    height: 2rem;
+    width: 1.5rem;
+    padding: 0;
+    border:0;
+}
+.header-01{
+    width: 100%;
+    max-width: 1024px;
+    font-size: 1.4rem;
+    line-height: 4rem;  
+}
+.header-02{
+     text-indent: 6%;
+     letter-spacing: 0.1rem;
+     background-color: rgba(255,255,255,0.67);
+}
+.box-1{
+    height: 0;
+    width: 0;
+    border: 0.5rem;
+    border-style: solid;
+    border-color: rgba(255,255,255,0.67);
+    border-bottom: 0;
+    border-left-color: #29bde0;
+    border-right-color: #29bde0;
+    margin-left: 10%;
+}
+.header-03{
+    font-size: 1.3rem;
+    line-height: 3rem;
+    text-indent: 10%;
+    letter-spacing: 0.1rem;
+    color: #fff;
+}
+/*加按键*/
+
+.content{
+     display: flex;
+     flex-direction: row;
+     justify-content: space-around;
+     align-content: space-between;   
+     flex-wrap: wrap;
+
+}
+.flex-item{
+    height: 30vw;
+    width: 25vw;
+    margin: 0 2vw;
+    background-color:#77736b;
+    flex-shrink:1;
+}
+.flex-item-1{
+    height: 25vw;
+    width: 25vw;
+    background-color: #f5c97b;
+
+}
+
+
+
+/*底部*/
+.feet{
+    height: 9rem;
+    width: 100%;
+    max-width: 1024px;
+    background-color: #29bde0;
+    position: fixed;
+    bottom: 0;
+}
+.feet-1{
+    width: 76.5625%;
+    margin: 2.3rem auto;
+    font-size: 2rem;
+    line-height: 4.4rem;
+    color:#fff;
+    text-align: center;
+    background-color: #f5c97b;
+
+}
