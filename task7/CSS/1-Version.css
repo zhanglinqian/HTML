@@ -44,46 +44,24 @@ body{
     border-color: #c9c9c9;
     border-style: solid;
     margin: 1.3rem auto;
-    background-color: #fff;
+    background-color: #fff; 
+    color: #9a9a9a;  
     font-size: 1.75rem;
     line-height: 5.8rem;
-    color: #9a9a9a;
-    text-align: center;
-    position: relative;
+    text-align: center;    
 }
-.ln-0{
-    height: 2rem;
-    width: 2rem;
-    border:0;
-    background-color: #fff;
-    outline: none;
-    cursor: pointer; 
+.ln-1{ 
+    float:right;
+    height: 5.8rem;
+    width: 5.8rem;
+    background-image: url(../img/1-Version/返.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
 }
-.ln-1{
-    position: absolute;
-    top: 50%;
-    right: 5%;
-    margin-top: -1rem;
-    display: inline-block;
-    height: 0;
-    width: 0;
-    border:1rem;
-    border-style: solid;
-    border-left-color: #e7e7e7;
-    border-top-color: #fff;
-    border-bottom-color: #fff;
-    border-right: 0;
-}
-.ln-2{
-    position: absolute;
-    top: 50%;
-    right: 7%;
-    margin-top: -0.743rem;
-    display: inline-block;
-    height: 1.4rem;
-    width: 1.4rem;
-    background-color: #fff;
-    transform:rotate(45deg);
+.ln-2{ 
+    width: 18rem;
+    margin: 0 auto;      
 }
          /*版本选择*/
 .content{
@@ -99,7 +77,7 @@ body{
 .content-1{
     position: absolute;
     top:46%;
-    right: 0.6rem;
+    right: 2%;
     height: 0;
     width: 0;
     padding: 0;
@@ -109,10 +87,7 @@ body{
     border-left-color: #fbb435;
     border-top-color: #fff;
     border-bottom-color: #fff;
-    outline: none;
-
-
-    
+    outline: none;   
 }
 .flexbox{
     display: flex;
@@ -133,12 +108,25 @@ body{
     color: #fbb435;
 }
 .flexitem-2{
-    width: 80%;
+    width: 75%;
     color: #787878;
     text-align: center;
     font-size: 1.5rem;
-    line-height: 4rem;
+    line-height: 4rem;   
 }
+a{
+    text-decoration: none;
+}
+a:link{
+    color: #fff;
+}
+a:visited{
+    color: #fff;
+}
+a:hover{
+    color: rgb(224, 19, 19);
+}
+
 .flexitem-2-1{
      background-color: #69d1e9;
      font-size: 1.9rem;

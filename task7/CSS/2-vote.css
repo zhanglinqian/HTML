@@ -1,12 +1,11 @@
 html{
-    font-size: 62.5%;
-    max-width: 1024px;
+    font-size: 62.5%;  
     min-width: 300px;
     margin: 0 auto;
 }
 body{
     padding-top: 12rem;
-    padding-bottom:9rem; 
+    padding-bottom:9rem;     
     margin: 0;
     background-color: #29bde0;
 }
@@ -29,7 +28,6 @@ body{
 /*导航栏*/
 .header{
     width: 100%;
-    max-width: 1024px;
     position: fixed;
     top: 0;
     background-color:#29bde0;
@@ -51,16 +49,13 @@ body{
     padding: 0;
     border:0;
     color:#fff;
+    line-height: 3rem;
     background-color: #29bde0;
 }
-
-
 .header-01{   
     width: 100%;
-    max-width: 1024px;
     font-size: 2rem;
     line-height: 4rem;  
-
 }
 .header-02{
      position: relative;
@@ -104,13 +99,6 @@ div.image{
     height: 4rem;
     width: 4rem;
 }
-
-
-
-
-
-
-
 /*投票*/
 .content{
      display: flex;
@@ -214,4 +202,13 @@ button.img5{
     cursor: pointer;
     outline: 0;
     background-color: #f5c97b;
+}
+a{
+    text-decoration: none;
+}
+a:link{
+    color: #fff;
+}
+a:visited{
+    color: #fff;
 }
