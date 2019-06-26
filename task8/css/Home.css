@@ -1,0 +1,112 @@
+body{background-color: #fafafa !important;}
+
+.display{display:block;}
+
+.display-in{display:inline-block;}
+ 
+
+.font-size-16px{font-size: 16px;}
+
+.font-size-18px{font-size: 18px;}
+
+.line-height-70{line-height: 70px;}
+    
+.justify{text-align: justify;}
+
+.text-color-White{color: #fff;}
+
+.text-color-black{color: #000;}
+
+.text-color-Gray{color: #999;}
+
+.text-color-Green{color:#29b078}
+
+
+.padding-left-30{padding-left: 30px}
+
+.padding-top-30{padding-top: 20px}
+
+
+.margin-top-100{margin-top: 100px;}
+
+.margin-top-80{margin-top: 80px;}
+
+.margin-left-20{margin-left: 20px;}
+
+.margin-bottom-30{margin-bottom:30px}
+
+
+.height-250px{height: 250px;}
+
+font-weight-bold
+
+.flex-row{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center !important;
+}
+.border-left{
+    border-color: #dedede;
+    border-left: 3px;
+    border-left-style: dashed;
+}
+.border-r{
+    background-color: #fff;
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+     -moz-box-shadow:0 0 10px #dad2d2;
+     -webkit-box-shadow:0 0 10px #dad2d2;
+     box-shadow:0 0 10px #dad2d2;   
+}
+
+
+
+.image-34px{
+    background-image: url(../img/max76+min34.png);
+    background-repeat: no-repeat;
+    height: 40px;
+    width: 36px;
+}
+.image-76px{
+    background-image: url(../img/max76+min34.png);
+    background-repeat: no-repeat;
+    height: 76px;
+    width: 76px;  
+}
+.nav-a{padding: 0  !important;} 
+    
+.wx-image{
+    margin-right: 20px;
+    background-position-x: 0px;
+    background-position-y: 3px;
+}
+.qq-image{
+    background-position-x: -35px;
+    background-position-y: 3px;
+}
+.wb-image{ 
+    background-position-x: -70px;
+    background-position-y: 3px;
+}
+.huojian-image{ 
+    background-position-x: 0px;
+    background-position-y:-34px;
+}
+.shu-image{ 
+    background-position-x: -76px;
+    background-position-y:-34px;
+}
+.tanhao-image{ 
+    background-position-x: -152px;
+    background-position-y:-34px;
+}
+.r-image{
+    background-position-x: -102px; 
+    background-position-y:15px;
+}
+.jt-image{
+    background-position-x: -138px; 
+    background-position-y:5px;
+    background-color: #999;
+}
