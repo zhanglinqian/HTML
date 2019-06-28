@@ -173,14 +173,48 @@ font-weight-bold
 }
 /**********************************/
 .image-110{
-    background-image: url(../img/students108px.png)!important;
+    background-image: url(../img/students108px.png);
     background-repeat: no-repeat; 
     width: 110px;
     height: 110px;
     margin: 0 auto;
-    margin-bottom:20px;
+    margin-bottom:20px!important;
 }
 .image-1{
     background-position-x:0px; 
     background-position-y:0px;
+}
+/*****************/
+.image-170{
+    background-image: url(../img/partner170x60.png);
+    background-repeat: no-repeat; 
+    width: 170px;
+    height: 60px;
+    margin: 0 auto;
+}
+.aa-image{
+    background-position-x:0px; 
+    background-position-y:0px;
+}
+.js-image{
+    background-position-x:-170px; 
+    background-position-y:0px;
+}
+.hx-image{
+    background-position-x:-340px; 
+    background-position-y:0px;
+}
+.rl-image{
+    background-position-x:-512px; 
+    background-position-y:0px;
+}
+.qn-image{
+    background-position-x:-690px; 
+    background-position-y:0px;
+}
+.image-size{
+    width: 240px;
+    height: 180px;
+    padding-top: 60px;
+    padding-bottom: 60px;
 }
