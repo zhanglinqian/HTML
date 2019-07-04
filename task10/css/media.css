@@ -106,7 +106,10 @@
 .nav-ul>li>a{
         padding-left: 8px;
         padding-right: 8px;
-             }            
+             }   
+.p-font-size{
+    font-size: 12px;
+            }                      
 }
 /*******进度条*********/
 @media(max-width:768px)
@@ -256,6 +259,6 @@
         }  
 .button-dvi {
             line-height: 150px;
-        }       
+        }  
+
 }
-/*************/

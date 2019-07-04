@@ -38,8 +38,11 @@ img{
 .width-1280{
     width: 100%;
     max-width: 1140px;
+    padding-left: 5px;
+    padding-right: 5px;
     margin: 0 auto;
     position: relative;
+    box-sizing: border-box;
 }
 .height-145{
     height: 145px;
@@ -69,13 +72,6 @@ img{
 .display-in{
     display: inline-block;
 }
-/***************/
-.float-l{
-    float: left;
-}
-.float-r{
-    float: right;
-}
 /*****************/
 .headet{
     background-color: #1d7ad9; 
@@ -83,10 +79,11 @@ img{
     color:#fff;
 }
 .header-border{
+    text-align: center;
+    font-size: 0;
     border-left-color: #fff;
     border-left-style: solid;
     border-left-width: 1px;
-
     border-right-color: #fff;
     border-right-style: solid;
     border-right-width: 1px;
@@ -95,14 +92,33 @@ img{
 }
 .header-border>div{
           display: inline-block;
+          font-size: 16px;
 }
-.headet-r-d{
-    width: 60px;
-    background-color: #1d7ad9;
-    
+.header-r-d a:link{
+     width: 60px;
+     color: #fff;
+     background-color: #1d7ad9;  
 }
-.headet-r-z{
+.header-r-d a:visited{
+   color: #fff;
+}
+.header-r-z a:link{
+     width: 100px;
+     color: #1d7ad9;
+     background-color: #fff;
+}
+.header-r-z a:visited{
+    color: #1d7ad9
+}
+.header-r-d a:hover{
+    color: #1d7ad9;
+    width: 100px;
     background-color: #fff;
+ }
+.header-r-d:hover+.header-r-z a{
+    width: 60px;
+    color:#fff;
+    background-color: #1d7ad9;
 }
 /********导航*********/
 .nav-bgc{
@@ -134,8 +150,9 @@ img{
 /********进度栏*********/
 .Progress{
     height: 135px;
+    color:#ccc;
 }
-.Progress-div{
+.Progress-div {
     height: 5px;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -143,54 +160,42 @@ img{
     margin-left: -3px;
     margin-right: -3px;
 }           
-.Progress-border-r{
+.Progress-border-r {
       height: 5px;
       width: 135px;
       border-radius: 2.5px;
-      background-color: #ccc; /**/
+      background-color: #ccc;
 }
-.Progress-a-r{
+.Progress-a-r {
     line-height: 24px;
     width: 24px;
     border-radius: 50%;
-    background-color: #a8a8a8;
+    background-color: #a8a8a8;    
 }
 .progress-div-1 {
         position: absolute;
         top: 0;
         left: 50%;
         margin-left: -12px;
+        z-index: 99;
 }
-.hovre-a:hover[target]{
-      background-color: #ff7f02;
+.hover-a a{
+   color:#ccc;
 }
-
-
-
-
-
-.progress-div-1:hover a{
-    background-color: #ff7f02;
+.hover-a:hover .Progress-a{
+    color: #ff7f02
 }
-
-
-
-.Progress-a:link{
-    color:#a8a8a8;
+.hover-a:hover .Progress-div .Progress-border-r{
+    background-color:#ff7f02;
+    z-index: 1;
 }
-.progress-a:visited{
-    color: #a8a8a8;
-}
-.progress-a:hover {
+.hover-a:hover .Progress-div .progress-div-1 .Progress-a-r{
+    background-color:#ff7f02;
     color: #fff;
 }
-
-
-
-
-
-
-
+.progress-a:active{
+    color:#ccc
+}
 /*********背景色**********/
 .bgc-1{
     background-color: #f4f4f4;
@@ -202,7 +207,6 @@ img{
     padding-left: 16px;
     padding-right: 8px;
 }
-
 .bgc-2{
     background-color: #f4f4f4;
 }
@@ -278,8 +282,6 @@ label::after{
     top: 13px;
 }
 /******************/
-
-
 .div-select{
     width: 120px;
     border:1px solid #fff;
@@ -373,6 +375,10 @@ select{
 .flex-Father-submenu>.div-select{
     flex-shrink: 0;
 }
+.flex-submenu{
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
 .flex-submenu>label{
   margin-right: 30px;
 }
@@ -408,25 +414,12 @@ select{
     flex-basis: 100%
 }
 /************/
-
-
-
-
-
-
-
-.content{}
-.nav{}
-.subnav{}
-.fooyer{}
-.main{}
-
-:link{}
-:visited{}
-:hover{}
-:active{}
-:focus{}
-
-
-
-
+.flex-baseline-1>a:link{
+    color:#a8a8a8; 
+}
+.flex-baseline-1>a:visited{
+    color:#a8a8a8; 
+}
+.flex-baseline-1>a:hover{
+    color:#1d7ad9; 
+}
