@@ -277,7 +277,7 @@ label::after{
     height: 5px;
     width: 5px;
     border-radius: 50%;
-    background-color: #fff;
+    background-color: #f8f9fb;
     position: absolute;
     left:7px;
     top: 13px;
