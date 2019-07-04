@@ -401,10 +401,12 @@ select{
 /*******************/
 .flex-space-footer{
         color:#a8a8a8; 
+        padding-bottom: 50px;
 }
 .flex-space-footer>div{
     flex-basis: 33.33333%;
     margin-top: 80px;
+
 }
 .flex-baseline-1>a{
        flex-basis: 33.33333%;
