@@ -1,0 +1,125 @@
+//背景色
+@mixin  bgc-5fc0cd {
+    background-color: #5fc0cd;
+} 
+@mixin bgc-fff {
+    background-color: #fff;
+}
+@mixin bgc-55a8b3 {
+    background-color: #55a8b3;//上导航栏底色
+}
+@mixin bgc-f8fafb {
+    background-color: #f8fafb;//下菜单栏
+}
+//字体颜色
+@mixin color-fff {
+    color:#fff;
+}
+
+//字体大小
+@mixin font-18 {
+    font-size: 18px;
+    color:#fff;
+}
+
+@mixin font-16 {
+    font-size: 16px;
+}
+@mixin font-16 {
+    font-size: 16px;
+    color:#e63b0e;//第一页价格字体
+    font-weight:700;
+}
+@mixin font-15 {
+    font-size: 15px;
+    color:#e63b0e;//第二页价格字体
+    font-weight:700;
+}
+
+@mixin font-14 {
+    font-size: 14px;
+}
+
+@mixin font-14 {
+    font-size: 14px;//下拉框字体
+    color:#999;
+}   
+@mixin font-14-700 {
+    font-size: 14px;//日期字体
+    font-weight:700;//字体加粗
+}
+@mixin font-13 {
+    font-size: 13px;
+    color:#999;//服务日期 
+}
+@mixin font-12 {
+    font-size: 12px;
+}
+@mixin font-10 {
+    font-size: 10px;//下菜单小字体
+}
+
+@mixin text-conter {
+    text-align:center;
+}
+//宽度
+
+@mixin width-768 { 
+    width : 100% ;
+    max-width : 768px ;
+    margin:0 auto;
+}
+
+
+//浮动
+@mixin float-left {
+      float:left;
+}
+@mixin float-right {
+    float:right;
+}
+
+//display
+
+@mixin inline-block {
+    display:inline-block;
+}
+@mixin blocl{
+    display:block;
+}
+
+
+
+
+
+//弹性盒子
+@mixin flex-wrap {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+@mixin nowrap-l {
+    display:flex;
+    flex-wrap:nowrap;
+    align-items:center;
+}
+@mixin fixed-top {
+    position:fixed;
+    top:0;
+}
+@mixin fixed-bottom {
+    position:fixed;
+    bottom:0;
+}
+
+
+//通用属性
+html {
+    @include width-768();
+}
+body {
+    margin:0;
+}
+p {
+   margin: 0;
+}

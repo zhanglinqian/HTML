@@ -1,0 +1,13 @@
+html {
+  width: 100%;
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+body {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
