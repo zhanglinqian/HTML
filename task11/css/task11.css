@@ -58,6 +58,7 @@ body {
 
 .content-top input {
   cursor: pointer;
+  color: #e5e8ea;
   outline: none;
   border: none;
   border-left-style: solid;

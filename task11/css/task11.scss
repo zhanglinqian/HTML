@@ -3,7 +3,7 @@ $bgc-White : #fff ;
 $bgc-Gray : #eff0f4;
 $fontcolor-white : #fff;
 $fontcolor-blue : #5fc0cd;
-$fontcolor-LightGray : #e1e5e7;
+$fontcolor-LightGray : #e5e8ea;
 $fontsize-16 : 16px;
 $fontsize-18 : 18px;
 $width : 768px;
@@ -37,7 +37,6 @@ body {
               outline:none;/*！清楚点击效果*/
               cursor: pointer;
           }
-
           p {
               margin : 0;
           }
@@ -62,6 +61,7 @@ body {
       }
       input { 
           cursor: pointer;
+          color : $fontcolor-LightGray;
           outline : none;
           border : none {
               left-style : solid;
