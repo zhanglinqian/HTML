@@ -63,17 +63,18 @@
     text-align:center;
 }
 //按钮
-@mixin button-style($border,$color,$font-size,$line-height,$bg-color,$radius:5px){
+@mixin button-style($color,$font-size,$line-height,$bg-color,$radius:5px){
         cursor : pointer;
-       outline : none;      
-       border : $border;
-       color:$color;
-       font-size: $font-size;
-       line-height : $line-height;
-       background-color : $bg-color;  
-       border-radius : $radius;
-       -moz-border-radius : $radius;
-       -webkit-border-radius : $radius;
+        outline : none;      
+        border : none;
+        padding:0;
+        color:$color;
+        font-size: $font-size;
+        line-height : $line-height;
+        background-color : $bg-color;  
+        border-radius : $radius;
+        -moz-border-radius : $radius;
+        -webkit-border-radius : $radius;
 }
 
 
@@ -82,7 +83,7 @@
 
 //宽度
 @mixin width-768 { 
-    width : 100% ;
+    width: 100%;
     max-width : 768px ;
     margin:0 auto;
 }
@@ -90,7 +91,7 @@
 
 //浮动
 @mixin float-left {
-      float:left;
+        float:left;
 }
 @mixin float-right {
     float:right;
@@ -121,6 +122,13 @@
     justify-content:center;
     align-items:center;
 }
+
+@mixin flex-wrap-left {
+    display:flex;
+    flex-wrap: wrap;
+    align-items:center;  
+}
+
 @mixin nowrap {
     display:flex;
     flex-wrap:nowrap;
@@ -139,10 +147,10 @@
 
 //弹性盒子项目属性
 @mixin flex-item($order:0,$flex-grow:0,$flex-shrink:1,$flex-basis:auto){
-       order:$order;
-       flex-grow:$flex-grow;
-       flex-shrink:$flex-shrink;
-       flex-basis:$flex-basis;
+        order:$order;
+        flex-grow:$flex-grow;
+        flex-shrink:$flex-shrink;
+        flex-basis:$flex-basis;
 }
 
 
@@ -174,5 +182,5 @@ body {
     margin:0;
 }
 p {
-   margin: 0;
+    margin: 0;
 }
