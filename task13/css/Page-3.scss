@@ -1,0 +1,22 @@
+@import "General";
+
+
+
+.header{
+    position: fixed;
+    top: 0;
+}
+
+.nav{
+    width: 100%;
+    max-width: 768px;
+    margin: 0 auto;
+    @include bgc-29bde0;
+    line-height: 46px;
+    color:#fff;
+}
+.footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
