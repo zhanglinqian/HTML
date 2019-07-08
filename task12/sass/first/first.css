@@ -16,6 +16,13 @@ p {
   margin: 0;
 }
 
+body {
+  padding: 0;
+  padding-top: 45px;
+  padding-bottom: 55px;
+  margin: 0;
+}
+
 /*!导航栏*/
 .nav-top {
   width: 100%;

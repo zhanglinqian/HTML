@@ -1,6 +1,11 @@
 
 @import "general.scss";
-
+body {
+    padding: 0;
+    padding-top: 45px;
+    padding-bottom: 55px;
+    margin: 0;
+  }
 /*!导航栏*/
 .nav-top {
     @include width-768;
