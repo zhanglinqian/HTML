@@ -11,6 +11,9 @@
 @mixin bgc-f8fafb {
     background-color: #f8fafb;//下菜单栏
 }
+@mixin bgc-f8fafb {
+    background-color: #f8fafb;
+}
 //字体颜色
 @mixin color-fff {
     color:#fff;
@@ -57,6 +60,7 @@
 }
 @mixin font-10 {
     font-size: 10px;//下菜单小字体
+    color:#999;
 }
 
 @mixin text-conter {
@@ -128,12 +132,27 @@
     flex-wrap: wrap;
     align-items:center;  
 }
-
+@mixin  flex-nowrap-end {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    align-items: center;
+    
+}
 @mixin nowrap {
     display:flex;
     flex-wrap:nowrap;
     align-items:center;
 }
+@mixin flex-flex-direction {
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+}
+
+
+
 
 
 //多轴对齐
