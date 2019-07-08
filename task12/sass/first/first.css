@@ -71,7 +71,7 @@ body {
   align-content: space-between;
 }
 
-.header-nome :nth-child(1) {
+.header-nome span:nth-child(1) {
   font-size: 18px;
   color: #fff;
   order: 0;
@@ -80,7 +80,7 @@ body {
   flex-basis: 60%;
 }
 
-.header-nome :nth-child(2) {
+.header-nome span:nth-child(2) {
   text-align: right;
   font-size: 14px;
   color: #999;
@@ -91,11 +91,11 @@ body {
   flex-basis: 40%;
 }
 
-.header-nome :nth-child(3) {
+.header-nome img:nth-child(3) {
   display: inline-block;
 }
 
-.header-nome :nth-child(4) {
+.header-nome span:nth-child(4) {
   font-size: 12px;
   color: #fff;
 }
@@ -120,7 +120,7 @@ body {
   padding: 15px 0;
 }
 
-.main-top :nth-child(1) {
+.main-top div:nth-child(1) {
   height: 15px;
   margin-left: 20px;
   margin-right: 10px;
@@ -155,12 +155,12 @@ body {
   padding-right: 10px;
 }
 
-.main-content-top :nth-child(2) {
+.main-content-top span:nth-child(2) {
   border-right: 1px solid #e1e5e7;
   margin-right: 10px;
 }
 
-.main-content-content :nth-child(1) {
+.main-content-content span:nth-child(1) {
   color: #999;
   padding-right: 15px;
   border-right: 1px solid #e1e5e7;
@@ -171,7 +171,7 @@ body {
   flex-basis: auto;
 }
 
-.main-content-bottom :nth-child(2) {
+.main-content-bottom span:nth-child(2) {
   color: #e63b0e;
 }
 
@@ -179,7 +179,7 @@ body {
   border: 0 !important;
 }
 
-.main-bottom :nth-child(2) {
+.main-bottom span:nth-child(2) {
   font-size: 14px;
   text-align: left;
 }
