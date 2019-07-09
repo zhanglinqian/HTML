@@ -9,6 +9,10 @@
       导入方式：<link href="css/common.css" rel="stylesheet" type="text/css" /> */
  
 /* reset */
+body{margin: 0;}/*****/
+
+
+
 body,div,dl,dt,dd,ul,ol,
 li,h1,h2,h3,h4,h5,h6,
 pre,code,form,fieldset,legend,textarea,

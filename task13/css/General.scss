@@ -16,8 +16,11 @@
 
 @mixin bgc-f66f6f {background-color: #f66f6f;}//红
 
+
 //字体
 @mixin fontcolor {color:#9a9a9a;}//灰色字体
+
+@mixin font-ffc865 {color: #ffc865;}
 
 @mixin font-18 {font-size: 18px;}
 
@@ -35,7 +38,7 @@
 
 @mixin font-weight {font-weight: 700;}//加粗字体
 
-//按钮
+//按钮  
 
 @mixin button-style ($color,$font-size,$line-height,$bg-color,$radius:5px){
     cursor : pointer;
@@ -52,10 +55,20 @@
 }
 
 //宽度
-@mixin width-768 { 
+@mixin width-full {
+    width:100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-sizing: border-box;
+}
+
+@mixin width-fixed { 
     width: 100%;
-    max-width : 768px ;
+    max-width : 768px;
     margin:0 auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-sizing: border-box;
 }
 
 //高度
@@ -67,6 +80,8 @@
     -moz-border-radius : $radius;
     -webkit-border-radius : $radius;
 }
+
+
 
 //弹性盒子
 @mixin flex-wrap {
