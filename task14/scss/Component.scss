@@ -1,0 +1,178 @@
+@mixin header  {};//头*
+
+@mixin content {};//内容
+
+@mixin footer {};//尾
+
+@mixin nav {};//导航//
+@mixin subnav {};//子导航//
+@mixin tab {}//标签页//
+
+@mixin sidebar {};//侧栏//
+
+@mixin wrapper {};//页面外围控制整体布局宽度//
+
+@mixin left-right-center {};//左右中//
+
+@mixin logo {};//标志//
+
+@mixin main {};//zhuti//
+
+@mixin menu {};//子菜单//
+
+
+@mixin footer {}//页脚//
+@mixin footer {}//页脚//
+@mixin footer {}//页脚//
+@mixin footer {}//页脚//
+
+
+//背景色
+@mixin  bgc-5fc0cd {background-color: #5fc0cd;} //蓝
+
+@mixin bgc-55a8b3 {background-color: #55a8b3;}//阴影-蓝
+
+@mixin bgc-29bde0 {background-color: #29bde0;}
+
+@mixin bgc-fff {background-color: #fff;}
+
+@mixin bgc-f8fafb {background-color: #f8fafb;}//阴影-白
+
+@mixin bgc-fbb435 {background-color: #fbb435;}//和字体同色
+
+@mixin gbc-f5c97b {background-color: #f5c97b;}//暗-黄
+
+@mixin bgc-f66f6f {background-color: #f66f6f;}//红
+
+@mixin bgc-29b078 {background-color: #29b078;}//绿 导航  页脚  字体
+
+@mixin bgc-fafafa {background-color: #fafafa;}//网页底色 
+
+
+//字体
+@mixin fontcolor {color:#9a9a9a;}//灰色字体
+
+@mixin font-ffc865 {color: #ffc865;}
+
+@mixin font-18 {font-size: 18px;}
+
+@mixin font-16 {font-size: 16px;}
+
+@mixin font-15 {font-size: 15px;}
+
+@mixin font-14 {font-size: 14px;}
+
+@mixin font-13 {font-size: 13px;}
+
+@mixin font-12 {font-size: 12px;}
+
+@mixin font-10 {font-size: 10px;}
+
+@mixin font-weight {font-weight: 700;}//加粗字体
+
+
+@mixin height-nav {height: 100px;}//导航栏高度
+
+@mixin Carousel {height: 810px;} //轮播图
+
+@mixin footer {height: 200px;}// 页脚总高度高度
+
+
+//按钮  
+
+@mixin button-style ($color,$font-size,$line-height,$bg-color,$radius:5px){
+    cursor : pointer;
+    outline : none;      
+    border : none;
+    padding:0;
+    color:$color;
+    font-size: $font-size;
+    line-height : $line-height;
+    background-color : $bg-color;  
+    border-radius : $radius;
+    -moz-border-radius : $radius;
+    -webkit-border-radius : $radius;
+}
+
+//自动宽度
+@mixin width-full {
+    min-height: 1px;
+    width:100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+}
+//固定宽度
+@mixin width-fixed {
+    min-height: 1px; 
+    width: 100%;
+    margin-left:auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+}
+
+
+//边框圆角
+@mixin border-radius($radius) {
+    border-radius : $radius;
+    -moz-border-radius : $radius;
+    -webkit-border-radius : $radius;
+}
+
+//弹性盒子
+@mixin wrap-flex () {
+    flex-direction : row;//换行-x轴头对齐
+    flex-wrap : wrap;
+    justify-content: flex-start;//
+    align-items: center;
+}
+
+@mixin no-flex () {
+    flex-direction : row;//不换行-x轴头对齐
+    flex-wrap : nowrap;
+    justify-content: flex-start; 
+    align-items: center;
+}
+
+
+
+
+
+//弹性盒子项目属性     Component
+@mixin flex-item ($flex-grow:0,$flex-shrink:0,$flex-basis:auto){
+    flex-grow:$flex-grow;     //放大
+    flex-shrink:$flex-shrink; //缩小
+    flex-basis:$flex-basis;//x轴占比空间
+}
+
+//弹性盒子项目属性     //排序  
+@mixin flex-item-order ($order:0){  order:$order;} 
+
+//弹性盒子项目属性     /放大 //缩小
+@mixin flex-full ($flex-grow:0,$flex-shrink:1){
+    flex-grow:$flex-grow;          
+    flex-shrink:$flex-shrink;     
+}
+
+//弹性盒子项目属性   //x轴占比空间  Component
+@mixin flex-item-basis ($flex-basis:auto){flex-basis:$flex-basis;}
+
+
+
+/**媒体查询**/
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 767.98px) {}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991.98px) {}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199.98px) {}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {}
