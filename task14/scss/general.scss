@@ -1,7 +1,8 @@
 @import"./Component.scss";
-
-
-
+body{margin:0;padding:0}
+a{text-decoration:none}
+li{list-style:none}
+p{margin-top: 0;margin-bottom: 0;}
 /**容器**/
 /**宽度与页面相等**/
 .width-auto {
@@ -54,13 +55,67 @@
     padding-right: 15px;
 }
 
+/*X轴左对齐-y轴居中-默认换行*/
+.warp-flex {@include wrap-flex;}
 
+/*X轴左对齐-y轴居中-不换行*/
+.no-flex {@include no-flex;}
 
+           /*主轴方向 */
+/*水平-起点在-左*/
+.flex-direction-row { @include fdn(row);}
+/*水平-起点在-右*/
+.flex-direction-row-reverse { @include fdn(row-reverse);}
+/*起点在上*/
+.flex-direction-column {@include fdn(column);}
+/*起点在下*/
+.flex-direction-column-reverse {@include fdn(column-reverse);}
 
+            /*换行属性*/
+/*不换行*/
+.flex-nowrap {@include f-p(nowrap)}
+/*换行-第一行在上*/
+.flex-wrap {@include f-p(wrap)}
+/*换行-第一行在下*/
+.flex-wrap-r {@include f-p(wrap-reverse)}
 
+        /*主轴上项目对齐方式*/
+/*起点对齐-默认*/
+.ju-c-start {@include ju-c(flex-start)}
+/*终点对齐*/
+.ju-c-start {@include ju-c(flex-end)}
+/*居中*/
+.ju-c-start {@include ju-c(center)}
+/*两端对齐  紧贴父元素*/
+.ju-c-start {@include ju-c(space-between)}
+/*项目两侧距离相对*/
+.ju-c-start {@include ju-c(space-around)}
 
+        /*交叉轴上项目对齐方式*/
+/*起点*/
+.align-items-start {@include a-s(flex-start)}
+/*终点*/
+.align-items-end {@include a-s(flex-end)}
+/*居中*/
+.align-items-center {@include a-s(center)}
+/*第一行文字基线对齐*/
+.align-items-baseline {@include a-s(baseline)}
+/*高度为auto  自动占满整个交叉轴-默认*/
+.align-items-stretch {@include a-s(stretch)}
 
-
+        /*多轴对齐方式线*/
+/*交叉轴起点对齐*/
+.aling-content-start{@include a-t(flex-start)}
+/*交叉轴终点对齐*/
+.aling-content-end{@include a-t(flex-end)}
+/*交叉轴中点对齐*/
+.aling-content-center{@include a-t(center)}
+/*与交叉轴两端对齐  轴线间隔平均分布*/
+.aling-content-between{@include a-t(space-between)}
+/*轴线两边距离相等*/
+.aling-content-around{@include a-t(space-around)}
+/*占满交叉轴*/
+.aling-content-stretch{@include a-t(stretch)}
 
 
 /*通用自适应*/

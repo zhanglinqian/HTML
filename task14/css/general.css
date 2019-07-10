@@ -1,4 +1,22 @@
 @charset "UTF-8";
+body {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 /**容器**/
 /**宽度与页面相等**/
 .width-auto {
@@ -78,6 +96,142 @@
   width: 100%;
   padding-left: 15px;
   padding-right: 15px;
+}
+
+/*X轴左对齐-y轴居中-默认换行*/
+.warp-flex {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/*X轴左对齐-y轴居中-不换行*/
+.no-flex {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/*主轴方向 */
+/*水平-起点在-左*/
+.flex-direction-row {
+  flex-direction: row;
+}
+
+/*水平-起点在-右*/
+.flex-direction-row-reverse {
+  flex-direction: row-reverse;
+}
+
+/*起点在上*/
+.flex-direction-column {
+  flex-direction: column;
+}
+
+/*起点在下*/
+.flex-direction-column-reverse {
+  flex-direction: column-reverse;
+}
+
+/*换行属性*/
+/*不换行*/
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+/*换行-第一行在上*/
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+/*换行-第一行在下*/
+.flex-wrap-r {
+  flex-wrap: wrap-reverse;
+}
+
+/*主轴上项目对齐方式*/
+/*起点对齐-默认*/
+.ju-c-start {
+  justify-content: flex-start;
+}
+
+/*终点对齐*/
+.ju-c-start {
+  justify-content: flex-end;
+}
+
+/*居中*/
+.ju-c-start {
+  justify-content: center;
+}
+
+/*两端对齐  紧贴父元素*/
+.ju-c-start {
+  justify-content: space-between;
+}
+
+/*项目两侧距离相对*/
+.ju-c-start {
+  justify-content: space-around;
+}
+
+/*交叉轴上项目对齐方式*/
+/*起点*/
+.align-items-start {
+  align-items: flex-start;
+}
+
+/*终点*/
+.align-items-end {
+  align-items: flex-end;
+}
+
+/*居中*/
+.align-items-center {
+  align-items: center;
+}
+
+/*第一行文字基线对齐*/
+.align-items-baseline {
+  align-items: baseline;
+}
+
+/*高度为auto  自动占满整个交叉轴-默认*/
+.align-items-stretch {
+  align-items: stretch;
+}
+
+/*多轴对齐方式线*/
+/*交叉轴起点对齐*/
+.aling-content-start {
+  align-content: flex-start;
+}
+
+/*交叉轴终点对齐*/
+.aling-content-end {
+  align-content: flex-end;
+}
+
+/*交叉轴中点对齐*/
+.aling-content-center {
+  align-content: center;
+}
+
+/*与交叉轴两端对齐  轴线间隔平均分布*/
+.aling-content-between {
+  align-content: space-between;
+}
+
+/*轴线两边距离相等*/
+.aling-content-around {
+  align-content: space-around;
+}
+
+/*占满交叉轴*/
+.aling-content-stretch {
+  align-content: stretch;
 }
 
 /*通用自适应*/
