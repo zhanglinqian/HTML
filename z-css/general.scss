@@ -1,8 +1,24 @@
-@import"./Component.scss";
+@import"..\\..\\z-css\\component";
 body{margin:0;padding:0}
 a{text-decoration:none}
 li{list-style:none}
 p{margin-top: 0;margin-bottom: 0;}
+/**颜色***/
+.bgc-fff {background-color: #fff;}
+.bgc-fafafa {background-color: #fafafa;}//网页底色 
+.bgc-29b078 {background-color: #29b078;}//绿 导航  页脚  字体
+.bgc-f66f6f {background-color: #f66f6f;}//红
+.gbc-f5c97b {background-color: #f5c97b;}//暗-黄
+.bgc-fbb435 {background-color: #fbb435;}//和字体同色
+.bgc-f8fafb {background-color: #f8fafb;}//阴影-白
+.bgc-5fc0cd {background-color: #5fc0cd;} //蓝
+.bgc-55a8b3 {background-color: #55a8b3;}//阴影-蓝
+/*字体**/
+.font-weight {font-weight: 700;}//加粗字体
+/**高度**/
+.height-nav {height: 100px;}//导航栏高度
+.Carousel {height: 810px;} //轮播图
+.footer {height: 200px;}// 页脚总高度高度
 /**容器**/
 /**宽度与页面相等**/
 .width-auto {
@@ -25,9 +41,7 @@ p{margin-top: 0;margin-bottom: 0;}
     @include wrap-flex;
     box-sizing:border-box;
 }
-
 /******弹性盒子******/
-
 /*通用*/
 .col,.col-1,.col-2.col-3,.col-4,.col-5,.col-6,.col-7,.col-8,
 .col-9,.col-10,.col-11,.col-12,.col-20,.col-10,.col-50,
@@ -47,14 +61,11 @@ p{margin-top: 0;margin-bottom: 0;}
 .col-cdxsq-1,.col-cdxsq-2.col-cdxsq-3,.col-cdxsq-4,.col-cdxsq-5,.col-cdxsq-6,
 .col-cdxsq-7,.col-cdxsq-8,.col-cdxsq-9,.col-cdxsq-10,.col-cdxsq-11,
 .col-cdxsq-12,.col-cdxsq-20, .col-cdxsq-50
-{
-    position: relative;
+{   position: relative;
     max-height: 1px;
     width: 100%;
     padding-left: 15px;
-    padding-right: 15px;
-}
-
+    padding-right: 15px;}
 /*X轴左对齐-y轴居中-默认换行*/
 .warp-flex {@include wrap-flex;}
 
@@ -118,11 +129,11 @@ p{margin-top: 0;margin-bottom: 0;}
 .aling-content-stretch{@include a-t(stretch)}
 
 
-/*通用自适应*/
 
+        /*通用自适应*/
 .col {
-    @include flex-item(auto);
     max-width: 100%;
+    @include flex-item(auto);
 }
 .col-1 { 
     max-width: 8.333333%;

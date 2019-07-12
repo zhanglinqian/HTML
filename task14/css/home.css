@@ -1,0 +1,200 @@
+@charset "UTF-8";
+/*h-shadow	必需的。水平阴影的位置。允许负值
+ *v-shadow	必需的。垂直阴影的位置。允许负值
+ *blur	    可选。模糊距离
+ *spread	可选。阴影的大小
+ *color  	可选。阴影的颜色。在CSS颜色值寻找颜色值的完整列表
+ *inset	    可选。从外层的阴影（开始时）改变阴影内侧阴影   */
+@media (max-width: 575.98px) {
+  /*第一栏自适应*/
+  .content-top {
+    margin-top: 20px;
+  }
+  .content-top p {
+    text-align: center;
+  }
+  .content-top div:nth-child(4) > div {
+    border-left: none !important;
+    margin-left: 0;
+    margin-top: 20px;
+    padding: 0;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  /*第一栏自适应*/
+  .content-top {
+    margin-top: 50px;
+  }
+  .content-top p {
+    text-align: center;
+  }
+  .content-top div:nth-child(4) > div {
+    border-left: none !important;
+    margin-left: 0;
+    padding-left: 0;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  /*第一栏自适应*/
+  .content-top {
+    margin-top: 50px;
+  }
+  .content-top p {
+    text-align: center;
+  }
+  .content-top div:nth-child(4) > div {
+    border-left: none !important;
+    margin-left: 0;
+    padding-left: 0;
+  }
+}
+
+/**第一栏***/
+.img34-14 {
+  height: 25px;
+}
+
+.content-top div:nth-child(4) > div {
+  border-left: 1px solid #dee2e6;
+}
+
+/*第二栏*/
+/*/圆圈*/
+.content-border-radius {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  background-color: #fff;
+  -webkit-box-shadow: 0 0 10px #dad2d2;
+  -moz-box-shadow: 0 0 10px #dad2d2;
+  box-shadow: 0 0 10px #dad2d2;
+  line-height: 70px;
+  text-align: center;
+  color: #29b078;
+}
+
+.content-center-center > div, .content-center-bottom > div {
+  margin-top: 10px;
+  padding-left: 0;
+}
+
+@media (min-width: 576px) and (max-width: 992px) {
+  .content-center-bottom {
+    margin-top: 0;
+  }
+  .round {
+    padding-left: 0;
+  }
+  .arrow-3, .arrow-7 {
+    display: none;
+  }
+}
+
+@media (min-width: 992px) {
+  .content-center-center > div:nth-child(1), .content-center-bottom > div:nth-child(1) {
+    padding-left: 15px;
+  }
+  .content-center-center > div:nth-child(5), .content-center-bottom > div:nth-child(5) {
+    padding-left: 15px;
+  }
+}
+
+@media (max-width: 575.99px) {
+  .arrow-2, .arrow-3, .arrow-4,
+  .arrow-6, .arrow-7, .arrow-8 {
+    display: none;
+  }
+  .content-center-bottom {
+    margin-top: 0;
+  }
+  .content-border-radius {
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .content-border-radius {
+    width: 55px;
+    height: 55px;
+    line-height: 55px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .content-border-radius {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+  }
+}
+
+/*战略合作企业*/
+.logo > img {
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.logo:hover {
+  -webkit-box-shadow: 0 0 10px #dad2d2;
+  -moz-box-shadow: 0 0 10px #dad2d2;
+  box-shadow: 0 0 10px #dad2d2;
+}
+
+@media (max-width: 575.98px) {
+  .logo {
+    line-height: 80px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .logo {
+    line-height: 100px;
+  }
+}
+
+/*友情链接*/
+.friendlink li {
+  color: #999;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.friendlink > li > a {
+  text-align: center;
+  border: 0;
+  border-top: 1px;
+  border-bottom: 1px;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0);
+  margin: 0 auto;
+}
+
+.friendlink > li > a:link {
+  color: #999;
+}
+
+.friendlink > li > a:visited {
+  color: #999;
+}
+
+.friendlink > li > a:hover {
+  border-bottom: 1px solid #29b078;
+  z-index: 777;
+}
+
+@media (max-width: 420px) {
+  .friendlink {
+    font-size: 12px;
+    text-align: center;
+  }
+  .friendlink li {
+    list-style: none;
+  }
+}
