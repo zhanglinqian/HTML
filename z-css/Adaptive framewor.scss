@@ -16,8 +16,6 @@
     display: block;
     margin: 0 auto;
 }
-
-
 /**容器**/
 /**宽度与页面相等**/
 .width-auto {
@@ -29,7 +27,8 @@
     @media (min-width: 576px) {max-width: 540px};
     @media (min-width: 768px) {max-width: 720px};
     @media (min-width: 992px) {max-width: 960px};
-    @media (min-width: 1200px) {max-width: 1140px};
+    @media (min-width: 1150px) {max-width: 1090px};
+    @media (min-width: 1280px) {max-width: 1200px};
 }
 /**行元素**/
 .row {

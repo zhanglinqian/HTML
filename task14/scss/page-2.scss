@@ -1,21 +1,5 @@
 
 /*****第二页*****/
-//
-//
-@mixin header  {};//头*
-@mixin content {};//内容
-@mixin footer {};//尾
-@mixin nav {};//导航//
-@mixin subnav {};//子导航//
-@mixin tab {}//标签页//
-@mixin sidebar {};//侧栏//
-@mixin wrapper {};//页面外围控制整体布局宽度//
-@mixin left-right-center {};//左右中//
-@mixin logo {};//标志//
-@mixin main {};//主体//
-@mixin menu {};//菜单//
-
-
 .page-2-nav {
     border-bottom-color: #fff !important;
 }
@@ -26,17 +10,8 @@
         border-bottom-color: rgba($color: #000000, $alpha: 0)!important;
     }
 }
-.subnav {
-    >a:nth-child(1) {
-        &:link {color:#000;}
-        &:visited {color:#000;}
-    }
-    >a:nth-child(3) {
-        color:#29b078;
-    }
-}
-
 .sidebar {
+    border-radius:10px;
     border-radius: 5px;
     background-color: #fff;
     >div:nth-child(1) {
@@ -53,10 +28,6 @@
         list-style: none;
         margin-left: auto;
         margin-right: auto;
-        >a:hover {
-        color:#ff640c;
-        cursor: pointer;
-        }
         >i{
         height: 8px;
         width: 8px;
@@ -68,22 +39,34 @@
         box-sizing: content-box;
         display: inline-block;
         }
-        &:hover {
-        background-color: #ff640c;
-        }
     }
 }
-
-.main {
-    border-radius:5px;
-    background-color: #fff;
+.sidebar-bottom {
+    >ul>li:hover {
+        >a {
+            color:#ff640c;
+            cursor: pointer;
+        }
+        >i{background-color: #ff640c;}
+    }
 }
 .mian-style {
-    margin-left: -15px;
-    margin-right: -15px;
+    background-color: #fff;
+    border-radius:10px;
     text-indent:30px;
     padding: 10px 70px 30px 70px;
 }
+@media (max-width:576px) {
+    .mian-style {
+        padding: 10px 30px 30px 30px;
+    }
+}
+@media (max-width:380px) {
+    .mian-style {
+        padding: 10px 15px 30px 15px;
+    }
+}
+
 .mian-top {
     border-bottom-width: 1px;
     border-bottom-color: #e6e6e6;
@@ -107,6 +90,7 @@
     .mian-top {
         flex-wrap: wrap;
         justify-content: center;
+        p{padding: 0;}
         >div {
             flex-basis: 100%;
         }
@@ -115,7 +99,6 @@
                 top:20px;
                 bottom: 20px;
             }
-
         }
         
     }
