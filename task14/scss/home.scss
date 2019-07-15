@@ -122,7 +122,10 @@
     }
 }     
 /*战略合作企业*/
-.logo{
+.logo-top {
+    @include box-shadow-Lack(0,0,10px,#dad2d2);
+}
+.logo {
     >img{
     max-width: 100%;
     display: inline-block;
@@ -139,14 +142,17 @@
 @media (min-width: 576px) and (max-width: 767.98px) {.logo{line-height: 100px;}}
 /*友情链接*/
 .friendlink{
+    text-align: center;
+    div {padding: 0;}
     li{
-        color:#999;
+        text-align: justify;
+        width: 87px;
         padding-left: 0;
         padding-right: 0;
-
     }
-    >li>a{
-    text-align: center;
+    a{
+    display: inline-block;
+    color:#999;
     border:0;
     border-top:1px;
     border-bottom:1px;
@@ -164,8 +170,11 @@
 @media (max-width:420px){
     .friendlink{
         font-size: 12px;
-        text-align: center;
-        li{list-style: none;}
+        li{
+            width: auto;
+            text-align: center !important;
+            list-style: none;
+        }
     }
 }
 

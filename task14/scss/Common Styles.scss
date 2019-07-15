@@ -210,7 +210,7 @@ body {background-color: #fafafa;}/*背景色*/
             flex-basis: 100%;
         }
     }
-    input[type="checkbox"]:checked~.nav-menu{height: 400px;}
+    input[type="checkbox"]:checked~.nav-menu{height: 220px;}
 }
 // 小型设备    手机横向显示      (大于等于  576px)
 @media (min-width: 576px) and (max-width: 767.98px) {
@@ -221,7 +221,7 @@ body {background-color: #fafafa;}/*背景色*/
     .nav{line-height: 80px;}
 }
 //轮播图
-.carousel{
+.carousel {
     position: relative;
     width: 100VW;
     height: 31vw;
@@ -269,7 +269,7 @@ body {background-color: #fafafa;}/*背景色*/
 @keyframes item-carousel-1 {
     0%,15% {background-color: #1f7c55}
     25%,90%{background-color: #fff;}
-    98%,100% {background-color: #1f7c55;}
+    99%,100% {background-color: #1f7c55;}
 }
 .item-carousel-2 {
     animation: item-carousel-2 12s infinite;}
@@ -293,47 +293,92 @@ body {background-color: #fafafa;}/*背景色*/
     100%   {background-color: #fff;}
 }
 //
-//人物介绍卡片
-
+/*人物介绍卡片*/
 .people-card {
     display: flex;
     flex-direction: column;
-    width: 240px;
-    min-width: 0;
-    padding-top: 30px;
-    padding-left: 20px;
-    padding-right: 20px;
+    width: 200px;
+    padding: 20px 35px 35px 40px;
+    margin: 9px;
     background-color: #fff;
     background-clip: border-box;
     border: 1px solid rgba(0,0,0,.125);
+    @include box-shadow-Lack(0,0,10px,#dad2d2);
     border-radius: 5px;
-    >img{
+    line-height: 25px;
+    text-align: justify;
+    >img {
         display: block;
         margin: 0 auto;
     }
+    >div { 
+        p:nth-child(1) {
+            font-size: 18px;
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            ~p{
+                font-size: 16px;
+                color:#999;
+            }
+        }
+    }
+}
+/*人物介绍卡片轮播*/
+.carousel-people {
+    position: relative;
+    width: 1180px;
+    height: 410px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+@media (max-width:1200px) {
+    .carousel-people { width: 885px;}
+}
+@media (max-width:996px) {
+    .carousel-people { width: 590px;}
+}
+@media (max-width:576px) {
+    .carousel-people { width: 295px;}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.carousel-people-mian {
+    position: absolute;
+    left:0;
+    width: 2360px;
+    font-size: 0;
+    animation: carousel-people-mian 12s infinite;
+}
+@keyframes carousel-people-mian {
+    0%,15%{left: 0;}
+    25%,35%{left: -295px;}
+    50%,60%{left: -590px;}
+    75%,90%{left: -885px}
+    100%{left: -1180px;}
+}
+.carousel-people-itme {
+display: inline-block;
+}
+.carousel-people-msg {
+    height: 20px;
+    width: 60px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 10;
+}
+.carousel-people-msg>div{
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background-color: #1f7c55;
+    @include box-shadow-Lack(0,0,10px,#aaaaaa);
+}
 //副导航-第二三页用
 .subnav {
     >a:nth-child(1) {

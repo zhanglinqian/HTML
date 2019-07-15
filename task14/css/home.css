@@ -1,10 +1,4 @@
 @charset "UTF-8";
-/*h-shadow	必需的。水平阴影的位置。允许负值
- *v-shadow	必需的。垂直阴影的位置。允许负值
- *blur	    可选。模糊距离
- *spread	可选。阴影的大小
- *color  	可选。阴影的颜色。在CSS颜色值寻找颜色值的完整列表
- *inset	    可选。从外层的阴影（开始时）改变阴影内侧阴影   */
 @media (max-width: 575.98px) {
   /*第一栏自适应*/
   .content-top {
@@ -135,6 +129,12 @@
 }
 
 /*战略合作企业*/
+.logo-top {
+  -webkit-box-shadow: 0 0 10px #dad2d2;
+  -moz-box-shadow: 0 0 10px #dad2d2;
+  box-shadow: 0 0 10px #dad2d2;
+}
+
 .logo > img {
   max-width: 100%;
   display: inline-block;
@@ -160,14 +160,24 @@
 }
 
 /*友情链接*/
+.friendlink {
+  text-align: center;
+}
+
+.friendlink div {
+  padding: 0;
+}
+
 .friendlink li {
-  color: #999;
+  text-align: justify;
+  width: 87px;
   padding-left: 0;
   padding-right: 0;
 }
 
-.friendlink > li > a {
-  text-align: center;
+.friendlink a {
+  display: inline-block;
+  color: #999;
   border: 0;
   border-top: 1px;
   border-bottom: 1px;
@@ -176,15 +186,15 @@
   margin: 0 auto;
 }
 
-.friendlink > li > a:link {
+.friendlink a:link {
   color: #999;
 }
 
-.friendlink > li > a:visited {
+.friendlink a:visited {
   color: #999;
 }
 
-.friendlink > li > a:hover {
+.friendlink a:hover {
   border-bottom: 1px solid #29b078;
   z-index: 777;
 }
@@ -192,9 +202,10 @@
 @media (max-width: 420px) {
   .friendlink {
     font-size: 12px;
-    text-align: center;
   }
   .friendlink li {
+    width: auto;
+    text-align: center !important;
     list-style: none;
   }
 }
