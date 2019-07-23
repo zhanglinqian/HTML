@@ -1,11 +1,9 @@
-
 function rec() {//遍历所有盒子重置颜色
     var x = document.getElementsByClassName("content")[0];
     var ab = x.children;
     for (var i = 0; i < ab.length; i++) {
         ab[i].style.background = "darkorange";
     }
-    console.log(ab);
 };
 function change() {
     rec();
@@ -25,16 +23,16 @@ function change() {
         bgcNew[1];
         bgcNew[2];
     for ( var i = 0; i < 3; i++){
-        var bgc = '#' + Math.floor(Math.random()*0xffffff).toString(16);
+        var bgc = '#'+('000000'+(Math.random()*0xffffff << 0).toString(16)).slice(-6);
         bgcNew.push(bgc);
     };
     if (bgcNew[0] != bgcNew[1] && bgcNew[0] != bgcNew[2] && bgcNew[1] != bgcNew[2]) {
 document.getElementById(order[0]).style.backgroundColor=bgcNew[0];
 document.getElementById(order[1]).style.backgroundColor=bgcNew[1];
 document.getElementById(order[2]).style.backgroundColor=bgcNew[2];
+    }
 console.log(order);
 console.log(bgcNew);
-}
 }
 //开关与防点击   
 var begin;
@@ -48,6 +46,6 @@ function start() {
 };
 function stop() {
     clearInterval(begin);
-    rec();   //重置颜色
+    //rec();   //重置颜色
     control = "off";
 }
