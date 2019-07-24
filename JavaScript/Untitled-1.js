@@ -138,6 +138,7 @@ function bg2() {
 var getRandomColor = function () {
     return '#' + (Math.random() * 0xffffff << 0).toString(16);
 }
+var color3 = "#"+("00000"+(Math.floor(Math.random()*16777216)).toString(16)).slice(-6);
 /*
 其它一切应该都是不言自明的
 random() 生成[0, 1)
