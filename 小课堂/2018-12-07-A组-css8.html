@@ -1,0 +1,445 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>葡萄藤PPT</title>
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+    <link rel="icon" href="favicon.ico" type="x-icon">
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : './css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+</head>
+<body>
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<!--首页-->
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h3>经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧 ？</h3>
+            <p>分享人：张林骞</p>
+        </section>
+        <!--目录-->
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <!--背景介绍-->
+        <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>1.背景介绍</h3>
+        </section>
+        <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <p>出现浏览器兼容性问题的主要原因，是不同浏览器对同一段代码的有不同解析，造成的页面显示效果不统一。</p>
+            <p>在大多数情况下，我们的需求是，无论用户在什么浏览器上查看我们的网站或登录我们的系统，显示效果都应该是一致的。
+                所以浏览器兼容性问题是我们web前端开发人员经常会碰到和必须解决的问题。</p>    
+        </section>
+        <!--知识剖析-->
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>2.知识剖析</h3>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h4>解决浏览器兼容的主要方法是css hack</h4>
+                <p>什么是css hack？</p>
+                <p>不同的浏览器对CSS的解析结果是不同的，因此会导致相同的CSS输出的页面效果不同，
+                    这就需要CSS Hack来解决浏览器局部的兼容性问题。
+                    而这个针对不同的浏览器写不同的CSS 代码的过程，就叫CSS Hack。</p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>CSS Hack常见的有三种形式</h3>
+                <p>1.CSS属性Hack</p>
+                <p>2.CSS选择符Hack</p>
+                <p>3.IE条件注释Hack</p>
+                <p>Hack主要针对IE浏览器。</p>
+            </section>
+        </section>
+
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h4>属性级Hack</h4>
+                <p>IE6能识别下划线"_"和星号" * "</p>
+                <p>IE7能识别星号" * "，但不能识别下划线"_"，</p>
+                <p>而firefox两个都不能认识。</p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>CSS属性级Hack</p>
+                <p>color:red; /所有浏览器可识别/</p>
+                <p>_color:red; /仅IE6 识别/</p>
+                <p>*color:red;  +color:red;  *+color:red;[color:red; /IE6、IE7 识别/</p>
+                <p>color:red9; /IE6、IE7、IE8、IE9 识别 */</p>
+                <p>color:red; /IE8、IE9 识别/</p>
+                <p>color:red9; /仅IE9识别 /</p>
+                <p>color:red ; /仅IE9识别 /</p>
+                <p>color:red!important; /IE6 不识别!important/</p>
+            </section>
+        </section>
+
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h4>选择符级Hack</h4>
+                <p>比如IE6能识别*html .class{}，</p>
+                <p>IE7能识别*+html .class{}或者*:first-child+html .class{}。</p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>CSS选择符级Hack</p>
+                <p>*html #demo { color:red;} /* 仅IE6 识别 */</p>
+                <p>*+html #demo { color:red;} /* 仅IE7 识别 */</p>
+                <p>body:nth-of-type(1) #demo { color:red;} /* IE9+、FF3.5+、Chrome、Safari、Opera 可以识别 */</p>
+                <p>head:first-child+body #demo { color:red; } /* IE7+、FF、Chrome、Safari、Opera 可以识别 */</p>
+                <p>:root #demo { color:red9; } : /* 仅IE9识别 */</p>
+            </section>
+        </section>
+
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h4>IE条件注释Hack</h4>
+                <p>IE条件注释是微软从IE5开始就提供的一种非标准逻辑语句。</p>
+                <p>比如针对所有IE</p>
+                <p>&lt;!–[if IE]&gt;&lt;!–您的代码–&gt;&lt;![endif]–&gt;</p>
+                <p>针对IE6及以下版本</p>
+                <p>&lt;!–[if lt IE 7]&gt;&lt;!–您的代码–&gt;&lt;![endif]–&gt;</p>
+                <p>这类Hack不仅对CSS生效，对写在判断语句里面的所有代码都 会生效。</p>
+            </section>
+
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>IE条件注释Hack</p>
+                <p>&lt;!--[if IE]&gt;此处内容只有IE可见&lt;![endif]--&gt; </p>
+                <p>&lt;!--[if IE 6]&gt;此处内容只有IE6.0可见&lt;![endif]--&gt; </p>
+                <p>&lt;!--[if IE 7]&gt;此处内容只有IE7.0可见&lt;![endif]--&gt; </p>
+                <p>&lt;!--[if !IE 7]&gt;此处IE7不识别，其他版本能识别，要在IE5以上&lt;![endif]--&gt;</p>
+                <p>&lt;!--[if gt IE 6]&gt; IE6以上版本可识别,IE6无法识别 &lt;![endif]--&gt;</p>
+                <p>&lt;!--[if gte IE 7]&gt; IE7以及IE7以上版本可识别 &lt;![endif]--&gt;</p>
+                <p>&lt;!--[if lt IE 7]&gt; 低于IE7的版本能识别IE7无法识别&lt;![endif]--&gt;</p>
+                <p>&lt;!--[if lte IE 7]&gt; IE7以及IE7以下版本可识别&lt;![endif]--&gt;</p>
+                <p>&lt;!--[if !IE]&gt;此处内容只有非IE可见&lt;![endif]--&gt;</p>
+            </section>
+        </section>
+
+        <!-- 字符	十进制	转义字符
+               "	&#34;	&quot;
+               &	&#38;	&amp;
+               <	&#60;	&lt;
+               >	&#62;	&gt;
+        不断开空格(non-breaking space)	&#160;	&nbsp;-->
+
+        <!--常见问题-->
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>3.常见问题</h3>
+        </section>
+
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>不同浏览器的标签默认的margin和padding不同</h3>
+            <h3>居中问题，div里的内容，IE默认为居中，而Firefox默认为左对齐</h3>
+            <h3>Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示,</h3>
+            <h3>ul标签在firefox中默认是有 padding值的，而在IE中只有margin有值，还有缩进问题</h3>
+        </section>
+
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>双外边距浮动问题</h3>
+            <h3>3像素问题</h3>
+            <h3>IE6不支持min-*</h3>
+            <h3>IE6不支持png-24透明图片</h3>
+            <h3>IE6不能定义1px左右宽度的容器</h3>
+            <h3>IE5~8不支持opacity</h3>
+        </section>
+        <!--解决方案-->
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>4.解决方案</h3>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>不同浏览器的标签默认的margin和padding不同</p>
+                <p>问题描述：写几个标签，不加样式控制的情况下，各自的margin 和padding差异较大。</p>
+                <p>解决方法：CSS里加一行*{margin:0;padding:0;}</p>
+                <p></p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示,</p>
+                <p>解决办法：可通过加入 CSS 属性 -webkit-text-size-adjust: none; 解决。</p>
+            </section>
+        </section>
+        <!--编码实战-->
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>5.编码实战</h3>
+        </section>
+        <!--扩展思考-->
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>6.扩展思考</h3>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <p>浏览器兼容性问题还有哪些好的解决办法？</p>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <p>1.初始化标签的默认样式</p>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>2.加对应的浏览器的内核前缀</p>
+            </section>
+            <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <ul>
+                    <li>-webkit- ，针对safari，chrome浏览器的内核CSS写法</li>
+                    <li>-moz-，针对firefox浏览器的内核CSS写法</li>
+                    <li>-ms-，针对ie内核的CSS写法</li>
+                    <li>-o-，针对Opera内核的CSS写法</li>
+                </ul>
+            </section>
+        </section>
+        <!--参考文献-->
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>7.参考文献</h3>
+            <a href="https://blog.csdn.net/qq_31635733/article/details/81660897">CSS Hack是什么意思？css hack有什么用？</a>
+            <a href="https://www.cnblogs.com/inzens/p/5462797.html">史上最全的CSS hack方式一览</a>
+            <a href="https://blog.csdn.net/qq_41842440/article/details/81610925">那些年我们经常遇到的浏览器兼容性问题</a>
+            <a href="https://blog.csdn.net/weixin_38536027/article/details/79375411">最全整理浏览器兼容性问题与解决方案</a>
+        </section>
+        <!--更多讨论-->
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>8.更多讨论</h3>
+            <p>需要注意哪些常见属性的兼容性</p>
+            <p>属性不兼容的时候，是此属性无效，还是会变为该版本能够认识的属性？</p>
+            <p>有哪些浏览器属性是有差异，我们经常用到的
+                </p>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <p></p>
+        </section>
+        <!--鸣谢-->
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <small>by: 张林骞</small>
+        </section>
+    </div>
+<div class="backgrounds">
+    <div class="slide-background past" data-loaded="true" style="display: none;"></div>
+    <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+    <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+    <div class="slide-background stack present" data-loaded="true" style="display: block;">
+        <div class="slide-background past" data-loaded="true" style="display: block;"></div>
+        <div class="slide-background present" data-loaded="true" style="display: block;"></div>
+    </div>
+    <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+    <div class="slide-background future" data-loaded="true" style="display: block;"></div>
+    <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+    <div class="slide-background future" data-loaded="true" style="display: none;"></div>
+    <div class="slide-background future" style="display: none;"></div>
+    <div class="slide-background stack future" style="display: none;">
+        <div class="slide-background present" style="display: none;"></div>
+    </div>
+    <div class="slide-background future" style="display: none;"></div>
+    <div class="slide-background stack future" style="display: none;">
+        <div class="slide-background present" style="display: none;"></div>
+    </div>
+    <div class="slide-background future" style="display: none;"></div>
+    <div class="slide-background stack future" style="display: none;">
+        <div class="slide-background present" style="display: none;"></div>
+    </div>
+    <div class="slide-background stack future" style="display: none;">
+        <div class="slide-background present" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+        <div class="slide-background future" style="display: none;"></div>
+    </div>
+    <div class="slide-background future" style="display: none;"></div>
+    <div class="slide-background future" style="display: none;"></div>
+    <div class="slide-background future" style="display: none;"></div>
+    <div class="slide-background future" style="display: none;"></div>
+</div>
+<div class="progress" style="display: block;"><span style="width: 260.19px;"></span></div>
+<aside class="controls" style="display: block;">
+    <button class="navigate-left enabled" aria-label="previous slide"></button>
+    <button class="navigate-right enabled" aria-label="next slide"></button>
+    <button class="navigate-up enabled" aria-label="above slide"></button>
+    <button class="navigate-down" aria-label="below slide"></button></aside>
+<div class="slide-number" style="display: none;"></div>
+<div class="speaker-notes" data-prevent-swipe=""></div>
+<div class="pause-overlay"></div>
+<div id="aria-status-div" aria-live="polite" aria-atomic="true"
+    style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+    语法：
+    return[()[expression][]];
+    可选项 expression 参数是要从函数返回的值。如果省略，则该函数不返回值。
+    用 return 语句来终止一个函数的执行，并返回 expression 的值。如果 expression 被省略，
+    或在函数内没有 return 语句被执行，则把值 undefined 赋给调用当前函数的表达式。
+</div>
+</div>
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+<script>
+    // 以下为常见配置属性的默认值
+    // {
+    //  controls: true, // 是否在右下角展示控制条
+    //  progress: true, // 是否显示演示的进度条
+    //  slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    //  history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    //  keyboard: true, // 是否启用键盘快捷键来导航
+    //  overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    //  center: true, // 是否将幻灯片垂直居中
+    //  touch: true, // 是否在触屏设备上启用触摸滑动切换
+    //  loop: false, // 是否循环演示
+    //  rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    //  fragments: true, // 全局开启和关闭碎片。
+    //  autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    //  transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    //  transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    //  mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+//        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+    //    原始类型对象直接赋值不会相互影响
+    //    var a = 1;
+    //
+    //    var b = a;
+    //    b = 10;
+    //    console.log(a); // 1
+    //
+    //    var a = 'hello';
+    //    var b = a;
+    //    b = 'world';
+    //    console.log(a); // hello
+    //
+    //    var a = true;
+    //    var b = a;
+    //    b = false;
+    //    console.log(a);
+
+    //数组浅复制
+    //    var a = ['隔壁老王','冠希哥', '宋经理']; //定义一个名为a的属猪，里面有3个值，
+    //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+    //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+    //    console.log(a)//那么现在打印a 是什么结果呢
+    //
+    //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+    //    var arrtoo = arr.slice(1);
+    //    arrtoo[2] = "set Map";
+    //    console.log(arr);//One,Two,Three
+    //    console.log(arrtoo);//One,set Map,Three
+
+    //
+    //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+    //    var arrtooo = arr1.concat(111111);
+    //    arrtooo[1] = "set Map To";
+    //    console.log(arr1);//One,Two,Three
+    //    console.log(arrtooo);//One,set Map To,Three
+
+    //
+    //    var b=[1,2,3,4,5];   //concat的链接
+    //    var c=[6,7,8,9];
+    //    var d =[4,4,22]
+    //    console.log(b.concat(c,d))
+
+    var a = {name: 'yy', age: 26};  //对象的浅拷贝哦
+    var b = new Object();
+    b.name = a.name;
+    b.age = a.age;
+    b.name = 'xx';
+    console.log(a);//Object { name="yy", age=26}
+    console.log(b);//Object { name="xx", age=26}
+
+    var d = {            //对象的浅拷贝哦 第一种
+        name: 'd',
+        oc: {
+            age: 32
+        },
+        oad: {
+            adds: {
+                bb: 12
+            }
+        }
+    };
+    var deepCopy = function (source) {
+        var result = {};
+        for (var key in source) {
+            result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+        }
+        return result
+    };
+
+    var c = deepCopy(d);
+    c.name = 'c';
+    c.oc = {
+        age: 49
+    };
+    console.log(c);
+    console.log(d);
+
+
+    //    var person = {    //第二种深拷贝
+    //        name: 'aa',
+    //        friends: ['da', 'dsa', 'gf']
+    //    };
+    //
+    //    var aPerson = Object.create(person, {
+    ////        name: {
+    ////            value: "gee"
+    ////        }
+    //    });
+    //
+    //    console.log(person.name);
+    //    console.log(aPerson.friends)
+
+    var Chinese = {
+        nation: '中国'
+
+    }
+    var Doctor = {
+        career: '医生'
+    }
+
+    function extendCopy(p) {
+        var c = {};
+        for (var i in p) {
+            c[i] = p[i];
+        }
+        c.uber = p;
+        return c;
+    }
+
+    var Doctor = extendCopy(Chinese);
+        Doctor.career = '医生';
+        console.log(Doctor); // 中国
+        Chinese.birthPlaces = ['北京', '上海', '香港'];
+    var Doctor = extendCopy(Chinese);
+        Doctor.birthPlaces.push('厦门');
+
+</script>
+</body>
+</html>
