@@ -34,7 +34,10 @@ function allcheck() {
         inputs[i].checked = checkFlag;
     }
 }
-
+//  DOM   
+var a   = document.getElementById("dom");          //id 获取  
+var box = document.getElementsByClassName("box");  //类名获取
+var b   = document.getElementsByTagName("div")     //标签名 
 //不推荐使用 HTML 元素中可以添加事件属性 的方式来添加属性。
 //例子：
 <button onclick="getElementById('demo').innerHTML=Date()">现在的时间是?</button>
@@ -56,10 +59,6 @@ function myfun1(){
 function myfun2(){
     alert("你好2");
 }
-//  DOM    
-var a   = document.getElementById("dom");          //id 获取  
-var box = document.getElementsByClassName("box");  //类名获取
-var b   = document.getElementsByTagName("div")     //标签名 
 //初级版  交换法
 var arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];//原始数组
 var result = [];//新数组
@@ -97,11 +96,11 @@ while (colors.length < 3) {
         }
     }
     colors.push(color);
-}
-//为div赋值颜色
+}//为div赋值颜色
 document.getElementById("d1").style.background = colors[0];
 document.getElementById("d2").style.background = colors[1];
 document.getElementById("d3").style.background = colors[2];
+//
 //随机生成颜色的方法
 //   <button id="btn1">调用第一种</button>
 //   <button id="bnt2">调用第二种</button>
@@ -131,28 +130,26 @@ function bg1() {
     return '#' + Math.floor(Math.random() * 256).toString(10);
 }
 //16进制
-function bg2() {
-    return '#' + Math.floor(Math.random() * 0xffffff).toString(16);
-}
-//
-var getRandomColor = function () {
-    return '#' + (Math.random() * 0xffffff << 0).toString(16);
-}
+//     11111
 var color3 = "#"+("00000"+(Math.floor(Math.random()*16777216)).toString(16)).slice(-6);
-/*
-其它一切应该都是不言自明的
-random() 生成[0, 1)
-乘以0xffffff 变成[0, 0xffffff)
-这样会产生一个bug, 因为0xffffff 不会产生
-然后取整rounded/floored, 转换成前缀为#的字符串
-//
-js中的tostring()方法
-toString()方法，在JS中，定义的所有对象都具有toString()方法。
-Number类型的toString()方法比较特殊，
+//     22222
+// 0xffffff  换算成十进制  16777215  Math.random()只会产生 0~1 之间随机数不包括一 （1） 
+//乘以0xffffff 变成[0, 0xffffff)这样会产生一个bug, 因为0xffffff 不会产生    
+//所以 最好使用上面的方法来生产随机颜色。
+for ( var i = 0; i < 3; i++){
+    var bgc = '#'+('000000'+(Math.random()*0xffffff << 0).toString(16)).slice(-6);
+    bgcNew.push(bgc);
+};
+//下面两种有一点问题 ： 会生成一个五位数的颜色值 #12345  导致浏览器无法识别。
+    var a = '#' + Math.floor(Math.random() * 0xffffff).toString(16);
+    var b = '#' + (Math.random() * 0xffffff << 0).toString(16);
+////////////////////////////////////////////////////////////////////////////////////////
 
-有默认模式       基模式两种。
-
-默认模式的例子：无论你用什么表示法声明数字，默认模式只是按十进制返回。*/
+//js中的tostring()方法
+//toString()方法，在JS中，定义的所有对象都具有toString()方法。
+//Number类型的toString()方法比较特殊，
+//有默认模式       基模式两种。
+//默认模式的例子：无论你用什么表示法声明数字，默认模式只是按十进制返回。
 var num1 = 10;
 var num2 = 10.0;
 alert(num1.toString());//输出10
@@ -251,6 +248,7 @@ function reset() {
         box[i].style.background = "#fea500";
     }
 }
+//
 var z;//定义一个名叫z的全局变量
 function start() {//触发变色
     clearInterval(z);//停止周期调用函数
@@ -260,6 +258,7 @@ function stop() {//停止变色并重置/*结束闪*/
     clearInterval(z);//停止周期调用函数
     reset();
 }
+//
 //
 var timer=null;
 obtn1.onclick=function()

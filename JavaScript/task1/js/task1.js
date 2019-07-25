@@ -26,6 +26,10 @@ function change() {
         var bgc = '#'+('000000'+(Math.random()*0xffffff << 0).toString(16)).slice(-6);
         bgcNew.push(bgc);
     };
+    /*for ( var i = 0; i < 3; i++){
+        var bgc = '#' + Math.floor(Math.random() * 0xffffff).toString(16);
+        bgcNew.push(bgc);
+    };*/
     if (bgcNew[0] != bgcNew[1] && bgcNew[0] != bgcNew[2] && bgcNew[1] != bgcNew[2]) {
 document.getElementById(order[0]).style.backgroundColor=bgcNew[0];
 document.getElementById(order[1]).style.backgroundColor=bgcNew[1];
@@ -38,6 +42,7 @@ console.log(bgcNew);
 var begin;
 var control = "off"
 function start() {
+    change();
     if (control === "off") {  //防点击判断
         clearInterval(begin);
         begin = setInterval("change()", 1000);
