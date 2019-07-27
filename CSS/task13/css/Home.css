@@ -95,7 +95,7 @@ input {
   padding-right: 10px;
   box-sizing: border-box;
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .nav {

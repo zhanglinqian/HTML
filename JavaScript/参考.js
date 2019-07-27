@@ -40,7 +40,9 @@ var box = document.getElementsByClassName("box");  //类名获取
 var b   = document.getElementsByTagName("div")     //标签名 
 //不推荐使用 HTML 元素中可以添加事件属性 的方式来添加属性。
 //例子：
-<button onclick="getElementById('demo').innerHTML=Date()">现在的时间是?</button>
+
+//<button onclick ="getElementById('demo').innerHTML=Date()">现在的时间是? </button>
+
 //因为遵从“高内聚，低耦合”的编程原则。
 /*  高内聚是说模块内部要高度聚合，低耦合是说模块与模块之间的藕合度要尽量低。
     前者是说模块内部的关系，后者是说模块与模块间的关系。*/
@@ -48,6 +50,7 @@ var b   = document.getElementsByTagName("div")     //标签名
 //添加事件句柄实例：
 
 //<input id="test" type="button" value="提交"/>
+
 window.onload = function(){
     var test = document.getElementById("test");
     test.addEventListener("click",myfun2);
