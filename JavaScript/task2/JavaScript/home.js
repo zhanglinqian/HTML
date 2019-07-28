@@ -1,6 +1,7 @@
 var myleft = document.getElementById("left-sidebar");
     myright = document.getElementById("right-main");
     mybutton = document.getElementById("button");
+    mysimple = document.getElementById("simple");
 var sidebar = "off";
     mybutton.onclick = function() {
         if (sidebar === "off") {
@@ -13,3 +14,6 @@ var sidebar = "off";
             sidebar = "off";
         };
     };
+    mysimple.onclick = function() {  //页面跳转
+        window.location.href = "../html/player_match.html";
+    }

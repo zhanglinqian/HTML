@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>设置人数</title>
+    <link rel="stylesheet" type="text/css" href="../css/general.css">
+    <link rel="stylesheet" type="text/css" href="../css/player_match.css">
+</head>
+<body>
+<div class="box">
+    <!--nav-->
+    <div class="nav">
+        <!--<img src="" alt="">-->
+        <p id="back_to_home">参数设置</p>
+        <!--<img src="" alt="">-->
+    </div>
+    <!--主体-->
+    <div class="content">
+        <!--1-->
+        <div class="content-top">
+            <!--1-1-->
+            <div>
+                <p>玩家匹配</p>
+            </div>
+            <!--1-2-->
+            <div>
+                <p>杀手<span id="killer">1</span>人</p>
+                <p>平民<span id="civilians">1</span>人</p>
+                <div>
+                    <p>点击设置</p>
+                </div>
+            </div>
+        </div>
+        <!--2-->
+        <form>
+            <div class="content-center">
+                <div class="content-center-top">
+                    <input type="text" value="平民词组">
+                    <input type="text" value="杀手词组">
+                </div>
+                <!--3-->
+                <div class="content-center-center">
+                    玩家人数<input type="text" id="input_text" value="4" class="number">人<br />
+                    <div>
+                        <button id="reducing" type="button"></button>
+                        <input type="range" id="input_range" class="sliding" min="4" max="18" step="1" value="4">
+                        <button id="add" type="button"></button>
+                    </div>
+                </div>
+                <!---->
+                <button type="button" class="content-center-bottom" id="submi">去发牌</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="../JavaScript/player_match.js"></script>
+</body>
+</html>
+
+

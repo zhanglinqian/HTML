@@ -1,16 +1,8 @@
 @charset "UTF-8";
-body {
-  margin: 0;
-}
-
 .wrapper {
   position: relative;
-  max-width: 760px;
   font-size: 0;
-  height: 100vh;
-  margin: 0 auto;
   overflow: hidden;
-  background-color: #e6e6e6;
 }
 
 .sidebar {
@@ -64,7 +56,6 @@ body {
   padding: 7.5px;
   margin-left: -30px;
   margin-right: -30px;
-  background-color: #29bde0;
 }
 
 .nav > .nav-button {

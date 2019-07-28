@@ -364,3 +364,100 @@ jQuery.find(expr)  //跟jQuery.filter(expr)完全不一样。jQuery.filter()是�
 来源：CSDN 
 原文：https://blog.csdn.net/u013718845/article/details/84924865 
 版权声明：本文为博主原创文章，转载请附上博文链接！*/
+
+//<input type="range" min="0" max="100" step="1" value="10">
+
+//js代码监听效果，需要绑定监听事件，代码如下：
+var elem = document.querySelector('input[type="range"]');
+
+//获取一个想显示值的标签，并且初始化默认值
+var target = document.querySelector('.value');
+target.innerHTML = elem.value;
+
+var rangeValue = function(){
+  var newValue = elem.value;
+  target.innerHTML = newValue;
+}
+//绑定input监听事件
+elem.addEventListener("input", rangeValue);
+
+//现在实现的效果为左小右大，如果要实现左大右小的事件，可以这样写
+//<input class="speed_input" type="range" min="-100" max="0" step="1" value="-10">
+//最小为-100，最大为0，默认值为-10，
+//js代码监听效果，需要绑定监听事件，代码如下：
+
+var elem = document.querySelector('input[type="range"]');
+//获取一个想显示值的标签，并且初始化默认值
+var target = document.querySelector('.value');
+target.innerHTML = Math.abs(elem.value);
+
+var rangeValue = function(){
+  var newValue = Math.abs(elem.value);     //把获取到的值转化为正整数，
+  target.innerHTML = newValue;
+}
+//绑定input监听事件
+
+//</input>elem.addEventListener("input", rangeValue);
+
+
+function myFunction() {
+    var x, text;
+
+    // 获取 id="numb" 的值
+    x = document.getElementById("numb").value;
+
+    // 如果输入的值 x 不是数字或者小于 1 或者大于 10，则提示错误 Not a Number or less than one or greater than 10
+    if (isNaN(x) || x < 1 || x > 10) {
+        text = "输入错误";
+    } else {
+        text = "输入正确";
+    }
+    document.getElementById("demo").innerHTML = text;
+}
+
+
+
+
+/*<div class="bottom-box">
+    <input type="button" class="img7" onclick="btLeft()">
+    <input type="range" id="rangeNumber" oninput="change()" name="change" value="4" min="4" max="18" step="1" >
+    <input type="button" class="img8" onclick="btRight()">
+</div>*/
+var inputNumber = document.getElementById("inputNumber");
+
+var rangeNumber = document.getElementById("rangeNumber");
+
+//玩家人数的输入框与滚动条同步
+function getNumber(){
+    if(inputNumber.value >= 4 && inputerNumber.value <= 18){
+        inputNumber.value = rangeNumber.value;
+    }
+    else{
+        alert("请输入玩家人数");
+    }
+}
+//滚动条改变玩家人数随着改变
+function change(){
+    inputNumber.value = rangeNumber.value;
+}
+
+//减号按钮与滚动条同步
+function btLeft(){
+    rangeNumber.value--;
+    if(inputNumber.value<=4) {
+        alert("人数不足，请凑好再来");
+    }
+    else{
+        inputNumber.value=rangeNumber.value;
+    }
+}
+//加号按钮与滚动条同步
+function btRight(){
+    rangeNumber.value++;
+    if(inputNumber.value>=18) {
+        alert("人数太多，请分开游戏");
+    }
+    else{
+        inputNumber.value=rangeNumber.value;
+    }
+}
