@@ -54,18 +54,16 @@ function mykillers(){
     mycivilians.innerHTML =  civilians;
     console.log(killer)
     console.log(civilians)
-
     var  mynumber = [];   //人数排序
     for (var i = 0; i < myInputRange.value; i++){
         mynumber.push(1);
     };
-
-console.log(mynumber)
-    for (var a = 0; a < killer; a++) {
+console.log(mynumber)     //添加杀手
+    for (var a = 0; a < killer; a++) { 
         mynumber[a] = 0;
     }
 console.log(mynumber)    
-    var sss = [];
+    var sss = [];         //重新排序
 for (var b = 0; b < myInputText.value; b++) {
     var aaa = Math.floor(Math.random()*(mynumber.length - b));
     sss.push(mynumber[aaa]);
@@ -73,8 +71,6 @@ for (var b = 0; b < myInputText.value; b++) {
 }
 console.log(sss)
 }
-
-
 console.log(typeof myInputText.value)
 
 
