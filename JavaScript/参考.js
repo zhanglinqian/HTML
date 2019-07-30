@@ -35,9 +35,9 @@ function allcheck() {
     }
 }
 //  DOM   
-var a   = document.getElementById("dom");          //id 获取  
+var a = document.getElementById("dom");          //id 获取  
 var box = document.getElementsByClassName("box");  //类名获取
-var b   = document.getElementsByTagName("div")     //标签名 
+var b = document.getElementsByTagName("div")     //标签名 
 //不推荐使用 HTML 元素中可以添加事件属性 的方式来添加属性。
 //例子：
 
@@ -51,15 +51,15 @@ var b   = document.getElementsByTagName("div")     //标签名
 
 //<input id="test" type="button" value="提交"/>
 
-window.onload = function(){
+window.onload = function () {
     var test = document.getElementById("test");
-    test.addEventListener("click",myfun2);
-    test.addEventListener("click",myfun1);
+    test.addEventListener("click", myfun2);
+    test.addEventListener("click", myfun1);
 }
-function myfun1(){
+function myfun1() {
     alert("你好1");
 }
-function myfun2(){
+function myfun2() {
     alert("你好2");
 }
 //初级版  交换法
@@ -126,26 +126,26 @@ function bg3() {
     var r = Math.floor(Math.random() * 256);
     var g = Math.floor(Math.random() * 256);
     var b = Math.floor(Math.random() * 256);
-    return "rgb(" + r + ',' + g + ',' + b + ")";    
-//所有方法的拼接都可以用ES6新特性`其他字符串{$变量名}`替换
+    return "rgb(" + r + ',' + g + ',' + b + ")";
+    //所有方法的拼接都可以用ES6新特性`其他字符串{$变量名}`替换
 }
 function bg1() {
     return '#' + Math.floor(Math.random() * 256).toString(10);
 }
 //16进制
 //     11111
-var color3 = "#"+("00000"+(Math.floor(Math.random()*16777216)).toString(16)).slice(-6);
+var color3 = "#" + ("00000" + (Math.floor(Math.random() * 16777216)).toString(16)).slice(-6);
 //     22222
 // 0xffffff  换算成十进制  16777215  Math.random()只会产生 0~1 之间随机数不包括一 （1） 
 //乘以0xffffff 变成[0, 0xffffff)这样会产生一个bug, 因为0xffffff 不会产生    
 //所以 最好使用上面的方法来生产随机颜色。
-for ( var i = 0; i < 3; i++){
-    var bgc = '#'+('000000'+(Math.random()*0xffffff << 0).toString(16)).slice(-6);
+for (var i = 0; i < 3; i++) {
+    var bgc = '#' + ('000000' + (Math.random() * 0xffffff << 0).toString(16)).slice(-6);
     bgcNew.push(bgc);
 };
 //下面两种有一点问题 ： 会生成一个五位数的颜色值 #12345  导致浏览器无法识别。
-    var a = '#' + Math.floor(Math.random() * 0xffffff).toString(16);
-    var b = '#' + (Math.random() * 0xffffff << 0).toString(16);
+var a = '#' + Math.floor(Math.random() * 0xffffff).toString(16);
+var b = '#' + (Math.random() * 0xffffff << 0).toString(16);
 ////////////////////////////////////////////////////////////////////////////////////////
 
 //js中的tostring()方法
@@ -166,12 +166,12 @@ alert(num1.toString(16));//输出A
 //
 //     定时器重置
 {
-var t = setInterval(fun1, 500)//fun1是你的函数
-fun1 = function () {
-    //写入你的函数
-}
-clearInterval(t)//清除定时器
-t = setInterval(fun1, 500)//重新开始定时器
+    var t = setInterval(fun1, 500)//fun1是你的函数
+    fun1 = function () {
+        //写入你的函数
+    }
+    clearInterval(t)//清除定时器
+    t = setInterval(fun1, 500)//重新开始定时器
 }
 //
 var z;//定义一个名叫z的全局变量
@@ -186,17 +186,17 @@ function stop() {//停止变色并重置
 }
 //
 {
-var hid = document.getElementById("hid");
-var num = 1;
-var sid = null; // 存放setInterval
-function myTime() {
-    hid.innerHTML = num;
-    if (num == 5) {
-        clearInterval(sid);
+    var hid = document.getElementById("hid");
+    var num = 1;
+    var sid = null; // 存放setInterval
+    function myTime() {
+        hid.innerHTML = num;
+        if (num == 5) {
+            clearInterval(sid);
+        }
+        num++;
     }
-    num++;
-}
-sid = setInterval("myTime()", 1000); //存储起来
+    sid = setInterval("myTime()", 1000); //存储起来
 }
 //
 //设置定时运行函数Shuffle(a)和clear()
@@ -263,31 +263,29 @@ function stop() {//停止变色并重置/*结束闪*/
 }
 //
 //
-var timer=null;
-obtn1.onclick=function()
-{
-    timer=setInterval(function()   //开启循环：每秒出现一次提示框
+var timer = null;
+obtn1.onclick = function () {
+    timer = setInterval(function ()   //开启循环：每秒出现一次提示框
     {
         alert('a');
-    },1000);
+    }, 1000);
 }
-obtn2.onclick=function()
-{
+obtn2.onclick = function () {
     clearInterval(timer);        //关闭循环
 
 }
 //
 var swi = "off";
 var Start = function () {
-    if (swi === "off"){    // 判断开关状态，关着的话可以点击开始闪烁
-        init = setInterval("flashing()",1000);
+    if (swi === "off") {    // 判断开关状态，关着的话可以点击开始闪烁
+        init = setInterval("flashing()", 1000);
     }
     swi = "on";    // 打开开关
 };
 
 var Stop = function () {
     clearInterval(init);     // 清除定时器
-    for (var i = 0; i < box.length; i ++){    // 循环遍历每个盒子，将背景颜色清除
+    for (var i = 0; i < box.length; i++) {    // 循环遍历每个盒子，将背景颜色清除
         box[i].style.backgroundColor = "";
     }
     swi = "off";    // 关闭开关
@@ -296,24 +294,24 @@ var Stop = function () {
 
 
 
- //获取rgb的随机颜色
-function color(){
+//获取rgb的随机颜色
+function color() {
     var rgb;
-    r = Math.floor(Math.random()*256);
-    g = Math.floor(Math.random()*256);
-    b = Math.floor(Math.random()*256);
-    rgb ="rgb("+r+","+g+","+b+")"
+    r = Math.floor(Math.random() * 256);
+    g = Math.floor(Math.random() * 256);
+    b = Math.floor(Math.random() * 256);
+    rgb = "rgb(" + r + "," + g + "," + b + ")"
     console.log(rgb);
     return rgb;
 }
 //获取三个随机盒子
-function box(){
-     //当第一个盒子和第二个盒子相同的时候，或者第……，会重新获取三个盒子
-    while(first == second || second == third || first==third){
-        var first = Math.floor(Math.random()*9);
-        var second =  Math.floor(Math.random()*9);
-        var third =  Math.floor(Math.random()*9);
-        console.log(first,second,third);
+function box() {
+    //当第一个盒子和第二个盒子相同的时候，或者第……，会重新获取三个盒子
+    while (first == second || second == third || first == third) {
+        var first = Math.floor(Math.random() * 9);
+        var second = Math.floor(Math.random() * 9);
+        var third = Math.floor(Math.random() * 9);
+        console.log(first, second, third);
     }
     //给随机的三个盒子赋值上随机背景颜色rgb
     itme[first].style.backgroundColor = color()
@@ -324,21 +322,21 @@ function box(){
 //
 //获取子元素  dom  节点
 //js代码
-var div=document.getElementById('a');
-var ul=div.childNodes.item(0);
-var lis=ul.childNodes;
-for(var i=0;i<lis.length;i++){
-alert("Item "+i+": "+lis.item(i).innerHTML);
+var div = document.getElementById('a');
+var ul = div.childNodes.item(0);
+var lis = ul.childNodes;
+for (var i = 0; i < lis.length; i++) {
+    alert("Item " + i + ": " + lis.item(i).innerHTML);
 }
 //原生js
-var a = document.getElementById("dom"); 
-      del_space(a); //清理空格 
-      var b = a.childNodes; //获取a的全部子节点； 
-      var c = a.parentNode; //获取a的父节点； 
-      var d = a.nextSibling; //获取a的下一个兄弟节点 
-      var e = a.previousSibling; //获取a的上一个兄弟节点 
-      var f = a.firstChild; //获取a的第一个子节点 
-      var g = a.lastChild; //获取a的最后一个子节点 
+var a = document.getElementById("dom");
+del_space(a); //清理空格 
+var b = a.childNodes; //获取a的全部子节点； 
+var c = a.parentNode; //获取a的父节点； 
+var d = a.nextSibling; //获取a的下一个兄弟节点 
+var e = a.previousSibling; //获取a的上一个兄弟节点 
+var f = a.firstChild; //获取a的第一个子节点 
+var g = a.lastChild; //获取a的最后一个子节点 
 //使用jQuery
 jQuery.parent(expr) //找父亲节点，可以传入expr进行过滤，比如$("span").parent()或者$("span").parent(".class")
 
@@ -374,9 +372,9 @@ var elem = document.querySelector('input[type="range"]');
 var target = document.querySelector('.value');
 target.innerHTML = elem.value;
 
-var rangeValue = function(){
-  var newValue = elem.value;
-  target.innerHTML = newValue;
+var rangeValue = function () {
+    var newValue = elem.value;
+    target.innerHTML = newValue;
 }
 //绑定input监听事件
 elem.addEventListener("input", rangeValue);
@@ -391,9 +389,9 @@ var elem = document.querySelector('input[type="range"]');
 var target = document.querySelector('.value');
 target.innerHTML = Math.abs(elem.value);
 
-var rangeValue = function(){
-  var newValue = Math.abs(elem.value);     //把获取到的值转化为正整数，
-  target.innerHTML = newValue;
+var rangeValue = function () {
+    var newValue = Math.abs(elem.value);     //把获取到的值转化为正整数，
+    target.innerHTML = newValue;
 }
 //绑定input监听事件
 
@@ -428,36 +426,58 @@ var inputNumber = document.getElementById("inputNumber");
 var rangeNumber = document.getElementById("rangeNumber");
 
 //玩家人数的输入框与滚动条同步
-function getNumber(){
-    if(inputNumber.value >= 4 && inputerNumber.value <= 18){
+function getNumber() {
+    if (inputNumber.value >= 4 && inputerNumber.value <= 18) {
         inputNumber.value = rangeNumber.value;
     }
-    else{
+    else {
         alert("请输入玩家人数");
     }
 }
 //滚动条改变玩家人数随着改变
-function change(){
+function change() {
     inputNumber.value = rangeNumber.value;
 }
 
 //减号按钮与滚动条同步
-function btLeft(){
+function btLeft() {
     rangeNumber.value--;
-    if(inputNumber.value<=4) {
+    if (inputNumber.value <= 4) {
         alert("人数不足，请凑好再来");
     }
-    else{
-        inputNumber.value=rangeNumber.value;
+    else {
+        inputNumber.value = rangeNumber.value;
     }
 }
 //加号按钮与滚动条同步
-function btRight(){
+function btRight() {
     rangeNumber.value++;
-    if(inputNumber.value>=18) {
+    if (inputNumber.value >= 18) {
         alert("人数太多，请分开游戏");
     }
-    else{
-        inputNumber.value=rangeNumber.value;
+    else {
+        inputNumber.value = rangeNumber.value;
     }
 }
+
+//count 数组的总长度    randomCount 随机显示的数量 
+
+var selRandomNum = function (count, randomCount) {
+    var count = count || 10;              //原始 数组长度
+    var randomCount = randomCount || 3;   //需要随机抽取的数量
+
+    var totalArray = [],     //原始数组
+        randomArray = [];    //从原始数组中随机抽取的数 生成的新数组。
+
+    for (var i = 0, l = count; i < l; i++) {
+        totalArray.push(i);    // 生成原始数组
+    }
+    for (var i = 0, l = randomCount; i < l; i++) {
+        var randomIndex = Math.floor(Math.random() * totalArray.length);
+        var selectIndex = totalArray.splice(randomIndex, 1)[0];   //检索原始数组
+        randomArray.push(selectIndex);
+    }
+    console.log(totalArray + '-----' + randomArray);
+}
+
+selRandomNum();

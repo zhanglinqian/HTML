@@ -1,7 +1,7 @@
-var myleft = document.getElementById("left-sidebar");
+var  myleft = document.getElementById("left-sidebar");
     myright = document.getElementById("right-main");
-    mybutton = document.getElementById("button");
-    mysimple = document.getElementById("simple");
+   mybutton = document.getElementById("button");
+   mysimple = document.getElementById("simple");
 var sidebar = "off";
     mybutton.onclick = function() {
         if (sidebar === "off") {
