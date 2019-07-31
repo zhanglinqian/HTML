@@ -465,10 +465,8 @@ function btRight() {
 var selRandomNum = function (count, randomCount) {
     var count = count || 10;              //原始 数组长度
     var randomCount = randomCount || 3;   //需要随机抽取的数量
-
     var totalArray = [],     //原始数组
         randomArray = [];    //从原始数组中随机抽取的数 生成的新数组。
-
     for (var i = 0, l = count; i < l; i++) {
         totalArray.push(i);    // 生成原始数组
     }
@@ -479,5 +477,187 @@ var selRandomNum = function (count, randomCount) {
     }
     console.log(totalArray + '-----' + randomArray);
 }
-
 selRandomNum();
+
+
+
+
+// window.location.href="../html/task234-peibi.html";  //不停的重复跳转
+// window.open('../html/task234-peibi.html');
+
+
+var txt2 = document.getElementsByTagName('input')[2];//玩家人数显示框
+var txt3 = document.getElementsByTagName('input')[3];//滚动条滚动数值
+var less = document.getElementsByTagName('button')[0];//按钮一,递减;
+var plus = document.getElementsByTagName('button')[1];//按钮二,递增;
+var set = document.getElementById('click-set')//文本:点击设置
+
+set.onclick = function set() {       //给文本绑定点击事件
+    num1 = Math.floor(txt2.value / 3);//杀手数量
+    num2 = txt2.value - num1;         //平民数量
+
+    var sha = Array(num1);            //杀手数组
+    var pin = Array(num2);            //平民数组
+
+    for (i = 0; i < num1; i++) {      //历遍杀手数组
+        sha[i] = "<li><img src='../images/13.png'> 杀手1人</li>";
+    }
+    //历遍平民数组
+    for (i = 0; i < num2; i++) {
+        pin[i] = "<li><img src='../images/14.png'> 平民1人</li>";
+    }
+    //合并杀手和平民数组
+    var allplayer = sha.concat(pin);
+    //玩家数组乱序输出
+    for (var i = 0; i < txt2.value; i++) {
+        var all = i + Math.floor(Math.random() * (txt2.value - i));
+        var temp = allplayer[i];
+        allplayer[i] = allplayer[all];
+        allplayer[all] = temp;
+    }
+    //输出杀手和平民数组到HTML,并取消分隔符
+    document.getElementsByTagName("ul")[0].innerHTML = allplayer.join("");
+}
+
+//当输入框数字修改时,滑动块也跟着改变;
+txt2.onchange = function changenumber() {
+    if (txt2.value <= 16 && txt2.value >= 4) {
+        txt3.value = txt2.value;
+    }
+    else {
+        alert("请保证玩家人数在4~16之间");
+    }
+}
+
+//当滑动条改变时,输入框数字也跟着改变;
+txt3.oninput = function changethumb() {
+    txt2.value = txt3.value;
+}
+
+//右边加号按钮,点击实现递增;
+plus.onclick = function () {
+    if (txt3.value < 16) {
+        txt3.value++;
+        txt2.value = txt3.value;
+    }
+    else {
+        alert("玩家人数已经满啦!");
+    }
+    //滑动块所在的值距最左边的长度占滑动条总长度的百分比
+    var suibian = (txt2.value - 4) / 12 * 100 + '%';
+    console.log(suibian);
+    txt3.style.backgroundSize = suibian;//给滑动条添加属性(驼峰法)
+}
+//左边减号按钮,点击实现递减;
+less.onclick = function () {
+    if (txt3.value > 4) {
+        txt3.value--;
+        txt2.value = txt3.value;
+    }
+    else {
+        alert("玩家人数不能再少啦!");
+    }
+    //滑动块所在的值距最左边的长度占滑动条总长度的百分比
+    var suibian = (txt2.value - 4) / 12 * 100 + '%';
+    txt3.style.backgroundSize = suibian;//给滑动条添加属性(驼峰法)
+}
+
+
+//跳转至玩家配比页面
+function peibi() {
+    window.location.href = "../html/task234-peibi.html";
+}
+//跳转至上一个页面
+function backto() {
+    window.location.href = "../html/task234-01.html";
+}
+//在鼠标指针移动到元素上时触发。
+txt3.onmousemove = function () {
+    //滑动块所在的值距最左边的长度占滑动条总长度的百分比
+    var suibian = (txt2.value - 4) / 12 * 100 + '%';
+    console.log(suibian);
+    txt3.style.backgroundSize = suibian;//给滑动条添加属性(驼峰法)
+}
+//元素上发生鼠标点击时触发。
+txt3.onclick = function () {
+    //滑动块所在的值距最左边的长度占滑动条总长度的百分比
+    var suibian = (txt2.value - 4) / 12 * 100 + '%';
+    txt3.style.backgroundSize = suibian;//给滑动条添加属性(驼峰法)
+}
+//设置 "去发牌"点击事件,页面跳转至查看身份页面;
+document.getElementsByTagName("button")[2].onclick = function () {
+    window.location.href = "../html/task234-watch.html";
+}
+
+
+
+
+Array.prototype.distinct = function () {
+    var arr = this,
+        result = [],
+        i,
+        j,
+        len = arr.length;
+
+    for (i = 0; i < len; i++) {
+
+        for (j = i + 1; j < len; j++) {
+
+            if (arr[i] === arr[j]) {
+                j = ++i;
+            }
+        }
+        result.push(arr[i]);
+    }
+    return result;
+}
+var arr = [1, 2, 3].distinct();
+
+//原文：https://blog.csdn.net/lilinoscar/article/details/79866167 
+
+Array.prototype.deleteEle = function () {
+    var newArr = this;
+    for (var i = newArr.length - 1; i >= 0; i--) {
+        var targetNode = newArr[i];
+        for (var j = 0; j < i; j++) {
+            if (targetNode == newArr[j]) {
+                newArr.splice(i, 1);
+                break;
+            }
+        }
+    }
+    return newArr;
+}
+var arr = ["a", "b", "c", "c", "ab", "d", "ab", "d", "c"];
+console.log(arr.deleteEle());
+
+//*******************/
+var a = [5, 4, 3, 2, 1, 2, 3, 2, 1,];
+Array.prototype.duplicate = function () {
+    var tmp = [];
+    this.concat().sort().sort(function (a, b) {
+        if (a == b && tmp.indexOf(a) === -1) tmp.push(a);
+    });
+    return tmp;
+}
+console.log(a.duplicate())
+
+//方法三 
+//思路：把原数组打散，然后再依次输出， 这样也可以做到随机永不重复，且效率更高。 
+
+var count=3000; 
+var originalArray=new Array;  //原数组 
+
+for (var i = 0; i < count; i++){    //给原数组originalArray赋值 
+originalArray[i] = i + 1; 
+} 
+
+var d1 = new Date().getTime();
+
+originalArray.sort(function(){ return 0.5 - Math.random(); });
+for (var i = 0; i < count; i++){ 
+document.write(originalArray[i] + " , "); 
+}
+
+var d2 = new Date().getTime();
+document.write( "运算耗时" + ( d2 - d1 )); 
