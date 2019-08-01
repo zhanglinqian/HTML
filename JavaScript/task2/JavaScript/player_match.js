@@ -3,7 +3,7 @@ var myback_to_home = document.getElementById("back_to_home");     // 获取返�
     myback_to_home.onclick = function() {                             
         window.location.href = "../html/home.html";}               // 返回主页
            mysubmi.onclick = function() {                             
-            window.location.href = "";}                            //发牌
+            window.location.href = "../html/licensing.html";}                            //发牌
 var  myInputText = document.getElementById("input_text");       // 输入人数
     myInputRange = document.getElementById("input_range");      // 滑动条
            myadd = document.getElementById("add");              // 加
@@ -28,14 +28,14 @@ function myfun1() {
     }
 }
 function myfun2() {
-    myInputText.value = myInputRange.value;  // 同步滑动条和输入框
+    myInputText.value = myInputRange.value;     // 同步滑动条和输入框
 } 
 function myfun3() {
     myInputRange.value++;
     if(myInputText.value >= 18 ){
         alert("请输入玩家人数");
     } else {
-        myInputText.value = myInputRange.value;// 同步滑动条和输入框
+        myInputText.value = myInputRange.value;  // 同步滑动条和输入框
     };
 }
 function myfun4() {
@@ -43,37 +43,40 @@ function myfun4() {
     if(myInputText.value <= 4 ){
         alert("请输入玩家人数");
     } else {
-        myInputText.value = myInputRange.value;// 同步滑动条和输入框
+        myInputText.value = myInputRange.value;  // 同步滑动条和输入框
     }
 }
-console.log(typeof myInputText.value)
+//console.log(typeof myInputText.value)
 function mykillers(){
-    var killer = Math.round((myInputText.value)*23/100);
-        civilians = myInputText.value - (Math.round((myInputText.value)*23/100));
-    mykiller.innerHTML = killer;
-    mycivilians.innerHTML =  civilians;
-    console.log(killer)
-    console.log(civilians)
-    var  mynumber = [];   //人数排序
+    var killer = Math.round((myInputText.value)*23/100);   //获取杀手人数
+        civilians = myInputText.value - (Math.round((myInputText.value)*23/100)); //获取平民人数
+    mykiller.innerHTML = killer;       //
+ mycivilians.innerHTML =  civilians;   //
+    console.log(killer)  
+//console.log(civilians)
+    var  mynumber = [];    //人数排序
     for (var i = 0; i < myInputRange.value; i++){
-        mynumber.push(1);
+        mynumber.push(0); //平民用数字“ 0 ” 代替
     };
-console.log(mynumber)     //添加杀手
-    for (var a = 0; a < killer; a++) { 
-        mynumber[a] = 0;
+//console.log(mynumber) 
+    for (var a = 0; a < killer; a++) { //替换前“ N ”平民为杀手
+        mynumber[a] = 1; //杀手用数字“ 1 ” 代替
     }
-console.log(mynumber)    
-    var sss = [];         //重新排序
-for (var b = 0; b < myInputText.value; b++) {
+//console.log(mynumber)    
+    var reordering = [];         //重新排序
+for ( var b = 0; b < myInputText.value; b++ ) {
     var aaa = Math.floor(Math.random()*(mynumber.length - b));
-    sss.push(mynumber[aaa]);
+    reordering.push(mynumber[aaa]);
     mynumber[aaa] = mynumber[mynumber.length - b - 1];
 }
-console.log(sss)
+
+var sss = JSON.stringify(reordering);     //转换为字符串
+    localStorage.setItem("myreordering",sss) //存入
+
+console.log(reordering)
 }
-console.log(typeof myInputText.value)
 
-
+//console.log(typeof myInputText.value)
 
 /*function mykillers() {
     if(myInputText.value >= 4 && myInputText.value <= 6){

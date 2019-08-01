@@ -645,19 +645,129 @@ console.log(a.duplicate())
 //方法三 
 //思路：把原数组打散，然后再依次输出， 这样也可以做到随机永不重复，且效率更高。 
 
-var count=3000; 
-var originalArray=new Array;  //原数组 
+var count = 3000;
+var originalArray = new Array;  //原数组 
 
-for (var i = 0; i < count; i++){    //给原数组originalArray赋值 
-originalArray[i] = i + 1; 
-} 
+for (var i = 0; i < count; i++) {    //给原数组originalArray赋值 
+    originalArray[i] = i + 1;
+}
 
 var d1 = new Date().getTime();
 
-originalArray.sort(function(){ return 0.5 - Math.random(); });
-for (var i = 0; i < count; i++){ 
-document.write(originalArray[i] + " , "); 
+originalArray.sort(function () { return 0.5 - Math.random(); });
+for (var i = 0; i < count; i++) {
+    document.write(originalArray[i] + " , ");
 }
 
 var d2 = new Date().getTime();
-document.write( "运算耗时" + ( d2 - d1 )); 
+document.write("运算耗时" + (d2 - d1));
+
+
+
+
+var data = [1, 2, 3, 4];//这是一个数组
+
+var send = JSON.stringify(data);//转换为字符串
+
+sessionStorage.data = send;//存入
+
+var get = sessionStorage.data;//读取
+
+var newa = JSON.parse(get);//重新转换为数组
+
+
+//正则表达式表单验证实例：
+
+/*是否带有小数*/
+function isDecimal(strValue) {
+    var objRegExp = /^\d+\.\d+$/;
+    return objRegExp.test(strValue);
+}
+
+/*校验是否中文名称组成 */
+function ischina(str) {
+    var reg = /^[\u4E00-\u9FA5]{2,4}$/;   /*定义验证表达式*/
+    return reg.test(str);     /*进行验证*/
+}
+
+/*校验是否全由8位数字组成 */
+function isStudentNo(str) {
+    var reg = /^[0-9]{8}$/;   /*定义验证表达式*/
+    return reg.test(str);     /*进行验证*/
+}
+
+/*校验电话码格式 */
+function isTelCode(str) {
+    var reg = /^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))$/;
+    return reg.test(str);
+}
+
+/*校验邮件地址是否合法 */
+function IsEmail(str) {
+    var reg = /^\w+@[a-zA-Z0-9]{2,10}(?:\.[a-z]{2,4}){1,3}$/;
+    return reg.test(str);
+}
+
+//判断jQuery 是否引入成功
+$(function () {
+    alert("加载完成");
+});
+
+
+//1.文档加载完毕，图片不加载的时候，就可以执行这个函数。
+$(document).ready(function () {
+    alert(1);
+})
+//上面的简洁版
+//2.文档加载完毕，图片不加载的时候，就可以执行这个函数。
+$(function () {
+    alert(1);
+});
+//3.文档加载完毕，图片也加载完毕的时候，在执行这个函数。
+$(window).ready(function () {
+    alert(1);
+})
+
+//通过原生 js 获取这些元素节点的方式是
+var myBox = document.getElementById("box");           //通过 id 获取单个元素
+var boxArr = document.getElementsByClassName("box");  //通过 class 获取的是数组
+var divArr = document.getElementsByTagName("div");    //通过标签获取的是数组
+//
+//通过 jQuery 获取这些元素节点的方式是：（获取的都是数组）
+//获取的是数组，里面包含着原生 JS 中的DOM对象。
+var jqBox1 = $("#box");   //通过 id 获取单个元素
+var jqBox2 = $(".box");   //通过 class 获取的是数组
+var jqBox3 = $("div");    // 获取所有的div标签元素
+//
+//二者的相互转换
+//1、 DOM 对象 转为 jQuery对象：
+
+    $(js对象);
+//举例：（拿上一段的代码举例）
+
+    //转换。
+    jqBox1 = $(myBox);
+    jqBox2 = $(boxArr);
+    jqBox3 = $(divArr);
+//DOM 对象转换成了 jquery 对象之后，皮上面的功能可以直接调用。
+
+//2、jQuery对象 转为 DOM 对象：
+    jquery对象[index];      //方式1（推荐）
+
+    jquery对象.get(index);  //方式2
+//jQuery对象转换成了 DOM 对象之后，可以直接调用 DOM 提供的一些功能。如：
+
+//jquery对象转换成 DOM 对象之后
+    jqBox3[0].style.backgroundColor = "black";
+    jqBox3.get(4).style.backgroundColor = "pink";
+//总结：如果想要用哪种方式设置属性或方法，必须转换成该类型。
+
+
+
+//1.文档加载完毕，图片不加载的时候，就可以执行这个函数。
+$(document).ready(function () { })
+//上面的简洁版
+//2.文档加载完毕，图片不加载的时候，就可以执行这个函数。
+$(function () { });
+//3.文档加载完毕，图片也加载完毕的时候，在执行这个函数。
+$(window).ready(function () { })
