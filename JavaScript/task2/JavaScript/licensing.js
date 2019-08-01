@@ -38,7 +38,6 @@ function page() {
             mypage.innerHTML = "查看下一位"
             myidentity.innerHTML = identity[j];    // 身份展示详细
             j++
-            console.log(j)
         } else {
             mymask0.style.display = "block";   // 遮罩
             mymask1.style.display = "none";    // 身份展示卡片
@@ -46,13 +45,12 @@ function page() {
         }
         k++
     }
-    if (k === rgl*2-1 ) {
+    if (k === rgl*2 ) {
+        mypage.innerHTML = "进入投票页";
         mypage.onclick = function () {
-            mypage.innerHTML = "进入投票页";
-            window.location.href = "../html/voting_page.html";// 翻页按钮
+            window.location.href = "../html/voting_page.html";  // 翻页按钮
         }
     }
-    console.log(k)
 }
 
 
