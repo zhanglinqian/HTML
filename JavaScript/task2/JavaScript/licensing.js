@@ -46,13 +46,12 @@ function page() {
         }
         k++
     }
-    if (j === rgl ) {
+    if (k === rgl*2-1 ) {
         mypage.onclick = function () {
             mypage.innerHTML = "进入投票页";
-            //window.location.href = "../html/voting_page.html";// 翻页按钮
+            window.location.href = "../html/voting_page.html";// 翻页按钮
         }
     }
-
     console.log(k)
 }
 
