@@ -1,1 +1,98 @@
-null
+.box {
+  background-color: #29bde0;
+}
+
+.nav-mp3, .nav-bottom {
+  line-height: 40px;
+}
+
+.nav-mp3 {
+  padding-left: 20px;
+  background-color: #b9e9f5;
+}
+
+.nav-bottom {
+  color: #fff;
+  padding-left: 35px;
+}
+
+.myaudio {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 110px;
+  height: 40px;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 65%;
+  width: 92%;
+  margin: 0 auto;
+  background-color: #b9e9f5;
+}
+
+.content > div {
+  flex-basis: 30%;
+}
+
+.content-items {
+  padding: 5px;
+}
+
+.content-items p {
+  margin: 0;
+}
+
+.content-items > div {
+  text-align: center;
+  width: 100px;
+  margin: 0 auto;
+}
+
+.content-items > div > div:nth-child(1) {
+  border: 5px #fff solid;
+}
+
+.content-items > div > div:nth-child(1) > p:nth-child(1) {
+  font-size: 20px;
+  line-height: 65px;
+  background-color: #f5c97b;
+}
+
+.content-items > div > div:nth-child(1) > p:nth-child(2) {
+  color: #fff;
+  font-size: 14px;
+  line-height: 25px;
+  background-color: #83b09a;
+}
+
+.content-items > div > div:nth-child(2) {
+  opacity: 0;
+  padding: 5px;
+}
+
+.content-items > div:hover > div:nth-child(2) {
+  opacity: 1;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  max-width: 760px;
+  width: 100%;
+  line-height: 100px;
+  text-align: center;
+  background-color: #29bde0;
+}
+
+.footer > button {
+  color: #fff;
+  font-size: 24px;
+  line-height: 50px;
+  width: 90%;
+  background-color: #fbb435;
+}

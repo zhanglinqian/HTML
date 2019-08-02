@@ -771,3 +771,27 @@ $(document).ready(function () { })
 $(function () { });
 //3.文档加载完毕，图片也加载完毕的时候，在执行这个函数。
 $(window).ready(function () { })
+
+
+
+//html：
+//<!--<div class="content-box">-->
+//           <!--<div class="content-top">-->
+//               <!--<div class="career"></div>-->
+//                <!--<div class="number"></div>-->
+//            <!--</div>-->
+//        <!--<div class="content-bottom"></div>-->
+//    <!--</div>-->
+//js:
+var inBox = '<div class=\"content-box\">\n'+//var个变量存储写进文档的标签代码，记住要转义字符
+
+            '<div class=\"content-top\">\n'+
+            '<div class=\"career\">\n'+ player[i] +
+            '</div>\n'+
+            '<div class=\"number\">\n'+ num +
+            '</div>\n'+
+            '</div>\n'+
+            '<div class=\"content-bottom\">\n'+
+            '</div>\n'+
+            '</div>';
+        $('.main-box').append(inBox);//通过append将盒子一个一个的往文档里面装

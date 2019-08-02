@@ -11,17 +11,32 @@
 <body>
     <div class="box">
         <div class="nav" id="fallback">查看身份</div>
-        <div class="nav-mp3">发言讨论结束，大家请投票</div>
+        <div class="nav-mp3">
+            发言讨论结束，大家请投票
+            <audio controls class="myaudio">
+                <source type="audio/ogg">
+            </audio>
+        </div>
         <div class="nav-bottom">点击得票数最多人的头像</div>
         <div class="content">
-            
-
+            <!--<div class="content-items">
+                <div>
+                    <div>
+                        <p>水民</p>
+                        <p>1号</p>
+                    </div>
+                    <div>
+                        <img src="" alt="">
+                        <img src="" alt="">
+                        <img src="../image/刀.png" width="25px">
+                        <img src="" alt="">
+                    </div>
+                </div>
+            </div>-->
         </div>
-        <div>
-            <button>投死</button>
+        <div class="footer">
+            <button type="button" id="but">投死</button>
         </div>
-    
-    
     </div>
 <script src="../../../jquery-3.4.1/jquery-3.4.1.min.js"></script>
 <script src="../JavaScript/voting_page.js"></script>
