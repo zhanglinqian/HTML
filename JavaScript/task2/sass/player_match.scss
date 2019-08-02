@@ -1,25 +1,23 @@
-
 .nav > p {margin: 0;}
-
 .content {padding: 20px;}
 
 .content-top {
     display: flex;
     height: 230px;
     text-align: center;
+    background-color: #fbfbfb;
     >div:nth-child(1){
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 20px;
         width:20%;
         margin-right: 1px;
+        border-right: 1px #e6e6e6 solid;
+        font-size: 20px;
         writing-mode: vertical-lr;
-        background-color: #fff;
     }
     >div:nth-child(2){
         width: 80%;
-        background-color: #fbfbfb;
         > p {color: #9a9a9a;}
         > div:nth-child(3) {
             position: absolute;

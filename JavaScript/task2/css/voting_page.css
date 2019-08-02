@@ -27,12 +27,12 @@
 .content {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
+  justify-content: space-around;
+  align-content: flex-start;
   height: 65%;
   width: 92%;
   margin: 0 auto;
-  background-color: #b9e9f5;
+  overflow: auto;
 }
 
 .content > div {
@@ -77,22 +77,4 @@
 
 .content-items > div:hover > div:nth-child(2) {
   opacity: 1;
-}
-
-.footer {
-  position: fixed;
-  bottom: 0;
-  max-width: 760px;
-  width: 100%;
-  line-height: 100px;
-  text-align: center;
-  background-color: #29bde0;
-}
-
-.footer > button {
-  color: #fff;
-  font-size: 24px;
-  line-height: 50px;
-  width: 90%;
-  background-color: #fbb435;
 }

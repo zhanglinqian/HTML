@@ -3,18 +3,16 @@
     background-color: #29bde0;
 }
 .nav {
-
     border-bottom: 1px #74d4eb solid;
 } 
 .content {
     width: 70%;
-    height: 60%;
-    border: 6px #fbb435 solid;
-    margin: 10% auto;
+    padding-bottom:50px;
+    border: 5px #fbb435 solid;
+    margin:30px auto;
     color: #fbb435;
     font-size: 24px;
     font-weight: 700;
-    text-align: center;
     background-color: #ffedc5;
     > div:nth-child(1) {
         line-height: 50px;
@@ -25,20 +23,22 @@
         background-color: #fff;
     }
     > div:nth-child(2) {
+        font-size: 0;
         width: 60%;
-        margin: 30% auto 0;
+        margin: 50px auto 60px;
     }
     > div:nth-child(3) {
         display: none;
         width: 60%;
-        margin: 5% auto 0;
+        margin: 50px auto 0;
+        font-size: 0;
+        > p {
+            font-size: 24px;
+            line-height: 60px;
+            margin: 0;
+        }
     }
 }
-button{
-    width: 76%;
-    font-size: 24px;
-    line-height: 50px;
-    color: #fff;
-    margin: 0 auto;
-    background-color: #fbb435;
-}
+
+
+
