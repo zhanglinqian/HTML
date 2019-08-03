@@ -1,4 +1,7 @@
-var myfallback = document.getElementById("fallback");
+//关闭按钮    //没定义
+
+var myfallback = document.getElementById("fallback");       // 获取返回链接
+    myterminate = document.getElementById("terminate");     //关闭按钮    //没定义
     myfallback.onclick = function() {
         window.location.href = "../html/licensing.html";
     }
@@ -17,17 +20,37 @@ $(function () {
 });
 $(function(){
     for (i = 0; i < rgl; i++) {
-        var box =  '<div class=\"content-items\">\n'+
-                '<div>\n'+
-                    '<div>\n'+
-                        '<p>'+ identity[i] + '</p>\n'+
-                        '<p>'+ (i+1) +'号' + '</p>\n'+
-                    '</div>\n'+
+        var box =  '<div class="content-items">'+
+                '<div>'+
                     '<div>'+
-                        '<img src=\"../image/刀.png\" width=\"25px\">'
-                    '</div>\n'+
-                '</div>'
+                        '<p>'+ identity[i] + '</p>'+
+                        '<p>'+ (i+1) +'号' + '</p>'+
+                    '</div>'+
+                    '<div>'+
+                        '<img src="../image/刀.png" width="25px">'+
+                    '</div>'+
+                '</div>'+
             '</div>'
         $('.content').append(box);//通过append将盒子一个一个的往文档里面装
 }
 })
+
+
+
+
+// $(function(){
+//     for (i = 0; i < rgl; i++) {
+//         var box =  '<div class=\"content-items\">\n'+
+//                 '<div>\n'+
+//                     '<div>\n'+
+//                         '<p>'+ identity[i] + '</p>\n'+
+//                         '<p>'+ (i+1) +'号' + '</p>\n'+
+//                     '</div>\n'+
+//                     '<div>'+
+//                         '<img src=\"../image/刀.png\" width=\"25px\">'
+//                     '</div>\n'+
+//                 '</div>'
+//             '</div>'
+//         $('.content').append(box);//通过append将盒子一个一个的往文档里面装
+// }
+// })

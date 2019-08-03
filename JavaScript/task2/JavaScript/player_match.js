@@ -1,4 +1,7 @@
-var myback_to_home = document.getElementById("back_to_home");     // 获取返回链接
+//关闭按钮    //没定义
+
+var     myfallback = document.getElementById("fallback");        // 获取返回链接
+       myterminate = document.getElementById("terminate");     //关闭按钮    //没定义
            mysubmi = document.getElementById("submi");            // 提交按
               text = document.getElementById("input_text");       // 输入人数
              range = document.getElementById("input_range");      // 滑动条
@@ -66,7 +69,7 @@ for ( var b = 0; b < text.value; b++ ) {
 }
 return reordering
 }
-    myback_to_home.onclick = function() {                             
+        myfallback.onclick = function() {                             
     window.location.href = "../html/home.html";}       // 返回主页
 function stores() {
     var sss = JSON.stringify(mykillers());             //转换为字符串
@@ -77,21 +80,21 @@ function stores() {
 
 
 
-/*function mykillers() {
-    if(Text.value >= 4 && myInputText.value <= 6){
-        mykiller.innerHTML = "1";
-        mycivilians.innerHTML = myInputText.value - 1;
-    } else if(myInputText.value >= 7 && myInputText.value <= 10){
-        mykiller.innerHTML = "2";
-        mycivilians.innerHTML = myInputText.value - 2;
-    } else if(myInputText.value >= 11 && myInputText.value <= 15){
-        mykiller.innerHTML = "3";
-        mycivilians.innerHTML = myInputText.value - 3;
-    } else if(myInputText.value >= 16 && myInputText.value <= 18){
-        mykiller.innerHTML = "4";
-        mycivilians.innerHTML = myInputText.value - 4;
-    }
-}*/
+// function mykillers() {
+//     if(Text.value >= 4 && myInputText.value <= 6){
+//         mykiller.innerHTML = "1";
+//         mycivilians.innerHTML = myInputText.value - 1;
+//     } else if(myInputText.value >= 7 && myInputText.value <= 10){
+//         mykiller.innerHTML = "2";
+//         mycivilians.innerHTML = myInputText.value - 2;
+//     } else if(myInputText.value >= 11 && myInputText.value <= 15){
+//         mykiller.innerHTML = "3";
+//         mycivilians.innerHTML = myInputText.value - 3;
+//     } else if(myInputText.value >= 16 && myInputText.value <= 18){
+//         mykiller.innerHTML = "4";
+//         mycivilians.innerHTML = myInputText.value - 4;
+//     }
+// }
 
 
 

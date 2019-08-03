@@ -1,5 +1,9 @@
+
+ //关闭按钮    //没定义
+
 var myfallback = document.getElementById("fallback");      // 获取返回链接
         mypage = document.getElementById("page");          // 翻页按钮
+   myterminate = document.getElementById("terminate");     //关闭按钮    //没定义
       myfallback.onclick = function () {                     // 返回主页
     window.location.href = "../html/player_match.html";
     }
@@ -43,7 +47,7 @@ function page() {
         k++      //点击计数
     }
     if (k === rgl*2 ) {
-        mypage.innerHTML = "进入投票页";
+        mypage.innerHTML = "法官查看";
           mypage.onclick = function () {
     window.location.href = "../html/voting_page.html";   // 翻页按钮
         }

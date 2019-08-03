@@ -2,6 +2,10 @@
   background-color: #29bde0;
 }
 
+#tips {
+  display: none;
+}
+
 .nav-mp3, .nav-bottom {
   line-height: 40px;
 }
@@ -27,20 +31,16 @@
 .content {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-content: flex-start;
-  height: 65%;
+  height: calc(100%-131px);
   width: 92%;
-  margin: 0 auto;
-  overflow: auto;
+  margin: 30px auto;
+  overflow: scroll;
 }
 
 .content > div {
-  flex-basis: 30%;
-}
-
-.content-items {
-  padding: 5px;
+  flex-basis: 33.33333%;
 }
 
 .content-items p {

@@ -3,15 +3,11 @@
   background-color: #29bde0;
 }
 
-.nav {
-  border-bottom: 1px #74d4eb solid;
-}
-
 .content {
   width: 70%;
   padding-bottom: 50px;
   border: 5px #fbb435 solid;
-  margin: 30px auto;
+  margin: 50px auto;
   color: #fbb435;
   font-size: 24px;
   font-weight: 700;
@@ -44,4 +40,19 @@
   font-size: 24px;
   line-height: 60px;
   margin: 0;
+}
+
+@media (max-width: 320px) {
+  .content {
+    padding-bottom: 0;
+  }
+  .content > div:nth-child(2) {
+    margin: 40px auto 50px;
+  }
+  .content > div:nth-child(3) {
+    margin: 40px auto 0;
+  }
+  .content > div:nth-child(3) > p {
+    line-height: 50px;
+  }
 }
