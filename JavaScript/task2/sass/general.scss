@@ -7,6 +7,7 @@ button {
     margin: 0 !important;
 }
 .padding-top50 {padding-top: 50px !important; }
+.padding-top140 {padding-top: 140px !important; }
 .margin-0 {margin: 0;}
 .bgc-fff { background-color: #fff;}
 .bgc-efefef7d { background-color: #efefef7d;}
@@ -98,6 +99,7 @@ button {
 
 //底部按钮样式
 .footer {
+    z-index: 10;
     position: fixed;
     bottom: 0;
     width: 100%;

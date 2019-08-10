@@ -1,3 +1,4 @@
+@charset "UTF-8";
 p {
   display: block;
   margin: 0;
@@ -7,6 +8,7 @@ p {
   padding: 10px;
 }
 
+/*天数*/
 .days-top {
   color: #29bde0;
   font-size: 24px;
@@ -14,6 +16,7 @@ p {
   line-height: 40px;
 }
 
+/*三角*/
 .days-triangle {
   height: 0;
   width: 0;
@@ -23,6 +26,7 @@ p {
   border-right: 30px #24a7c6 solid;
 }
 
+/*分配选项空间*/
 .days-bottom {
   display: flex;
   margin-top: 10px;
@@ -36,6 +40,7 @@ p {
   flex-basis: 80%;
 }
 
+/*定位图片位置*/
 .days-bottom-left img {
   height: 18px;
 }
@@ -78,20 +83,26 @@ p {
   z-index: 10;
 }
 
+/*定义选项样式*/
 .days-bottom-right > div {
   display: flex;
   align-items: center;
+  line-height: 50px;
+  text-align: center;
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
-.days-bottom-right p {
+.days-bottom-right p:nth-child(2) {
   color: #ffffff;
-  line-height: 50px;
-  text-align: center;
   width: 100%;
   margin-right: 20px;
   background-color: #24a7c6;
+}
+
+.days-bottom-right > div:nth-child(2) {
+  font-size: 14px;
+  margin-left: 30px;
 }
 
 .footer {

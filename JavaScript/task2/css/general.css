@@ -17,6 +17,10 @@ button {
   padding-top: 50px !important;
 }
 
+.padding-top140 {
+  padding-top: 140px !important;
+}
+
 .margin-0 {
   margin: 0;
 }
@@ -125,6 +129,7 @@ button {
 }
 
 .footer {
+  z-index: 10;
   position: fixed;
   bottom: 0;
   width: 100%;

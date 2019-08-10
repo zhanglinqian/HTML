@@ -795,3 +795,292 @@ var inBox = '<div class=\"content-box\">\n'+//var个变量存储写进文档的�
             '</div>\n'+
             '</div>';
         $('.main-box').append(inBox);//通过append将盒子一个一个的往文档里面装
+
+
+
+
+
+var Switch = function ($elem) {
+
+    var log = function (fsm, previousState) {
+        console.log('currentState is : ' + fsm.currentState + ((previousState || '') && (' , and previous state is : ' + previousState)));
+    };
+
+    return {
+        currentState: 'off',
+        states: {
+            'on': {
+                to: 'off',
+                action: 'turnOff'
+            },
+            'off': {
+                to: 'on',
+                action: 'turnOn'
+            }
+        },
+        init: function () {
+            var self = this;
+            $elem.on('click', (function () {
+                var args = arguments;
+                return function () {
+                    self.transition(args);
+                }
+            })());
+            log(this);
+        },
+        transition: function (e) {
+            var old = this.currentState;
+            this.currentState = this.states[old].to;
+            var action = this.states[old].action;
+            (action in this) && this[action](old);
+        },
+        turnOn: function (fromState) {
+            $elem.addClass('on');
+            log(this, fromState);
+        },
+        turnOff: function (fromState) {
+            $elem.removeClass('on');
+            log(this, fromState);
+        }
+    }
+
+};
+
+
+
+//我们希望每个stu拥有属于自己的name和age属性
+function Student(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+//所有的stu应该共享一个alertName()方法
+Student.prototype = {
+    constructor: Student,
+    alertName: function () {
+        alert(this.name);
+    }
+}
+
+var stu1 = new Student("Jim", 20);
+var stu2 = new Student("Tom", 21);
+
+stu1.alertName();  //Jim  实例属性
+stu2.alertName();  //Tom  实例属性
+
+alert(stu1.alertName == stu2.alertName);  //true  共享函数
+
+
+
+
+// 5. 做好缓存
+
+// 选中某一个网页元素，是开销很大的步骤。所以，使用选择器的次数应该越少越好，
+//并且尽可能缓存选中的结果，便于以后反复使用。
+
+// 比如，下面这样的写法就是糟糕的写法：
+
+　　jQuery('#top').find('p.classA');
+
+　　jQuery('#top').find('p.classB');
+
+//更好的写法是：
+
+　　var cached = jQuery('#top');
+
+　　cached.find('p.classA');
+
+　　cached.find('p.classB');
+
+
+// 6. 使用链式写法
+
+// jQuery的一大特点，就是允许使用链式写法。
+
+　　$('div').find('h3').eq(2).html('Hello');
+
+
+
+//7. 事件的委托处理（Event Delegation）
+　　$("table").on("click", "td", function(){
+
+    　　　　$(this).toggleClass("click");
+    
+    　　});
+    //如果要取消事件的绑定，就使用off()方法。
+
+    　　$(document).off("click", "td");
+
+//8. 少改动DOM结构
+
+// （1）改动DOM结构开销很大，因此不要频繁使用.append()、.insertBefore()和.insetAfter()这样的方法。
+
+// 如果要插入多个元素，就先把它们合并，然后再一次性插入。根据测试，合并插入比不合并插入，快了将近10倍。
+
+// （2）如果你要对一个DOM元素进行大量处理，应该先用.detach()方法，把这个元素从DOM中取出来，处理完毕以后，再重新插回文档。根据测试，使用.detach()方法比不使用时，快了60%。
+
+// （3）如果你要在DOM元素上储存数据，不要写成下面这样：
+
+　　var elem = $('#elem');
+
+　　elem.data(key,value);
+
+//而要写成
+
+　　var elem = $('#elem');
+
+　　$.data(elem[0],key,value);
+
+//根据测试，后一种写法要比前一种写法，快了将近10倍。因为elem.data()方法是定义在jQuery函数的prototype对象上面的，
+//而$.data()方法是定义jQuery函数上面的，调用的时候不从复杂的jQuery对象上调用，所以速度快得多。（此处可以参阅下面第10点。）
+
+
+
+// 10. 尽量少生成jQuery对象
+
+// 每当你使用一次选择器（比如$('#id')），就会生成一个jQuery对象。jQuery对象是一个很庞大的对象，
+//带有很多属性和方法，会占用不少资源。所以，尽量少生成jQuery对象。
+
+// 举例来说，许多jQuery方法都有两个版本，一个是供jQuery对象使用的版本，
+//另一个是供jQuery函数使用的版本。下面两个例子，都是取出一个元素的文本，使用的都是text()方法。
+
+// 你既可以使用针对jQuery对象的版本：
+
+ 　　var $text = $("#text");
+
+ 　　var $ts = $text.text();
+
+// 也可以使用针对jQuery函数的版本：
+
+ 　　var $text = $("#text");
+
+ 　　var $ts = $.text($text);
+
+// 由于后一种针对jQuery函数的版本不通过jQuery对象操作，所以相对开销较小，速度比较快。
+
+// 11. 选择作用域链最短的方法
+
+// 严格地说，这一条原则对所有Javascript编程都适用，而不仅仅针对jQuery。
+
+// 我们知道，Javascript的变量采用链式作用域。读取变量的时候，先在当前作用域寻找该变量，如果找不到，就前往上一层的作用域寻找该变量。这样的设计，使得读取局部变量比读取全局变量快得多。
+
+// 请看下面两段代码，第一段代码是读取全局变量：
+
+ 　　var a = 0;
+
+　　function x(){
+　　　　a += 1;
+
+　　}
+
+// 第二段代码是读取局部变量：
+
+ 　　function y(){
+
+ 　　　　var a = 0;
+
+ 　　　　a += 1;
+
+ 　　}
+
+// 第二段代码读取变量a的时候，不用前往上一层作用域，所以要比第一段代码快五六倍。
+
+// 同理，在调用对象方法的时候，closure模式要比prototype模式更快。
+
+ //prototype模式：
+
+　　var X = function(name){ this.name = name; }
+
+// 　　X.prototype.get_name = function() { return this.name; };
+
+//closure模式：
+
+ 　　var Y = function(name) {
+
+ 　　　　var y = { name: name };
+
+ 　　　　return { 'get_name': function() { return y.name; } };
+
+ 　　};
+
+// 同样是get_name()方法，closure模式更快。
+
+// 12. 使用Pub/Sub模式管理事件
+
+// 当发生某个事件后，如果要连续执行多个操作，最好不要写成下面这样：
+
+　　function doSomthing {
+
+　　　　doSomethingElse();
+
+　　　　doOneMoreThing();
+
+　　};
+
+// 而要改用事件触发的形式：
+
+　　function doSomething{
+
+　　　　$.trigger("DO_SOMETHING_DONE");
+
+　　};
+
+　　$(document).on("DO_SOMETHING_DONE", function(){
+
+　　　　doSomethingElse(); }
+
+　　);
+
+// 还可以考虑使用deferred对象。
+
+　　function doSomething(){
+
+　　　　var dfd = new $.Deferred();
+
+　　　　//Do something async, then... 
+　　　　//dfd.resolve();
+
+　　　　return dfd.promise();
+
+　　};
+
+　　function doSomethingElse(){
+
+　　　　$.when(doSomething()).then(//The next thing);
+
+　　}
+
+
+
+    // 获取父节点，并为它注册click事件。 false 表示事件在冒泡阶段触发（默认）
+    document.getElementById("parent-list").addEventListener("click", function (e) {
+        // event.target 代表的是子元素。toUpperCase 指的是转换为大写字母
+        if (e.target && e.target.nodeName.toUpperCase == "LI") {
+            // 真正的处理过程在这里
+            console.log("List item ", e.target.id, " was clicked!");
+        }
+    }, false);
+ // 上方代码，为父节点注册click事件，当子节点被点击的时候，
+// click事件会从子节点开始向上冒泡。父节点捕获到事件之后，
+// 开始执行方法体里的内容：通过判断 e.target 拿到了被点击的子节点li。
+// 从而可以获取到相应的信息，并作处理。
+
+ // 换而言之，事件是在父节点上注册的，参数为false，
+// 说明事件是在冒泡阶段触发（往上传递），那就只有父节点能拿到事件，子节点是不可能拿到事件的。
+
+function play() {
+    let audio = document.getElementById('music');
+    if (audio.paused) {
+        audio.play();//audio.play();// 播放
+    }
+    else {
+        audio.pause();// 暂停
+    }
+}//之前写的控制radio的函数；
+
+//div的onmouseover事件里
+div.onmouseover=function(){
+alert(this.id);//为什么你们都不喜欢用this?
+};
+
+

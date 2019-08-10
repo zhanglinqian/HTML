@@ -1,14 +1,19 @@
+
 .box {background-color: #29bde0;}
 
 
-#tips{display: none;}
+//#tips{display: none;}
 
 
 .nav-mp3, .nav-bottom{
+    box-sizing: border-box;
+    max-width: 760px;
     line-height: 40px;
+    margin: 0 auto;
 }
 .nav-mp3 {
     padding-left: 20px;
+    margin: 5px auto;
     background-color: #b9e9f5;
 }
 .nav-bottom {
@@ -27,17 +32,15 @@
     flex-wrap: wrap;
     justify-content:flex-start;
     align-content: flex-start;
-    height: calc(100%-131px);
     width: 92%;
     margin: 30px auto;
     //overflow: auto;
-    overflow: scroll;
     > div {
         flex-basis: 33.33333%;
     }
 }
-
-.content-items {
+.content-items {  /*玩家盒子样式*/
+    z-index: 9;
     p {margin: 0;}
     > div {
         text-align: center;
@@ -58,11 +61,24 @@
             }
         }
         > div:nth-child(2) {
-            opacity: 0;
+            height: 25px;
             padding: 5px;
+            > img {
+                display: none;
+            }
         }
-        &:hover > div:nth-child(2){
-        opacity: 1;
+        &:hover > div:nth-child(2) > img{
+        display: inline-block;
+        }
+    }
+}
+
+.content-color {   /*死亡状态样式*/
+    > div {
+        > div:nth-child(1) {
+            > p {
+                background-color: #83b09a !important;
+            }
         }
     }
 }
