@@ -1060,12 +1060,15 @@ alert(stu1.alertName == stu2.alertName);  //true  共享函数
             console.log("List item ", e.target.id, " was clicked!");
         }
     }, false);
- // 上方代码，为父节点注册click事件，当子节点被点击的时候，
+
+
+
+// 上方代码，为父节点注册click事件，当子节点被点击的时候，
 // click事件会从子节点开始向上冒泡。父节点捕获到事件之后，
 // 开始执行方法体里的内容：通过判断 e.target 拿到了被点击的子节点li。
 // 从而可以获取到相应的信息，并作处理。
 
- // 换而言之，事件是在父节点上注册的，参数为false，
+// 换而言之，事件是在父节点上注册的，参数为false，
 // 说明事件是在冒泡阶段触发（往上传递），那就只有父节点能拿到事件，子节点是不可能拿到事件的。
 
 function play() {
@@ -1083,4 +1086,41 @@ div.onmouseover=function(){
 alert(this.id);//为什么你们都不喜欢用this?
 };
 
+
+
+{/* </script>
+</head>
+<body>
+<ul class="parentWrap">
+    <li class="menuGroup">
+        <span class="groupTitle">标题1</span>
+        <div>我是弹出来的div1</div>
+    </li>
+    <li class="menuGroup">
+        <span class="groupTitle">标题2</span>
+        <div>我是弹出来的div2</div>
+    </li>
+    <li class="menuGroup">
+        <span class="groupTitle">标题3</span>
+        <div>我是弹出来的div3</div>
+    </li>
+    <li class="menuGroup">
+        <span class="groupTitle">标题4</span>
+        <div>我是弹出来的div4</div>
+    </li>
+</ul> */}
+
+
+$(function () {
+    //需求：鼠标点击span，让他下面的div显示出来。让其他的div隐藏。
+    $(".parentWrap span").click(function () {
+        $(this).next().show().parent("li").siblings("li").find("div").hide();
+
+        // $(this).next().show();
+        //让其他的隐藏
+        //点击的span的父亲li，的所有的兄弟元素li，的孩子元素div全部隐藏。
+        //$(this).parent("li").siblings("li").children("div").hide();
+        //连式编程        
+    });
+})
 

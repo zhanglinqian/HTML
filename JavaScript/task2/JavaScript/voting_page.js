@@ -3,7 +3,7 @@
 // var    myfallback = document.getElementById("fallback");       // 获取返回链接
 //     myterminate = document.getElementById("terminate");     //关闭按钮      //没定义
 
-
+//  2019年8月10号 晚上十点12分  任务进行到可以 判断玩家状态 杀手平民  还没做实时渲染玩家状态 投票阶段和没做。
 /*******************投票页*********************/
 
 //天数为循环递增 初始 为  0;
@@ -16,44 +16,77 @@
 // HowToDie:''    出局方式  被杀死 || 被投死
 //  { days: '', id: i, name: '平民', state: '1' ,HowToDie:''}
 
-var killer = [];              //  玩家 身份证
-    killerNumber = 0;         //  杀手 人数
-    civiliansNumber = 0;      //  平民 人数
-var days = 0 ;                //  日期 天数
-var control = 'off';          //  控制页面跳转  off 为不能跳转  ON 为能跳转   判断条件为 杀人 后能跳转
-var myreordering = localStorage.getItem("myreordering");  //读取 身份 字符串
-    reordering = JSON.parse(myreordering);                //转取 身份 字符串换为  数组
-var mydays = localStorage.getItem("days");                //读取 日期  字符串
-      days =  0 || JSON.parse(mydays)                     //转取 日期   字符串换为  数字
 
-var myKILLER = localStorage.getItem("killer");            //读取 玩家状态 字符串
-    mykiller = JSON.parse(myKILLER)                       //转取 玩家状态   字符串换为  数组   
-    if (mykiller != null){                                //判断 玩家状态 数组 是否为 空  
-        var plays = mykiller.length
-        for(var i = 0; i < plays; i++ ){
-        killer.push(mykiller[i])
+
+var killer = [];              //  玩家 身份证
+var INDEX = [];               //  结果 索引 数组
+var killerNumber = 0;         //  杀手 人数
+var civiliansNumber = 0;      //  平民 人数
+var days = 1 ;                //  日期 天数
+
+var state = localStorage.getItem( "state" );    //判断是投票阶段还是杀人阶段 'Kill'杀手杀人   //'Vote'投票表决
+
+var myreordering = localStorage.getItem( "myreordering" );  //读取 身份 
+    reordering = JSON.parse( myreordering );             
+var rgl = reordering.length; //读取 身份 数组长度
+    for( var i = 0; i < rgl; i++ ){
+        killer.push( reordering[i] )
+        }; 
+var mydays = localStorage.getItem( "days" );                //读取 日期  
+    myDays = JSON.parse( mydays )
+    if ( myDays > days ){ days = myDays };                  
+
+var myKILLER = localStorage.getItem( "killer" );            //读取 玩家状态
+    mykiller = JSON.parse( myKILLER )                        
+    if ( mykiller != null ){                                //判断 玩家状态 数组 是否为 空  
+        for( var i = 0; i < mykiller.length; i++ ){
+        killer[i] = mykiller[i] 
+        }; 
+    };
+var MYINDEX = localStorage.getItem( "INDEX" );            //读取 结果索引
+    myINDEX = JSON.parse( MYINDEX )                        
+    if ( myINDEX != null ){                                //判断 结果索引 数组 是否为 空  
+        for( var i = 0; i < myINDEX.length; i++ ){
+            INDEX.push( myINDEX[i] ) 
         }; 
     };
 
-//  2019年8月10号 晚上十点12分  任务进行到可以 判断玩家状态 杀手平民  还没做实时渲染玩家状态 投票阶段和没做。
+function stores() {    //  储存  数据        
+    var aaa = JSON.stringify(days);
+    localStorage.setItem("days", aaa)                   //存入  天数
+
+    var bbb = JSON.stringify(killer);
+    localStorage.setItem("killer", bbb)                 //存入  玩家状态
+
+    var ccc = JSON.stringify(killerNumber);
+    localStorage.setItem("killerNumber", ccc)           //存入  杀手人数
+
+    var ddd = JSON.stringify(civiliansNumber);
+    localStorage.setItem("civiliansNumber", ddd)        //存入  平民人数
+
+    var eee = JSON.stringify(INDEX);
+    localStorage.setItem("INDEX", eee)                  //存入  结果索引
+}
 
 
-var rgl = reordering.length; //读取 身份 数组长度
 $(function () {               //  动态生成玩家
     var identity = undefined;
-    var empty = '';
+    var empty = undefined;
     for (var i = 0; i < rgl; i++) {
+        //killer.push(reordering[i])
         identity = reordering[i].name;
         if(reordering[i].name === '平民'){
             civiliansNumber++
         } else if (reordering[i].name === '杀手'){
             killerNumber++
         };
-        if(reordering[i].state === 0){
+        if( killer[i].state === '1' ){
+            empty = '';
+        } else if (killer[i].state === '0'){
             empty = 'content-color';
         };
-        var box =   '<div class="content-items' + empty + '">' +
-                        '<div id="box-'+[i]+'">' +
+        var box =   '<div class="content-items ' + empty + '" id="box-'+[i]+'">' +
+                        '<div>' +
                             '<div>' +
                                 '<p>' + identity + '</p>' +
                                 '<p>' + (i + 1) + '号' + '</p>' +
@@ -65,73 +98,32 @@ $(function () {               //  动态生成玩家
                     '</div>'
         $('.content').append(box);    //   通过 append 添加盒子
     };
+var kNumber = localStorage.getItem("killerNumber");          
+var cNumber = localStorage.getItem("civiliansNumber");      
+if ( kNumber !== null && cNumber !== null){
+killerNumber =  Number (kNumber)          // 杀手 人数
+civiliansNumber = Number(cNumber)        //  平民 人数
+    };
 });
-
-function kill(b) {     // 'Kill'   杀手杀人
-    if( reordering[b].state === '1'&& reordering[b].name !== '杀手' ){     
-        killer.push({ days: '', id: b[0], name: '平民', state: '0' ,HowToDie:'杀手杀死'})
-        control = 'ON';
-    }else if(reordering[b].name === '杀手'){
-        alert('大哥，自己人。')
-    }else if(reordering[b].state === '0'){
-        alert('本人已死有事烧香')
-    }else {
-        alert('系统崩溃')
-    }
-}
-
-function vote(b) {     // 'Vote'    投票表决
-    // if( reordering[b].state === '1' ){
-    //     killer.push({ days: '', id: b, name: '平民', state: '1' ,HowToDie:'投死'})
-    // } else if (reordering[b].state === '1'){
-    //     killer.push({ days: '', id: b, name: '平民', state: '1' ,HowToDie:'投死'})
-    // } else if (reordering[b].state === '0' ){
-    //     alert('本人已死有事烧香')
-    // } else {
-    //     alert('系统崩溃')
-    // }
-    switch (reordering[b].state) {
-        case '1': 
-        if(reordering[b].name === '杀手'){
-            killer.push({ days: '', id: b[0], name: '杀手', state: '0' ,HowToDie:'投死'})
-            control = 'ON';
-            days++
-        } else if(reordering[b].name === '平民'){
-            killer.push({ days: '', id: b[0], name: '平民', state: '0' ,HowToDie:'投死'})
-            control = 'ON';
-            days++
-        };
-        break;
-        case '0': alert('本人已死有事烧香')
-        break;
-        default: alert('系统崩溃')
-    }
-}
-
-function stores() {    //玩家状态 储存数据localStorage.setItem("days",aaa)       
-    var aaa = JSON.stringify(days); 
-        localStorage.setItem("days",aaa)          //存入  天数
-    var sss = JSON.stringify(killer);             
-        localStorage.setItem("killer",sss)        //存入  玩家状态
-}
 
 var id = undefined;    //储存玩家身份 ID
 $(function () {
     $(".content-items").click(function (event) {
         var target = $(event.target);
-        var Id = $(target).parent().parent().attr('id');   //读取 ID 序号
+        var Id = $(target).parent().parent().parent().attr('id');   //读取 ID 序号
         id = Id;
+        console.log(id)
     });
 });
 
-
-var state = localStorage.getItem("state");    //判断是投票阶段还是杀人阶段 'Kill'杀手杀人   //'Vote'投票表决
-$('#but').click(function () {   //  确定按钮
+var control = undefined;            //  控制页面跳转  off 为不能跳转  ON 为能跳转   判断条件为 杀人 后能跳转
+$('#but').click(function () {       //  确定按钮
+    control = 'off';
     if (id != undefined) {
         var a = id;
         var test = /\d+/g;
         var t = a.match(test);   //检索玩家ID返回其中的的  数字
-        var b = t
+        var b = Number(t[0]);
         switch (state) {
             case 'Kill':
                 kill(b)  // 杀手杀人阶段
@@ -141,28 +133,65 @@ $('#but').click(function () {   //  确定按钮
                 break;
             default: alert('系统崩溃')
         }
-        if (killerNumber >= civiliansNumber) {                  //判断游戏是否结束
-            window.location.href = "../html/end.html"           // 页面跳转  结束页
-        } else if(control === 'ON') {
-            window.location.href = "../html/Judge_taiben.html" 
-        }
-    stores()  //储存数据
-    } else {
-        console.log('读取的ID为'+ id)
-    };
+
     console.log('天数：' + days)
-    console.log('死亡：'+ killer)
-    console.log(state)
+    console.log('平民人数：' + civiliansNumber)
+    console.log('杀手人数：'+ killerNumber)
+
+    stores()        //储存数据
+    gameStatus ()   //判断游戏是否结束
+    };
 });
 
+function kill(b) {     // 'Kill'   杀手杀人
+    if ( killer[b].state === '0') {
+        alert ('本人已死有事烧香')
+    } else if (killer[b].name === '杀手'){
+        alert('大哥，自己人。')
+    } else if( killer[b].state === '1' && killer[b].name === '平民' ){
+        killer[b].days = days
+        killer[b].state = '0';
+        killer[b].HowToDie = '杀死';
+        civiliansNumber--;
+        control = 'ON';
+        INDEX.push(b)
+    } else{
+        alert ('系统崩溃')
+    }
+}
+function vote(b) {     // 'Vote'    投票表决
+    if (killer[b].state === '0') {
+        alert('本人已死有事烧香')
+    } else if (killer[b].state === '1' && killer[b].name === '杀手') {
+        killer[b].days = days
+        killer[b].state = '0';
+        killer[b].HowToDie = '投死';
+        killerNumber--;
+        control = 'ON';
+        days++
+        INDEX.push(b)
+    } else if (killer[b].state === '1' && killer[b].name === '平民') {
+        killer[b].days = days
+        killer[b].state = '0';
+        killer[b].HowToDie = '投死';
+        civiliansNumber--;
+        control = 'ON';
+        INDEX.push(b)
+        days++
+    } else {
+        alert('系统崩溃')
+    }
+}
 
-
-
-
-
-
-
-
+function gameStatus () {        //判断游戏是否结束
+    if ( killerNumber === 0 ) {                       
+        window.location.href = "../html/end.html"           // 页面跳转  结束页  平民获胜
+    } else if( killerNumber >= civiliansNumber ) {
+        window.location.href = "../html/end.html"           // 页面跳转  结束页   杀手获胜
+    } else if( control === 'ON' ) {
+        window.location.href = "../html/Judge_taiben.html"  // 页面跳转 法官台本 继续游戏
+    }
+}
 
 
 
@@ -208,7 +237,8 @@ $("table").on("click", "td", function () {
 //如果要取消事件的绑定，就使用off()方法。
 $(document).off("click", "td");
 
-
+// var name = killer[b].name
+// var state = killer[b].state
 
 
 
@@ -223,10 +253,50 @@ $(document).off("click", "td");
 // });
 
 
+// var name = killer[b].name
+// var state = killer[b].state
+//     switch (name, state) {
+//         case '平民' ,'1': 
+//             killer[b].days = days
+//             killer[b].state = '0';
+//             killer[b].HowToDie = '杀死';
+//             civiliansNumber --;
+//             control = 'ON';
+//             days++
+//         break;
+//         case '杀手' , '1':
+//             alert('大哥，自己人。')
+//         break;
+//         case '平民'||'杀手' ,'0'  : //'杀手'
+//             alert('本人已死有事烧香')
+//         default: 
+//         alert('系统崩溃')
+//     }
 
 
 
 
-
+    // switch (name,state) {
+    //     case '杀手' ,'1': 
+    //         killer[b].days = days
+    //         killer[b].state = '0';
+    //         killer[b].HowToDie = '投死';
+    //         killerNumber--;
+    //         control = 'ON';
+    //         days++
+    //     break;
+    //     case '平民' , '1':
+    //         killer[b].days = days
+    //         killer[b].state = '0';
+    //         killer[b].HowToDie = '投死';
+    //         civiliansNumber --;
+    //         control = 'ON';
+    //         days++
+    //     break;
+    //     case '平民'||'杀手','0':
+    //         alert('本人已死有事烧香')
+    //     default: 
+    //     alert('系统崩溃')
+    // }
 
 

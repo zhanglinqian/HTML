@@ -86,12 +86,12 @@ function mykillers(){
     // HowToDie:''    出局方式  被杀死 || 被投死
 
     for (var i = 0; i < range.value; i++) {
-        mynumber.push({ days: '', id: i, name: '平民', state: '1' ,HowToDie:''});      //生成平民身份
+        mynumber.push({ days: '', id:'', name: '平民', state: '1' ,HowToDie:''});      //生成平民身份
         nnn.push(0);
     };
 
     for (var a = 0; a < killer; a++) {   //替换前 “ N ” 个平民为杀手
-        mynumber[a] = ({ days: '', id: a, name: '杀手', state: '1', HowToDie:''});       //生成杀手身份
+        mynumber[a] = ({ days: '', id:'', name: '杀手', state: '1', HowToDie:''});       //生成杀手身份
         nnn[a] = 1;
     }
 
@@ -99,6 +99,7 @@ function mykillers(){
         var aaa = Math.floor(Math.random() * (mynumber.length - b));       //重新排序身份数组
         reordering.push(mynumber[aaa]);
         mynumber[aaa] = mynumber[mynumber.length - b - 1];
+        reordering[b].id = 'box-'+[b];    //顺序分配 ID 
 
         bbb.push(nnn[aaa]);
         nnn[aaa] = nnn[nnn.length - b - 1]
