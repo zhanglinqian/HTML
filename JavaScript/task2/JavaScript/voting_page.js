@@ -184,9 +184,11 @@ function vote(b) {     // 'Vote'    投票表决
 }
 
 function gameStatus () {        //判断游戏是否结束
-    if ( killerNumber === 0 ) {                       
+    if ( killerNumber === 0 ) { 
+        localStorage.setItem("Win", '平民获胜')
         window.location.href = "../html/end.html"           // 页面跳转  结束页  平民获胜
     } else if( killerNumber >= civiliansNumber ) {
+        localStorage.setItem("Win", '杀手获胜')
         window.location.href = "../html/end.html"           // 页面跳转  结束页   杀手获胜
     } else if( control === 'ON' ) {
         window.location.href = "../html/Judge_taiben.html"  // 页面跳转 法官台本 继续游戏

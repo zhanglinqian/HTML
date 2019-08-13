@@ -1,12 +1,11 @@
 //关闭按钮    //没定义
 
+
     $('#terminate').click(function () {});        //关闭按钮    //没定义
     $('#fallback').click(function () {
         window.location.href ="../html/voting_page.html"   // 返回法官台本
     });
 
-    // var myreordering = localStorage.getItem("myreordering");  //读取
-    // reordering = JSON.parse(myreordering);              //重新转换为数组
 /********************法官台本************************/
 
 
@@ -19,13 +18,19 @@ var killer = [];              //  玩家 身份证
 //  { days: '', id: i, name: '平民', state: '1' ,HowToDie:''}
 var INDEX = [];               //  结果 索引 数组
 var days = 1 ;                //  日期 天数
-var mystyle = [];             //  列表显示样式  原始数据
-//var style = [];               //  列表显示样式  修改样式
-// id: [0 ~ N],    ID编号
-// one :  0  ||  1  ;  记录是杀人阶段盒子 的 高亮  变色   
-// state: '' ,    状态  用  ‘ 0 ’ || ‘ 1 ’   判断 一轮游戏是否结束  结束全部变色  且 不能点击 。
-//  { id: [0 ~ N], one: '0',  state: '0' }    // 初始状态
+var mystyle = [];             //  列表显示样式
 
+// mystyle = [{ id: [ 0 ~ N ], one: '0',  state: '0' }];  //  列表显示样式
+//
+// { id: [ 0 ~ N ], one: '0',  state: '0' };   初始状态
+// id  :  [ 0 ~ N ];  ID编号
+// one :  [0 || 1 ];  记录是杀人阶段盒子 的 高亮  变色   
+// state: [0 || 4 ];  状态  从 0 ~ 4 五种状态    
+//    0  执行杀手杀人  并高亮提示
+//    1  亡灵发言     高亮提示
+//    2  玩家发言     高亮提示
+//    3  投票阶段     并高亮提示  判断 一轮游戏是否结束  结束全部变色  且 不能点击 。
+//    4  禁止点击     没想好
 
 var mydays = localStorage.getItem( "days" );                //读取 日期  
     myDays = JSON.parse( mydays )
@@ -37,16 +42,15 @@ var myKILLER = localStorage.getItem( "killer" );            //读取 玩家状�
         killer[i] = mykiller[i] 
         }; 
     };
-var MYINDEX = localStorage.getItem( "INDEX" );            //读取 结果索引
+var MYINDEX = localStorage.getItem( "INDEX" );              //读取 结果索引
     myINDEX = JSON.parse( MYINDEX )                        
-    if ( myINDEX != null ){                                //判断 结果索引 数组 是否为 空  
+    if ( myINDEX != null ){                                 //判断 结果索引 数组 是否为 空  
         for( var i = 0; i < myINDEX.length; i++ ){
             INDEX.push( myINDEX[i] ) 
         }; 
     };
-var STYLE = localStorage.getItem( "style" );            //读取 列表样式
+var STYLE = localStorage.getItem( "style" );                //读取 列表样式
     mySTYLE = JSON.parse( STYLE );
-
     if ( mySTYLE != null  ){
         for ( var i = 0; i < mySTYLE.length; i++ ) {
             mystyle.push(mySTYLE[i])
@@ -59,16 +63,32 @@ function stores() {    //  储存  数据
     var aaa = JSON.stringify(mystyle);
     localStorage.setItem("style", aaa)                   //存入  列表样式
 }
-//var mystyle = [];               //  列表显示样式  修改样式
-// id: [0 ~ N],    ID编号
-// one :  0  ||  1  ;  记录是杀人阶段盒子 的 高亮  变色   
-// state: '' ,    状态  用  ‘ 0 ’ || ‘ 1 ’   判断 一轮游戏是否结束  结束全部变色  且 不能点击 。
-//  { id: [0 ~ N], one: '0',  state: '0' }    // 初始状态
 
-$(function(){
+$(function(){     //   添加盒子
     var Digital = ['零','一','二','三','四','五','六','七','八','九','十']
+        var numBer = -1;
+        var numBer01 = -1;
     for ( var i = 0; i < days ; i ++) {
-        var listBox = '<div class="days">'+
+        var Grade = undefined;
+        var Grade01 = undefined;
+        var Identity = undefined;
+        var ccc = '#options-' + [i];
+        var fff = '#Grade-' + [numBer01 + 1];
+        var ggg = '#Grade-' + [numBer01 + 2];
+        var hhh = '#day-' + [i]
+        var jjj = 'Grade-' + [numBer01 + 1];
+        var kkk = 'Grade-' + [numBer01 + 2];
+        if ( INDEX[numBer01 + 1] != undefined ) {
+            var G = Number(killer[INDEX[numBer + 1]].id.match(/\d+/g));   
+            Grade = G+1;
+        };
+        if ( INDEX[numBer01 + 2] != undefined ){
+            var G01 = Number(killer[INDEX[numBer + 2]].id.match(/\d+/g));   
+            Grade01 = G01+1;
+            Identity =  killer[INDEX[numBer + 2]].name;
+            numBer = numBer+2
+        };
+    var listBox = '<div class="days">'+
                 '<div class="days-top box-rgba">'+
                     '<p>第'+ Digital[i+1] +'天</p>'+
                 '</div>'+
@@ -76,120 +96,184 @@ $(function(){
                     '<div class="days-bottom-left">'+
                         '<div></div>'+
                         '<div><img src="../image/月.png"></div>'+
-                        '<div><img src="../image/日.png"></div>'+
+                        '<div id="day-'+ [i] +'"><img src="../image/日.png"></div>'+
                     '</div>'+
-                    '<div class="days-bottom-right"  id="options-' + [ i ] + '">'+
+                    '<div class="days-bottom-right"  id="options-' + [i] + '">'+
                         //
                         '<div>'+     
                             '<p class="days-triangle"></p>'+
                             '<p class="Kill">杀手杀人</p>'+
                         '</div>'+
-              /* 1 */   '<div>'+[1]+'号被杀手杀死，真实身份是平民</div>'+ 
+              /* 1 */   '<div id= "'+ jjj +'" >'+ Grade +'号被杀手杀死，真实身份是平民</div>'+ 
                         //
                         '<div>'+
                             '<p class="days-triangle"></p>'+
-                            '<p >亡灵发表遗言</p>'+
+                            '<p class="words">亡灵发表遗言</p>'+
                         '</div>'+
                         //
                         '<div>'+
                             '<p class="days-triangle"></p>'+
-                            '<p>玩家依次发言</p>'+
+                            '<p class="speak">玩家依次发言</p>'+
                         '</div>'+
                         //
                         '<div>'+
                             '<p class="days-triangle"></p>'+
                             '<p class="Vote">全民投票</p>'+
                         '</div>'+
-              /* 2 */   '<div>'+[1]+'号被杀手杀死，真实身份是平民</div>'+
+              /* 2 */   '<div id="'+ kkk +'">'+ Grade01 +'号被投票出局，真实身份是'+ Identity +'</div>'+
                     '</div>'+
                 '</div>'
             '</div>'+
-    $('.box').append(listBox);   //通过append将盒子一个一个的往文档里面装
-var ccc = '#options-'+[i]
-var ddd = $(ccc).find('p').click(function(){});
-var aaa = mystyle[i].one;
-var bbb = mystyle[i].state;
-    if ( aaa == '1') {
+    $('.box').append(listBox);
+    if ( mystyle[i].one == '1') {
         var color = $( ccc ).find('div').first('div');
-        color.find('p:odd').css("background-color","#147086");  // 用这个来循环 变色。
+        color.find('p:odd').css("background-color","#147086");  // 循环 变色。
         color.find('p:even').css("border-right-color","#147086")
     };
-    if ( bbb == '1') {
+    if ( mystyle[i].state == '4') {
         var colo = $( ccc ).find('div');
-            colo.find('p:odd').css("background-color","#147086");  // 用这个来循环 变色。
-            colo.find('p:even').css("border-right-color","#147086")
+        colo.find('p:odd').css("background-color","#147086");  //  循环 变色。
+        colo.find('p:even').css("border-right-color","#147086")
     };
+    if ( INDEX[numBer01 + 1] != undefined ) {
+        $(fff).css('display','block')
+        $(hhh).css('top','135px')
+    };
+    if ( INDEX[numBer01 + 2] != undefined ){
+        $(ggg).css('display','block')
+    };
+    if ( i+1 == days ){
+        $(ccc).parent().show();
+    } else {
+        $(ccc).parent().hide();
+    }
+    numBer01 = numBer01+2;
     }
 });
 
-
-
-var id = undefined;    //储存玩家身份 ID
-$(function () {
-    $(".days-bottom-right").click(function (event) {
-        var target = $(event.target);
-        var Id = $(target).parent().parent().attr('id');   //读取 ID 序号
-        var id = Id;
-
-        $('#'+id).find('p').click(function () {
-            $(this).parent().find('p:odd').css("background-color", "#147086");    // 点击改变当前元素
-            $(this).parent().find('p:even').css("border-right-color", "#147086")// 用这个来循环 变色
-        });
-
-        console.log(id)
+//点击隐藏  其他元素
+$(function () {                           
+    $(".days-top > p").click(function () {
+        $(this).parent().next().show().parent().siblings("div").find(".days-bottom").hide();
     });
 });
+// 点击顺序 规则
+$(function(){
+    $('.Kill').click(function () {    //  杀手杀人
+        if (mystyle[days-1].state === '0') {        
+            var id = $(event.target).parent().parent().attr('id');   //读取 ID 序号
+            var t = id.match(/\d+/g);   //检索玩家ID返回其中的的  数字
+            mystyle[days - 1].id = t[0];
+            mystyle[days - 1].one = "1";
+            mystyle[days - 1].state = '1'
+            $(this).css("background-color", "#147086");                             // 点击改变当前元素
+            $(this).siblings().css("border-right-color", "#147086")
+            stores()   //存入  玩家状态
+            localStorage.setItem("state", 'Kill')
+            window.location.href = "../html/voting_page_main.html"
+        } else {
+            alert('请按顺序操作')
+        }
+    });
+    $('.words').click(function () {
+        if (mystyle[days - 1].state === '1') {
+            alert('亡灵发表遗言');
+            mystyle[days - 1].state = '2'
+            $(this).css("background-color", "#147086");                             // 点击改变当前元素
+            $(this).siblings().css("border-right-color", "#147086")
+        } else {
+            alert('请按顺序操作')
+        }
+    });
+    $('.speak').click(function () {
+        if (mystyle[days - 1].state === '2') {
+            alert('玩家依次发言');
+            mystyle[days - 1].state = '3'
+            $(this).css("background-color", "#147086");                             // 点击改变当前元素
+            $(this).siblings().css("border-right-color", "#147086")
+        } else {
+            console.log( 'dai '+  styleColor())
+            console.log('budao'+styleColor)
+            alert('请按顺序操作')
+        }
+    });
+    $('.Vote').click(function () {         //  投票
+        if (mystyle[days - 1].state === '3') {
+            mystyle[days - 1].state = "4";
+            mystyle.push({ id: '', one: '0', state: '0' });
+            $(this).css("background-color", "#147086");                             // 点击改变当前元素
+            $(this).siblings().css("border-right-color", "#147086")
+            stores()     //存入  玩家状态            
+            localStorage.setItem("state", 'Vote')
+            window.location.href = "../html/voting_page_main.html"
+        } else {
+            alert('请按顺序操作')
+        }
+    });
+})
+
+
+
+// switch (state) {
+//     case '0': 
+//         $('.Kill').click(function () {    //  杀手杀人
+//         var id = $(event.target).parent().parent().attr('id');   //读取 ID 序号
+//         var t = id.match(/\d+/g);   //检索玩家ID返回其中的的  数字
+//         mystyle[days-1 ].id = t[0];
+//         mystyle[days-1 ].one = "1";
+//         mystyle[days-1].state = '1'
+//         styleColor
+//         stores()//存入  玩家状态
+//         localStorage.setItem("state",'Kill')
+//         window.location.href = "../html/voting_page_main.html"
+//     });
+//     break;
+//     case '1':
+//             alert('系统崩溃')
+//             styleColor
+//             mystyle[days-1].state = '2'
+//     break;
+//     case '2':
+//             alert('系统崩溃')
+//             styleColor
+//             mystyle[days-1].state = '3'
+//     break;
+//     case '3':
+//         $('.Vote').click(function () {         //  投票
+//         mystyle[days-1].state = "4";
+//         mystyle.push({ id:'', one:'0',  state:'0' });
+//         styleColor
+//         stores()//存入  玩家状态            
+//         localStorage.setItem("state",'Vote')   
+//         window.location.href = "../html/voting_page_main.html"
+//     });
+//     break;
+//     case '4':
+//     break;
+//     default: alert('请按顺序操作')
+//     }
+
+
+
 
 // $(function(){
-// $('#'+id).find('p').click(function () {
-//     $(this).parent().find('p:odd').css("background-color", "#147086");    // 点击改变当前元素
-//     $(this).parent().find('p:even').css("border-right-color", "#147086")// 用这个来循环 变色
-// });
+//     $('#id span').click(function(){
+//         var ind = $('#id span').index(this)+1;//获取当前点击的span下标
+//         alert(ind)//弹出第几个
+//     })
 // })
 
 
-$(function () {
-    //需求：鼠标点击span，让他下面的div显示出来。让其他的div隐藏。
-    $(".days-top > p").click(function () {
-            // $(this).next().show();
-            // 让其他的隐藏
-            // 点击的span的父亲li，的所有的兄弟元素li，的孩子元素div全部隐藏。
-            // $(this).parent("li").siblings("li").children("div").hide();
-            // 连式编程
-        $(this).parent().next().show().parent().siblings("div").find(".days-bottom").hide();
-    });
-})
 
-
-
-$(function(){
-    $('.Kill').click(function () {    //  杀手杀人
-        var id = $(event.target).parent().parent().attr('id');   //读取 ID 序号
-        var t = id.match(/\d+/g);   //检索玩家ID返回其中的的  数字
-        mystyle[days-1 ].id = t[0];
-        mystyle[days-1 ].one = "1";
-        console.log("id: "+ mystyle[days-1].id)
-        stores()//存入  玩家状态
-        console.log(id)
-        localStorage.setItem("state",'Kill')
-        window.location.href = "../html/voting_page_main.html"
-    });
-    $('.Vote').click(function () {         //  投票
-        mystyle[days-1].state = "1";
-        mystyle.push({ id:'', one:'0',  state:'0' });
-        stores()//存入  玩家状态            
-        localStorage.setItem("state",'Vote')   
-        window.location.href = "../html/voting_page_main.html"
-    });
-})
-
-
-
-
-
-
-
-
+// var id = undefined;    //储存玩家身份 ID
+// $(function () {
+//     $(".days-bottom-right").click(function (event) {
+//         var target = $(event.target);
+//         var Id = $(target).parent().parent().attr('id');   //读取 ID 序号
+//         var id = Id;
+//         console.log(id)
+//     });
+// });
 // $(".days-top > p").click(function () {
 // $(this).parent().find("p").css("background-color","yellow");   // 点击改变当前元素
 // });
