@@ -19,6 +19,7 @@ button {
 .height-100vh {height: 100vh;}
 //容器
 .box {
+    overflow: auto;
     box-sizing: border-box;
     max-width: 760px;
     min-width: 340px;

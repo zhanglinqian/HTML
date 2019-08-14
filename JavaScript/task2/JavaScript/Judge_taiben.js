@@ -50,8 +50,7 @@ var STYLE = sessionStorage.getItem( "style" );                //读取 列表样
         for ( var i = 0; i < mySTYLE.length; i++ ) {
             mystyle.push(mySTYLE[i])
         }
-    };
-    if (mySTYLE == null){
+    } else if (mySTYLE == null){
         mystyle.push({ id:'初始版', one:'0',  state:'0' });
     }
 function stores() {    //  储存  数据  
@@ -153,12 +152,12 @@ $(function () {
 // 点击顺序 规则
 $(function(){
     $('.Kill').click(function () {    //  杀手杀人
-        if (mystyle[days-1].state === '0') {        
             var id = $(event.target).parent().parent().attr('id');   //读取 ID 序号
             var t = id.match(/\d+/g);   //检索玩家ID返回其中的的  数字
-            mystyle[days - 1].id = t[0];
-            mystyle[days - 1].one = "1";
-            mystyle[days - 1].state = '1'
+        if (mystyle[t].state === '0') { 
+            mystyle[t].id = t[0];
+            mystyle[t].one = "1";
+            mystyle[t].state = '1'
             $(this).css("background-color", "#147086");                             // 点击改变当前元素
             $(this).siblings().css("border-right-color", "#147086")
             stores()   //存入  玩家状态
@@ -169,9 +168,11 @@ $(function(){
         }
     });
     $('.words').click(function () {
-        if (mystyle[days - 1].state === '1') {
+        var id = $(event.target).parent().parent().attr('id');   //读取 ID 序号
+        var t = id.match(/\d+/g);   //检索玩家ID返回其中的的  数字
+        if (mystyle[t].state === '1') {
             alert('亡灵发表遗言');
-            mystyle[days - 1].state = '2'
+            mystyle[t].state = '2'
             $(this).css("background-color", "#147086");                             // 点击改变当前元素
             $(this).siblings().css("border-right-color", "#147086")
         } else {
@@ -179,9 +180,11 @@ $(function(){
         }
     });
     $('.speak').click(function () {
-        if (mystyle[days - 1].state === '2') {
+        var id = $(event.target).parent().parent().attr('id');   //读取 ID 序号
+        var t = id.match(/\d+/g);   //检索玩家ID返回其中的的  数字
+        if (mystyle[t].state === '2') {
             alert('玩家依次发言');
-            mystyle[days - 1].state = '3'
+            mystyle[t].state = '3'
             $(this).css("background-color", "#147086");                             // 点击改变当前元素
             $(this).siblings().css("border-right-color", "#147086")
         } else {
@@ -189,8 +192,10 @@ $(function(){
         }
     });
     $('.Vote').click(function () {         //  投票
-        if (mystyle[days - 1].state === '3') {
-            mystyle[days - 1].state = "4";
+        var id = $(event.target).parent().parent().attr('id');   //读取 ID 序号
+        var t = id.match(/\d+/g);   //检索玩家ID返回其中的的  数字
+        if (mystyle[t].state === '3') {
+            mystyle[t].state = "4";
             mystyle.push({ id: '', one: '0', state: '0' });
             $(this).css("background-color", "#147086");                             // 点击改变当前元素
             $(this).siblings().css("border-right-color", "#147086")

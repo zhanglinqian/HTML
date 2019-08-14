@@ -50,6 +50,7 @@ button {
 }
 
 .box {
+  overflow: auto;
   box-sizing: border-box;
   max-width: 760px;
   min-width: 340px;
