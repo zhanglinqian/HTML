@@ -19,9 +19,10 @@ button {
 .height-100vh {height: 100vh;}
 //容器
 .box {
+    box-sizing: border-box;
     max-width: 760px;
     min-width: 340px;
-    //height: 100vh;
+    height: 100vh;
     width: 100%;
     padding-top: 60px;
     padding-bottom: 100px;
@@ -109,7 +110,6 @@ button {
     text-align: center;
     > button{
     width: 76%;
-    max-width: 600px;
     font-size: 24px;
     line-height: 50px;
     color: #fff;

@@ -1,6 +1,6 @@
 
-//关闭按钮    //没定义
 
+/***************设置人数*******************/
 var     myfallback = document.getElementById("fallback");         // 获取返回链接
        myterminate = document.getElementById("terminate");        //关闭按钮    //没定义
            mysubmi = document.getElementById("submi");            // 提交按
@@ -10,7 +10,6 @@ var     myfallback = document.getElementById("fallback");         // 获取返�
         myreducing = document.getElementById("reducing");         // 减
           mykiller = document.getElementById("killer");           // 杀手
        mycivilians = document.getElementById("civilians");        // 平民
-
 window.onload = function() {
            text.addEventListener("change",myfun1);    // 改变输入框内容  自动判断
           range.addEventListener("change",myfun2);    // 滑动条
@@ -18,24 +17,17 @@ window.onload = function() {
      myreducing.addEventListener("click",myfun4);     // 减
         mysubmi.addEventListener("click",mykillers);  //本地储存
         mysubmi.addEventListener("click",stores);     //本地储存
-
     text.addEventListener("change", mykillers);
     range.addEventListener("change", mykillers);
     myadd.addEventListener("click",mykillers);
 myreducing.addEventListener("click",mykillers);
 }
-
 myfallback.onclick = function() {window.location.href = "../html/home.html";}  // 返回主页按钮                             
-
 function stores() {         //发牌按钮
     var sss = JSON.stringify(mykillers());             //转换为字符串
-        localStorage.setItem("myreordering",sss)       //存入身份数组
+        sessionStorage.setItem("myreordering",sss)       //存入身份数组
     var ccc = JSON.stringify(bbb);             //转换为字符串
-        localStorage.setItem("ing",ccc)       //存入身份数组
-
-        console.log(bbb)
-        console.log(nnn)
-
+        sessionStorage.setItem("ing",ccc)       //存入身份数组
     window.location.href = "../html/licensing.html";   //发牌
 }
 function myfun1() {
@@ -66,66 +58,39 @@ function myfun4() {
 }
 var nnn = [];
 var bbb = []
-
 function mykillers(){
      nnn = [];
      bbb = []
-
     var killer = Math.round((text.value) * 23 / 100);          //获取杀手人数
         civilians = text.value - killer;                       //获取平民人数
         mykiller.innerHTML = killer;                           //输出杀手数量
         mycivilians.innerHTML = civilians;                     //输出平民数量
-
     var mynumber = [];                                     //顺序排列身份数组
     var reordering = [];                                   //重新排序身份数组
-
     // days: '',      记录天数
     // id: [0 ~ N],    ID编号
     // name: '平民',   身份     平民 或 杀手
     // state: '' ,    生死状态  用  ‘ 0 ’ || ‘ 1 ’ 代替  0为死，1为生
     // HowToDie:''    出局方式  被杀死 || 被投死
-
     for (var i = 0; i < range.value; i++) {
         mynumber.push({ days: '', id:'', name: '平民', state: '1' ,HowToDie:''});      //生成平民身份
         nnn.push(0);
     };
-
     for (var a = 0; a < killer; a++) {   //替换前 “ N ” 个平民为杀手
         mynumber[a] = ({ days: '', id:'', name: '杀手', state: '1', HowToDie:''});       //生成杀手身份
         nnn[a] = 1;
     }
-
     for (var b = 0; b < text.value; b++) {
         var aaa = Math.floor(Math.random() * (mynumber.length - b));       //重新排序身份数组
         reordering.push(mynumber[aaa]);
         mynumber[aaa] = mynumber[mynumber.length - b - 1];
         reordering[b].id = 'box-'+[b];    //顺序分配 ID 
-
         bbb.push(nnn[aaa]);
         nnn[aaa] = nnn[nnn.length - b - 1]
     }
     return reordering    //把 重新排序身份数组 返回给函数 mykillers()
 }
 
-
-
-
-
-// function mykillers() {
-//     if(Text.value >= 4 && myInputText.value <= 6){
-//         mykiller.innerHTML = "1";
-//         mycivilians.innerHTML = myInputText.value - 1;
-//     } else if(myInputText.value >= 7 && myInputText.value <= 10){
-//         mykiller.innerHTML = "2";
-//         mycivilians.innerHTML = myInputText.value - 2;
-//     } else if(myInputText.value >= 11 && myInputText.value <= 15){
-//         mykiller.innerHTML = "3";
-//         mycivilians.innerHTML = myInputText.value - 3;
-//     } else if(myInputText.value >= 16 && myInputText.value <= 18){
-//         mykiller.innerHTML = "4";
-//         mycivilians.innerHTML = myInputText.value - 4;
-//     }
-// }
 
 
 

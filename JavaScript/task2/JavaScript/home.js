@@ -1,3 +1,9 @@
+
+
+
+/***************首页*****************/
+
+
 var  myleft = document.getElementById("left-sidebar");
     myright = document.getElementById("right-main");
    mybutton = document.getElementById("button");

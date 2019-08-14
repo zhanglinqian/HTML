@@ -3,6 +3,11 @@
   background-color: #29bde0;
 }
 
+#tips {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
 .nav-mp3, .nav-bottom {
   box-sizing: border-box;
   max-width: 760px;

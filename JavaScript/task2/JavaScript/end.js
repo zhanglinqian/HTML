@@ -1,7 +1,8 @@
 
 
 
-/*************************/
+
+/**************结束页****************/
 var killer = [];              //  玩家 身份证
 // days: '',       天数    
 // id: [0 ~ N],    ID 编号
@@ -14,28 +15,26 @@ var days = 1;                 //  日期 天数
 var killerNumber = 0;         //  杀手 人数
 var civiliansNumber = 0;      //  平民 人数
 var total = killerNumber + civiliansNumber;
-
-var win = localStorage.getItem("Win");
-
-var mydays = localStorage.getItem("days");                     //读取 日期  
+var win = sessionStorage.getItem("Win");
+var mydays = sessionStorage.getItem("days");                     //读取 日期  
 myDays = JSON.parse(mydays)
 if (myDays > days) { days = myDays };
-        var myKILLER = localStorage.getItem("killer");         //读取 玩家状态
+        var myKILLER = sessionStorage.getItem("killer");         //读取 玩家状态
         mykiller = JSON.parse(myKILLER)
 if (mykiller != null) {                                        //判断 玩家状态 数组 是否为 空  
     for (var i = 0; i < mykiller.length; i++) {
         killer[i] = mykiller[i]
     };
 };
-var MYINDEX = localStorage.getItem("INDEX");                   //读取 结果索引
+var MYINDEX = sessionStorage.getItem("INDEX");                   //读取 结果索引
     myINDEX = JSON.parse(MYINDEX)
 if (myINDEX != null) {                                         //判断 结果索引 数组 是否为 空  
     for (var i = 0; i < myINDEX.length; i++) {
         INDEX.push(myINDEX[i])
     };
 };
-var kNumber = localStorage.getItem("killerNumber");          
-var cNumber = localStorage.getItem("civiliansNumber");      
+var kNumber = sessionStorage.getItem("killerNumber");          
+var cNumber = sessionStorage.getItem("civiliansNumber");      
 if ( kNumber !== null && cNumber !== null){
 killerNumber =  Number (kNumber)          // 杀手 人数
 civiliansNumber = Number(cNumber)        //  平民 人数
@@ -47,9 +46,6 @@ $(function(){
     $("#killerNumber").text(killerNumber);
     $("#civiliansNumber").text(civiliansNumber);
 })
-
-
-
 $(function(){
     var Digital = ['零','一','二','三','四','五','六','七','八','九','十'];
     var numBer = -1;
@@ -58,12 +54,6 @@ $(function(){
         var Grade = undefined;
         var Grade01 = undefined;
         var Identity = undefined;
-        // var ccc = '#options-' + [i];
-        // var fff = '#Grade-' + [numBer01 + 1];
-        // var ggg = '#Grade-' + [numBer01 + 2];
-        // var hhh = '#day-' + [i]
-        // var jjj = 'Grade-' + [numBer01 + 1];
-        // var kkk = 'Grade-' + [numBer01 + 2];
         if ( INDEX[numBer01 + 1] != undefined ) {
             var G = Number(killer[INDEX[numBer + 1]].id.match(/\d+/g));   
             Grade = G+1;
@@ -72,8 +62,9 @@ $(function(){
             var G01 = Number(killer[INDEX[numBer + 2]].id.match(/\d+/g));   
             Grade01 = G01+1;
             Identity =  killer[INDEX[numBer + 2]].name;
-            numBer = numBer+2
+            numBer = numBer+2;
         };
+        numBer01 = numBer01+2;
         var listBox =  '<div class="content-bottom-itmes box-rgba">'+
                         '<div>'+
                             '<p>第'+Digital[i+1] +'天</p>'+
@@ -84,6 +75,12 @@ $(function(){
         $('.content-bottom').append(listBox);
     }
 })
-
-
+$('#but').click(function(){
+    sessionStorage.clear()
+    window.location.href = "../html/player_match.html"  // 页面跳转 法官台本 继续游戏
+})
+$('#fallback').click(function(){
+    sessionStorage.clear()
+    window.location.href = "../html/home.html"  // 页面跳转 法官台本 继续游戏
+})
 

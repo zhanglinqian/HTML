@@ -1,13 +1,10 @@
-//关闭按钮    //没定义
 
-
-    $('#terminate').click(function () {});        //关闭按钮    //没定义
-    $('#fallback').click(function () {
-        window.location.href ="../html/voting_page.html"   // 返回法官台本
-    });
 
 /********************法官台本************************/
-
+$('#terminate').click(function () {});        //关闭按钮    //没定义
+$('#fallback').click(function () {
+    window.location.href ="../html/voting_page.html"   // 返回法官台本
+});
 
 var killer = [];              //  玩家 身份证
 // days: '',       天数    
@@ -19,7 +16,6 @@ var killer = [];              //  玩家 身份证
 var INDEX = [];               //  结果 索引 数组
 var days = 1 ;                //  日期 天数
 var mystyle = [];             //  列表显示样式
-
 // mystyle = [{ id: [ 0 ~ N ], one: '0',  state: '0' }];  //  列表显示样式
 //
 // { id: [ 0 ~ N ], one: '0',  state: '0' };   初始状态
@@ -29,27 +25,26 @@ var mystyle = [];             //  列表显示样式
 //    0  执行杀手杀人  并高亮提示
 //    1  亡灵发言     高亮提示
 //    2  玩家发言     高亮提示
-//    3  投票阶段     并高亮提示  判断 一轮游戏是否结束  结束全部变色  且 不能点击 。
+//    3  投票阶段     并高亮提示  判断 一轮游戏是否结束  结束全部变色  且 不能点击。
 //    4  禁止点击     没想好
-
-var mydays = localStorage.getItem( "days" );                //读取 日期  
+var mydays = sessionStorage.getItem( "days" );                //读取 日期  
     myDays = JSON.parse( mydays )
     if ( myDays > days ){ days = myDays };
-var myKILLER = localStorage.getItem( "killer" );            //读取 玩家状态
+var myKILLER = sessionStorage.getItem( "killer" );            //读取 玩家状态
     mykiller = JSON.parse( myKILLER )                        
     if ( mykiller != null ){                                //判断 玩家状态 数组 是否为 空  
         for( var i = 0; i < mykiller.length; i++ ){
         killer[i] = mykiller[i] 
         }; 
     };
-var MYINDEX = localStorage.getItem( "INDEX" );              //读取 结果索引
+var MYINDEX = sessionStorage.getItem( "INDEX" );              //读取 结果索引
     myINDEX = JSON.parse( MYINDEX )                        
     if ( myINDEX != null ){                                 //判断 结果索引 数组 是否为 空  
         for( var i = 0; i < myINDEX.length; i++ ){
             INDEX.push( myINDEX[i] ) 
         }; 
     };
-var STYLE = localStorage.getItem( "style" );                //读取 列表样式
+var STYLE = sessionStorage.getItem( "style" );                //读取 列表样式
     mySTYLE = JSON.parse( STYLE );
     if ( mySTYLE != null  ){
         for ( var i = 0; i < mySTYLE.length; i++ ) {
@@ -61,9 +56,8 @@ var STYLE = localStorage.getItem( "style" );                //读取 列表样�
     }
 function stores() {    //  储存  数据  
     var aaa = JSON.stringify(mystyle);
-    localStorage.setItem("style", aaa)                   //存入  列表样式
+    sessionStorage.setItem("style", aaa)                   //存入  列表样式
 }
-
 $(function(){     //   添加盒子
     var Digital = ['零','一','二','三','四','五','六','七','八','九','十']
         var numBer = -1;
@@ -150,7 +144,6 @@ $(function(){     //   添加盒子
     numBer01 = numBer01+2;
     }
 });
-
 //点击隐藏  其他元素
 $(function () {                           
     $(".days-top > p").click(function () {
@@ -169,7 +162,7 @@ $(function(){
             $(this).css("background-color", "#147086");                             // 点击改变当前元素
             $(this).siblings().css("border-right-color", "#147086")
             stores()   //存入  玩家状态
-            localStorage.setItem("state", 'Kill')
+            sessionStorage.setItem("state", 'Kill')
             window.location.href = "../html/voting_page_main.html"
         } else {
             alert('请按顺序操作')
@@ -192,8 +185,6 @@ $(function(){
             $(this).css("background-color", "#147086");                             // 点击改变当前元素
             $(this).siblings().css("border-right-color", "#147086")
         } else {
-            console.log( 'dai '+  styleColor())
-            console.log('budao'+styleColor)
             alert('请按顺序操作')
         }
     });
@@ -204,7 +195,7 @@ $(function(){
             $(this).css("background-color", "#147086");                             // 点击改变当前元素
             $(this).siblings().css("border-right-color", "#147086")
             stores()     //存入  玩家状态            
-            localStorage.setItem("state", 'Vote')
+            sessionStorage.setItem("state", 'Vote')
             window.location.href = "../html/voting_page_main.html"
         } else {
             alert('请按顺序操作')
@@ -214,70 +205,13 @@ $(function(){
 
 
 
-// switch (state) {
-//     case '0': 
-//         $('.Kill').click(function () {    //  杀手杀人
-//         var id = $(event.target).parent().parent().attr('id');   //读取 ID 序号
-//         var t = id.match(/\d+/g);   //检索玩家ID返回其中的的  数字
-//         mystyle[days-1 ].id = t[0];
-//         mystyle[days-1 ].one = "1";
-//         mystyle[days-1].state = '1'
-//         styleColor
-//         stores()//存入  玩家状态
-//         localStorage.setItem("state",'Kill')
-//         window.location.href = "../html/voting_page_main.html"
-//     });
-//     break;
-//     case '1':
-//             alert('系统崩溃')
-//             styleColor
-//             mystyle[days-1].state = '2'
-//     break;
-//     case '2':
-//             alert('系统崩溃')
-//             styleColor
-//             mystyle[days-1].state = '3'
-//     break;
-//     case '3':
-//         $('.Vote').click(function () {         //  投票
-//         mystyle[days-1].state = "4";
-//         mystyle.push({ id:'', one:'0',  state:'0' });
-//         styleColor
-//         stores()//存入  玩家状态            
-//         localStorage.setItem("state",'Vote')   
-//         window.location.href = "../html/voting_page_main.html"
-//     });
-//     break;
-//     case '4':
-//     break;
-//     default: alert('请按顺序操作')
-//     }
 
 
 
 
-// $(function(){
-//     $('#id span').click(function(){
-//         var ind = $('#id span').index(this)+1;//获取当前点击的span下标
-//         alert(ind)//弹出第几个
-//     })
-// })
 
 
 
-// var id = undefined;    //储存玩家身份 ID
-// $(function () {
-//     $(".days-bottom-right").click(function (event) {
-//         var target = $(event.target);
-//         var Id = $(target).parent().parent().attr('id');   //读取 ID 序号
-//         var id = Id;
-//         console.log(id)
-//     });
-// });
-// $(".days-top > p").click(function () {
-// $(this).parent().find("p").css("background-color","yellow");   // 点击改变当前元素
-// });
-// $("p").eq(1).css("background-color","yellow");  // 用这个来循环 变色。
 
 
 
