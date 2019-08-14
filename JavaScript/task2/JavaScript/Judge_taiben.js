@@ -32,14 +32,14 @@ var mydays = sessionStorage.getItem( "days" );                //读取 日期
     if ( myDays > days ){ days = myDays };
 var myKILLER = sessionStorage.getItem( "killer" );            //读取 玩家状态
     mykiller = JSON.parse( myKILLER )                        
-    if ( mykiller != null ){                                //判断 玩家状态 数组 是否为 空  
+    if ( mykiller != null ){                                  //判断 玩家状态 数组 是否为 空  
         for( var i = 0; i < mykiller.length; i++ ){
         killer[i] = mykiller[i] 
         }; 
     };
 var MYINDEX = sessionStorage.getItem( "INDEX" );              //读取 结果索引
     myINDEX = JSON.parse( MYINDEX )                        
-    if ( myINDEX != null ){                                 //判断 结果索引 数组 是否为 空  
+    if ( myINDEX != null ){                                   //判断 结果索引 数组 是否为 空  
         for( var i = 0; i < myINDEX.length; i++ ){
             INDEX.push( myINDEX[i] ) 
         }; 

@@ -16,7 +16,7 @@ var killer = [];              //  玩家 身份证
 var INDEX = [];               //  结果 索引 数组
 var killerNumber = 0;         //  杀手 人数
 var civiliansNumber = 0;      //  平民 人数
-var days = 0 ;                //  日期 天数
+var days = 1 ;                //  日期 天数
 //天数为循环递增 初始 为  0;
 // days: '',      记录天数
 var state = sessionStorage.getItem( "state" );    //判断是投票阶段还是杀人阶段 'Kill'杀手杀人   //'Vote'投票表决
@@ -171,10 +171,10 @@ function vote(b) {     // 'Vote'    投票表决
     }
 }
 function gameStatus () {        //判断游戏是否结束
-    if ( killerNumber === 0 ) { 
+    if ( killerNumber === 0 && state == "Vote"  ) { 
         sessionStorage.setItem("Win", '平民获胜')
         window.location.href = "../html/end.html"           // 页面跳转  结束页  平民获胜
-    } else if( killerNumber >= civiliansNumber ) {
+    } else if( killerNumber >= civiliansNumber && state == "Vote" ) {
         sessionStorage.setItem("Win", '杀手获胜')
         window.location.href = "../html/end.html"           // 页面跳转  结束页   杀手获胜
     } else if( control === 'ON' ) {

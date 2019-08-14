@@ -50,7 +50,7 @@ $(function(){
     var Digital = ['零','一','二','三','四','五','六','七','八','九','十'];
     var numBer = -1;
     var numBer01 = -1;
-    for(i = 0; i <days; i++ ){
+    for(i = 0; i < days -1; i++ ){
         var Grade = undefined;
         var Grade01 = undefined;
         var Identity = undefined;
