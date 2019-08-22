@@ -1124,3 +1124,178 @@ $(function () {
     });
 })
 
+
+var oForm = document.getElementById('login');
+var oMsg = document.getElementById('msg');
+var oBtn = document.getElementById('btn');
+
+
+oBtn.onclick = function(event) {
+    event.preventDefault();
+
+    var data = new FormData(oForm);
+    var oAjax = new XMLHttpRequest();
+
+    oAjax.onreadystatechange = function() {
+
+        if (oAjax.readyState == 4 && oAjax.status == 200) {
+            var resdata = JSON.parse(oAjax.responseText);
+            //console.log(data.get('name')); //IE不支持FormData的get方法
+            //console.log(data.get('pwd'));
+            console.log(resdata);
+            if (resdata.code === 0) {
+                window.location.href = "http://dev.admin.carrots.ptteng.com/";
+            } else {
+                clearInterval(timer);
+                oMsg.innerHTML = resdata.message;
+                timer = setTimeout(function() {
+                    oMsg.innerHTML = '';
+                }, 3000)
+            }
+        }
+    }
+
+
+    oAjax.open('POST', '/carrots-admin-ajax/a/login', true);
+
+    oAjax.send(data);
+}
+
+
+var xhr = new XMLHttpRequest();
+xhr.open("post","login");
+xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+xhr.send(formData);
+
+
+//IE9+
+var aValue = document.getElementsByTagName('input');
+var oMsg = document.getElementById('msg');
+var oBtn = document.getElementById('btn');
+var timer = null;
+
+oBtn.onclick = function(event) {
+    event.preventDefault();
+
+    var name = aValue[0].value;
+    var pwd = aValue[1].value;
+    var data = "name=" + name + "&pwd=" + pwd;
+    var oAjax = new XMLHttpRequest();
+
+    oAjax.onreadystatechange = function() {
+        if (oAjax.readyState == 4 && oAjax.status == 200) {
+            var resdata = JSON.parse(oAjax.responseText);
+            console.log(name);
+            console.log(pwd);
+            console.log(resdata);
+            if (resdata.code === 0) {
+                window.location.href = "http://dev.admin.carrots.ptteng.com/";
+            } else {
+                clearInterval(timer);
+                oMsg.innerHTML = resdata.message;
+                timer = setTimeout(function() {
+                    oMsg.innerHTML = '';
+                }, 3000)
+            }
+        }
+    }
+
+    oAjax.open('POST', '/carrots-admin-ajax/a/login', true);
+
+    oAjax.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+
+    oAjax.send(data);
+}
+
+
+
+//IE10+
+var oForm = document.getElementById('login');
+var oMsg = document.getElementById('msg');
+var oBtn = document.getElementById('btn');
+var timer = null;
+
+oBtn.onclick = function(event) {
+    event.preventDefault();
+
+    var data = new FormData(oForm);
+    var oAjax = new XMLHttpRequest();
+
+    oAjax.onreadystatechange = function() {
+
+        if (oAjax.readyState == 4 && oAjax.status == 200) {
+            var resdata = JSON.parse(oAjax.responseText);
+            //console.log(data.get('name')); //IE不支持FormData的get方法
+            //console.log(data.get('pwd'));
+            console.log(resdata);
+            if (resdata.code === 0) {
+                window.location.href = "http://dev.admin.carrots.ptteng.com/";
+            } else {
+                clearInterval(timer);
+                oMsg.innerHTML = resdata.message;
+                timer = setTimeout(function() {
+                    oMsg.innerHTML = '';
+                }, 3000)
+            }
+        }
+    }
+
+    oAjax.open('POST', '/carrots-admin-ajax/a/login', true);
+
+    oAjax.send(data);
+}
+
+function loadXMLDoc()
+{
+	var xmlhttp;
+	if (window.XMLHttpRequest)
+	{
+		//  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+		xmlhttp=new XMLHttpRequest();
+	}
+	else
+	{
+		// IE6, IE5 浏览器执行代码
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function()
+	{
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+			document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+		}
+	}
+	xmlhttp.open("GET","/try/ajax/ajax_info.txt",true);
+	xmlhttp.send();
+}
+
+
+
+function loadXMLDoc() {
+    var xmlhttp;
+    var txt, x, i;
+
+    if (window.XMLHttpRequest) {
+        // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+        xmlhttp = new XMLHttpRequest();
+    }
+    else {
+        // IE6, IE5 浏览器执行代码
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            xmlDoc = xmlhttp.responseXML;
+            txt = "";
+            x = xmlDoc.getElementsByTagName("ARTIST");
+            for (i = 0; i < x.length; i++) {
+                txt = txt + x[i].childNodes[0].nodeValue + "<br>";
+            }
+            document.getElementById("myDiv").innerHTML = txt;
+        }
+    }
+    xmlhttp.open("GET", "cd_catalog.xml", true);
+    xmlhttp.send();
+}
+
