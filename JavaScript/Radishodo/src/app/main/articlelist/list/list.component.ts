@@ -57,7 +57,7 @@ export class ListComponent implements OnInit {
   ngOnInit() {
     this.activeRoute.queryParams.subscribe((res) => { 
       console.log(res)
-      this.request.page = res.page || 2;
+      this.request.page = res.page || 1;
       this.request.startAt = res.startAt || '';
       this.request.endAt = res.endAT || '';
       this.request.status = res.status || '';
@@ -72,14 +72,14 @@ export class ListComponent implements OnInit {
     const status = JSON.parse(JSON.stringify(this.request));
     status.startAt = new Date(status.startAt);
     status.endAt = new Date(status.endAt);
-    status.startAt = status.startAt.getTime();
-    status.endAt = status.endAt.getTime();
+    status.startAt = status.startAt.getTime() || '';
+    status.endAt = status.endAt.getTime() || '';
     return status
   }
 
   getList(){
     const data = this.transFormaTion();
-    console.log(data);
+    console.log('data',data);
     this.Http.articleList(data).subscribe(( res: any) => {
       if ( res.code === 0 ) {
         console.log(res);
@@ -142,7 +142,10 @@ clear() {
 search() {
   console.log('搜索');
   this.transFormaTion();
-  this.router.navigate(['main/list'],{ queryParams: this.request })
+  console.log(this.transFormaTion());
+  this.router.navigate(['main/list'],{ queryParams: this.request }).then(() => {
+    window.location.reload();
+  });
 }
 
 
