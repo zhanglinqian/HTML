@@ -1,0 +1,67 @@
+
+
+
+button{
+    outline: none;
+}
+
+/*内容列表*/
+
+.search-bar {
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    //box-shadow: 0 0 1px #b4b4b4 
+}
+
+.date-picker {
+    width: 100%;
+}
+
+.release, .deadline, .type, .state {
+    margin-bottom: 15px;
+    > div {
+        display: inline-block;
+    }
+    > div:nth-child(1) {
+        padding-top: 8px;
+        padding-right: 10px;
+        text-align: right;
+        word-spacing: 28px;
+    }
+}
+
+.deadline {
+    > div:nth-child(1) {
+        text-align: center;
+    }
+}
+
+.submit {
+    text-align: end;
+    > div {
+        display: inline-block;
+        > button {
+            color: #e0e0e0;
+            padding:10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+        }
+        > button:nth-child(1){
+            margin-right: 15px;
+            background-color: rgb(207, 57, 57);
+        }
+        > button:nth-child(2){
+            
+            background-color: rgba(39, 114, 30, 0.966);
+        }
+    }
+}
+
+
+
+// 修改日期选择框宽度
+:host ::ng-deep .ant-calendar-picker  {
+    width: 100%;
+}
+

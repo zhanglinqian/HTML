@@ -1,0 +1,48 @@
+
+
+
+
+<div class=" search-bar ">
+    <div class=" search-bar-main " nz-row nzType="flex" nzJustify="start" nzAlign="top" >
+        <div class=" release " nz-row nzType="flex" nz-col nzXl = '8' nzLg = '8' nzMd = '12' nzSm="24" nzXs="24">
+            <div nz-col nzSpan="8">发布时间</div>
+            <div nz-col nzSpan="16">
+                <nz-date-picker [nzDateRender]="tplRender" [(ngModel)]='request.startAt' ></nz-date-picker>
+            </div>
+        </div>
+        <div class=" deadline " nz-row nzType="flex" nz-col  nzXl = '8' nzLg = '8' nzMd = '12' nzSm="24" nzXs="24">
+            <div nz-col nzSpan="8">—</div>
+            <div nz-col nzSpan="16">
+                <nz-date-picker [nzDateRender]="tplRender" [(ngModel)]='request.endAt'></nz-date-picker>
+            </div>
+        </div>
+        <div class=" type " nz-row nzType="flex" nz-col  nzXl = '8' nzLg = '8' nzMd = '12' nzSm="24" nzXs="24">
+            <div nz-col nzSpan="8">类 型</div>
+            <div nz-col nzSpan="16">
+                <nz-select style="width: 100%" [(ngModel)]="request.type" nzAllowClear >
+                    <nz-option nzValue="0" nzLabel="首页banner"></nz-option>
+                    <nz-option nzValue="1" nzLabel="找职位banner"></nz-option>
+                    <nz-option nzValue="2" nzLabel="找精英banner"></nz-option>
+                    <nz-option nzValue="3" nzLabel="行业大图"></nz-option>
+                </nz-select>
+            </div>
+        </div>
+        <div class=" state " nz-row nzType="flex" nz-col  nzXl = '8' nzLg = '8' nzMd = '12' nzSm="24" nzXs="24">
+            <div nz-col nzSpan="8">状 态</div>
+            <div nz-col nzSpan="16">
+                <nz-select style="width: 100%" [(ngModel)]="request.status" nzAllowClear >
+                    <nz-option nzValue="1" nzLabel="草稿"></nz-option>
+                    <nz-option nzValue="2" nzLabel="上线" ></nz-option>
+                </nz-select>
+            </div>
+        </div>
+        <div class=" submit " nz-row nzType="flex" nz-col  nzXl = '24' nzLg = '24' nzMd = '24' nzSm="24" nzXs="24">
+            <div>
+                <button type="button" (click)="clear()">清除</button>
+                <button type="button" (click)="search()">搜索</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

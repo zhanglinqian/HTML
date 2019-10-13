@@ -1,0 +1,9 @@
+
+{
+    "/a/": {
+      "target": "http://dev.admin.carrots.ptteng.com/",
+      "logLevel": "debug",
+      "secure": "false",
+      "changeOrigin": true
+    }
+}

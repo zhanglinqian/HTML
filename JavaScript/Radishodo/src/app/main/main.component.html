@@ -1,0 +1,93 @@
+
+
+
+
+
+
+
+
+
+
+<div class="main">
+
+    <header class="header">
+        <nav nz-row nzType="flex"  nzAlign="middle">
+            <div nz-col class="header-left ">
+                <p>萝卜多后台管理</p>
+            </div>
+            <div nz-col class=" header-right">
+                <div class=" color-337">
+                    <a>管路员</a>
+                    <a>|</a>
+                    <a>admin</a>
+                    <a>|</a>
+                    <a>退出</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div nz-row nzType="flex" style=" flex-wrap: nowrap">
+        <!--侧边栏-->
+        <div  class="sidebar" nz-col >
+            <ul class="sidebar-main" (click)="sidebar($event)">
+                <li class="sidebar-select">
+                    <div>
+                        <img src="../../assets/image/笔.png">
+                        <span>后台管理</span>
+                        <img src="../../assets/image/箭头.png">
+                    </div>
+                    <ul class="sidebar-option" style="height: 0; overflow: hidden;">
+                        <ul>
+                            <li>模块管理</li>
+                            <li>角色管理</li>
+                            <li>密码修改</li>
+                            <li>账户管理</li>
+                        </ul>
+                    </ul>
+                </li>
+                <li class="sidebar-select ">
+                    <div>
+                        <img src="../../assets/image/笔.png">
+                        <span>信息管理</span>
+                        <img src="../../assets/image/箭头.png">
+                    </div>
+                    <ul class=" sidebar-option" style="height: 0; overflow: hidden;">
+                        <ul>
+                            <li>公司列表</li>
+                            <li>职位列表</li>
+                        </ul>
+                    </ul>
+                </li>
+                <li class="sidebar-select">
+                    <div>
+                        <img src="../../assets/image/笔.png">
+                        <span>内容管理</span>
+                        <img src="../../assets/image/箭头.png">
+                    </div>
+                    <ul class=" sidebar-option" style="height: 0; overflow: hidden;">
+                        <ul>
+                            <li (click)='articlelist()'>article列表</li>
+                        </ul>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="content" nz-col nz-col >
+
+            <router-outlet></router-outlet>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,20 @@
+
+    <div class="content">
+        <div class="back burdre-r">
+            <h1>登录</h1>
+            <form [formGroup] = 'loginForm' (ngSubmit) = 'onSubmit()'>
+                <div class="input-style burdre-r">
+                    <img src="./image/1.png" alt="">
+                    <input  type="text" placeholder="用户名" formControlName = 'name'>
+                </div>
+                <div class="input-style burdre-r">
+                    <img src="./image/密码.png" alt=""> 
+                    <input type="password" placeholder="密码" formControlName = 'pwd'>
+                </div>
+                <p></p>
+                <div class="but-style">
+                    <button type= "button" class="burdre-r" (click)= 'loginIn()'> 登录 </button>
+                </div>
+            </form>
+        </div>
+    </div>
