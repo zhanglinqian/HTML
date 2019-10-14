@@ -34,8 +34,8 @@ export class ListComponent implements OnInit {
   // }
 
   private request = {
-    startAt:'',
-    endAt:'',
+    //startAt:'',
+    //endAt:'',
     type:'',
     status:'',
     page: ''
@@ -59,8 +59,8 @@ export class ListComponent implements OnInit {
     this.activeRoute.queryParams.subscribe((res) => { 
       console.log(res)
       this.request.page = res.page || 1;
-      this.request.startAt = res.startAt || '';
-      this.request.endAt = res.endAT || '';
+      //this.request.startAt = res.startAt || '';
+      //this.request.endAt = res.endAT || '';
       this.request.status = res.status || '';
       this.request.type = res.type || '';
     });
@@ -135,10 +135,13 @@ addarticle() {
 // 清楚
 clear() {
   console.log('清除');
-  this.request.startAt = null;
-  this.request.endAt = null;
+  //this.request.startAt = null;
+  //this.request.endAt = null;
   this.request.type = null;
   this.request.status = null;
+  this.router.navigate(['main/list'],{ queryParams: this.request }).then(() => {
+    window.location.reload();
+  });
 }
 // 搜索
 search() {
