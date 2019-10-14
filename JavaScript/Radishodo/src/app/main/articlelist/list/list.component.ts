@@ -46,6 +46,7 @@ export class ListComponent implements OnInit {
 
   private articlelist = [];
   private page: number[] = [1] || [];
+  private total;
 
   constructor(
     private router: Router,
@@ -89,6 +90,7 @@ export class ListComponent implements OnInit {
         this.articlelist = this.datePipe.article_list(data);
         window.sessionStorage.setItem('articleList', JSON.stringify(this.articlelist));
         const page01 =  Math.ceil((res.data.total) / 10 );
+        this.total = page01;
         for (let i = 0; i < page01; i++) { this.page.push( i + 1 ); }
       } else {
         this.articlelist[0] = { id: 0, title: 0, type: 0, createAt: 0, updateAt: 0, author: 0, status: 0, };
@@ -119,7 +121,7 @@ export class ListComponent implements OnInit {
   }
 // 添加
 addarticle() {
-  this.router.navigate(['main/articleNew'],{ queryParams: {  } });
+  this.router.navigate(['main/articleNew']);
 }
 // 删除
   delete(id) {
@@ -147,6 +149,23 @@ search() {
     window.location.reload();
   });
 }
+
+
+
+// 分页
+  paging(page) {
+    console.log('分页');
+    if (page === 0){
+      this.request.page = this.total;
+    } else {
+      this.request.page = page;
+    }
+    this.transFormaTion();
+    this.router.navigate(['main/list'],{ queryParams: this.request }).then(() => {
+      window.location.reload();
+    });
+}
+
 
 
 

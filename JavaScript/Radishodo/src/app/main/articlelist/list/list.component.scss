@@ -115,28 +115,45 @@ button{
 
 
 /*分页*/
-.article-paging>li {
-    padding-left: 10px;
-    padding-right: 10px;
+
+.paging {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-end;
+
 }
-.article-paging input {
-    width: 40px;
-    padding: 5px;
-    margin: 5px;
-    text-align: center;
-    
-}
-.article-paging a {
+
+.paging-center ,.paging-botton {
+    > li {
     display: inline-block;
     padding: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
     border: 1px #fff solid;
     border-radius: 5px;
-    color: #fff !important;
     background-color: rgb(94, 182, 255);
+    color: #fff;
+    }
 }
 
+.paging-center {}
 
-
-
+.paging-botton  {
+    > li:nth-child(1) {
+        padding: 3px;
+    }    
+    input {
+        width: 40px;
+        height: 30px;
+        padding: 0;
+        margin-left: 5px;
+        margin-right: 5px;
+        color: #666;
+        text-align: center;
+    } 
+}
 
 

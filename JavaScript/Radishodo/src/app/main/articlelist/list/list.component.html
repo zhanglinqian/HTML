@@ -50,7 +50,7 @@
         <div class="article-list border-r1 margin-top-30">
             <div class="art-list-t  padding-15">
                 <strong class="padding-tb11">article列表</strong>
-                <button type="button" class=" " (click)='addarticle()'>新增</button>
+                <button type="button"  (click)='addarticle()'>新增</button>
             </div>
             <div class="art-list-c padding-15 bgc-fff ">
                 <div class="border-r1 art-list-table border-r1">
@@ -96,31 +96,17 @@
             </div>
         </div>
 
-
-        <div class="">
-            <div class=" ">
-                <ul class=" article-paging   padding-30">
-                    <li>每页显示<input type="text" id="" value="10" />条</li>
-                    <li><a>首页</a></li>
-                    <li *ngFor='let _page of page;'>
-                        <a (click) = articleList(_page) >{{_page}}</a>
-                    </li>
-                    <li><a>末页</a></li>
-                    <li>跳转到<input type="text" id="" value="" />页</li>
-                    <li><button>首页</button></li>
-                </ul>
-            </div>
+        <div class="paging">
+            <ul class=" paging-center ">
+                <li (click)='paging(1)'>首页</li>
+                <li *ngFor='let _page of page;' (click)='paging(_page)'>{{_page}}</li>
+                <li (click)='paging(0)'>尾页</li>
+            </ul>
+            <ul class=" paging-botton ">
+                <li>跳转到<input type="number"  #input >页</li>
+                <li (click)='paging(input.value)'>确定</li>
+            </ul>
         </div>
     </div>
-  
-    
 
 
-
-
-
-
-
-
-
-    
