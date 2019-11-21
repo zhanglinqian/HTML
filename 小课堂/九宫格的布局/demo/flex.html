@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>flex布局</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .box01{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content:center;
+            align-items: center;
+            align-content: flex-start;
+            height: 100vh;
+        }
+        .box01>div{
+            flex: 1 1 30%;
+            border-radius: 10px;
+            margin: 1.66%;
+            padding-bottom: 30%;
+            background-color: rgb(243, 105, 26);
+        }
+    </style>
+
+<body>
+    <div class="box01">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+
+</html>
