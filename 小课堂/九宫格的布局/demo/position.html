@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>position布局</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .box01{
+            position: relative;
+            height: 100vh;
+        }
+        .box01>div{
+            position: absolute;
+            width: 30vw;
+            height: 30vw;
+            border-radius: 10px;
+            background-color: rgb(243, 105, 26);
+        }
+        .box-01,.box-02,.box-03{
+            top: 1.66vw;
+        }
+        .box-04,.box-05,.box-06{
+            top: 34.98vw;
+        }
+        .box-07,.box-08,.box-09{
+            top: 68.33vw;
+        }
+
+        .box-01,.box-04,.box-07{
+            left: 1.66vw;
+        }
+        .box-02,.box-05,.box-08{
+            left: 34.98vw;
+        }
+        .box-03,.box-06,.box-09{
+            left: 68.33vw;
+        }
+    </style>
+
+<body>
+    <div class="box01">
+        <div class="box-01"></div>
+        <div class="box-02"></div>
+        <div class="box-03"></div>
+        <div class="box-04"></div>
+        <div class="box-05"></div>
+        <div class="box-06"></div>
+        <div class="box-07"></div>
+        <div class="box-08"></div>
+        <div class="box-09"></div>
+    </div>
+</body>
+
+</html>
