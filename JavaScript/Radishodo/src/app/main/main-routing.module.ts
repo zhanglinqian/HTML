@@ -14,11 +14,12 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       { path: 'list', component: ListComponent },
-      { path: 'new', component: NeweditsComponent},
+      { path: 'edit', component: NeweditsComponent},
       { path: '**', component: WelcomeComponent},
     ]
   },
 ];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -38,6 +38,46 @@ export class PipePipe implements PipeTransform {
     return num;
   }
 
+  /**
+   * 时间选择器 获取时间   燕趣二期  zlq 修改
+   *
+   * @param {*} dateRange
+   * @param {*} params
+   * @memberof UtilService
+   */
+
+  public gettime(startAt, endAt, params): void { 
+    if(startAt&&endAt){
+      params.startAt = this.format_Date(startAt);
+      params.endAt = this.format_Date(endAt);
+      params.endAt += 86399999
+    }
+  }
+
+  public format_Date(datetime) {   
+    // 获取年月日 slice(-2)过滤掉大于10日期前面的0
+    let year = new Date(datetime).getFullYear(),
+      month = ("0" + (new Date(datetime).getMonth() + 1)).slice(-2),
+      date = ("0" + new Date(datetime).getDate()).slice(-2);
+    // 拼接
+    let result = year + "/" + month + "/" + date;
+    let data = new Date(result).getTime();
+    // 返回
+    //console.log(data)
+    return data;
+  }
+
+  // public formatDate(datetime) {   
+  //   // 获取年月日 slice(-2)过滤掉大于10日期前面的0
+  //   let year = datetime.getFullYear(),
+  //     month = ("0" + (datetime.getMonth() + 1)).slice(-2),
+  //     date = ("0" + datetime.getDate()).slice(-2);
+  //   // 拼接
+  //   let result = year + "/" + month + "/" + date;
+  //   let data = new Date(result).getTime();
+  //   // 返回
+  //   return data;
+  // }
 
 
 
@@ -66,13 +106,13 @@ export class PipePipe implements PipeTransform {
       let createAt = this.getMyDate(b.createAt)
       let updateAt = this.getMyDate(b.updateAt)
       switch(type){
-        case 1: b.type = "首页banner";
+        case 0: b.type = "首页banner";
         break;
-        case 2: b.type = "找职位banner";
+        case 1: b.type = "找职位banner";
         break;
-        case 3: b.type = "找精英banner";
+        case 2: b.type = "找精英banner";
         break;
-        case 4: b.type = "行业大图";
+        case 3: b.type = "行业大图";
         break;
         default:
           b.type ="未知类型";
@@ -80,10 +120,12 @@ export class PipePipe implements PipeTransform {
       switch(status){
         case 1: 
         b.status = "草稿";
+        b.color = 'color-005'
         status_but = "上线";
         break;
         case 2: 
         b.status = "上线";
+        b.color = 'color-ff0'
         status_but = "下线";
         break;
         default:
@@ -100,7 +142,8 @@ export class PipePipe implements PipeTransform {
         updateAt_1:string,
         author:string,
         status:string,
-        sta_but:string
+        sta_but:string,
+        color:string
       } = {
         id: b.id,
         img: b.img,
@@ -112,10 +155,12 @@ export class PipePipe implements PipeTransform {
         updateAt_1: updateAt.Time,
         author: b.author,
         status: b.status,
-        sta_but: status_but
+        sta_but: status_but,
+        color: b.color
       };
       articlelist.push(article);
     }
+
     return articlelist
   }
 

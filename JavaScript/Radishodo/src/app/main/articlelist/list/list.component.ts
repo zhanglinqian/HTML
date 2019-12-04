@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap, Data } from '@angular/router';
-import { Observable, throwError, from } from 'rxjs';
+import { Component, OnInit ,ElementRef, ViewChild } from '@angular/core';
+import { Router, ActivatedRoute, NavigationEnd, ParamMap, Data } from '@angular/router';
+
 import { HttpService } from '../../../service/http/http.service';
 import { PipePipe } from '../../../pipe/pipe.pipe';
 
@@ -9,168 +9,162 @@ import { PipePipe } from '../../../pipe/pipe.pipe';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
+
 export class ListComponent implements OnInit {
-
-// 请求参数
-// startAt	起始更新时间		
-// endAt	  终止更新时间	  	
-// type	    类型	       0-首页banner 1-找职位banner  2-找精英banner 3-行业大图
-// status	  状态	       1-草稿 2-上线 
-// 字段 第几页 page 不写时默认为1
-// 字段 展示数量 size 不写时默认为10。
-
-  // private request: {
-  //   startAt:Date,
-  //   endAt:Date,
-  //   type:number,
-  //   status:number,
-  //   page:number
-  // } = {
-  //   startAt:null,
-  //   endAt:null,
-  //   type:null,
-  //   status:null,
-  //   page:null
-  // }
-
-  private request = {
-    //startAt:'',
-    //endAt:'',
-    type:'',
-    status:'',
-    page: ''
-  }
-  private startAt:Date;
-  private endAt:Date;
-
-
-  private articlelist = [];
-  private page: number[] = [1] || [];
-  private total;
-
+  //@ViewChild('input') input: ElementRef         
   constructor(
-    private router: Router,
-    private activeRoute: ActivatedRoute,
-    private  Http: HttpService,
-    private datePipe: PipePipe
+    public router: Router,
+    public activeRoute: ActivatedRoute,
+    public Http: HttpService,
+    public datePipe: PipePipe
   ) { }
 
-  ngOnInit() {
-    this.activeRoute.queryParams.subscribe((res) => { 
-      console.log(res)
-      this.request.page = res.page || 1;
-      //this.request.startAt = res.startAt || '';
-      //this.request.endAt = res.endAT || '';
-      this.request.status = res.status || '';
-      this.request.type = res.type || '';
-    });
+  public navigationSubscription
+  public startAt: any;
+  public endAt: any;
+  public type: any;
+  public status: any;
+  public pageIndex: any;
+  public routerParams: any
+  public expression = false
+  public articlelist:any = []
+  public page = [];
+  public total;
+  public data: any
+
+  public ngOnInit() {
+    this.routeParameters()
     this.getList();
-  }
-
-
-
-  transFormaTion() {
-    const status = JSON.parse(JSON.stringify(this.request));
-    status.startAt = new Date(status.startAt);
-    status.endAt = new Date(status.endAt);
-    status.startAt = status.startAt.getTime() || '';
-    status.endAt = status.endAt.getTime() || '';
-    return status
-  }
-
-  getList(){
-    const data = this.transFormaTion();
-    console.log('data',data);
-    this.Http.articleList(data).subscribe(( res: any) => {
-      if ( res.code === 0 ) {
-        console.log(res);
-        const data = res.data.articleList;
-        this.articlelist = [];
-        this.page = [];
-        this.articlelist = this.datePipe.article_list(data);
-        window.sessionStorage.setItem('articleList', JSON.stringify(this.articlelist));
-        const page01 =  Math.ceil((res.data.total) / 10 );
-        this.total = page01;
-        for (let i = 0; i < page01; i++) { this.page.push( i + 1 ); }
-      } else {
-        this.articlelist[0] = { id: 0, title: 0, type: 0, createAt: 0, updateAt: 0, author: 0, status: 0, };
+    this.navigationSubscription = this.router.events.subscribe((event: any) => {
+      if (event instanceof NavigationEnd) {
+        this.routeParameters()
+        this.getList();
       }
-      console.log(this.page);
-      console.log(res.data);
-      console.log(this.articlelist);
     });
   }
-// 编辑
-  edit() {
-    this.router.navigate(['main/articleNew'],{ queryParams: { page: 1,name:222 } });
+
+  // 取消 订阅
+  public ngOnDestroy() {
+    if (this.navigationSubscription) {
+      this.navigationSubscription.unsubscribe();
+    }
   }
-// 上、下线
-  status(id, status) {
+
+  //([new Date(+res.startTime || '').toString(), new Date(+res.endTime || '').toString()])
+  // 获取路由参数
+  public routeParameters() {
+    this.activeRoute.queryParams.subscribe((res) => {
+        this.startAt = res.startAt === undefined ? null : new Date(+res.startAt);
+        this.endAt =  res.endAt === undefined ? null : new Date(+res.endAt);
+        this.type = res.type || '';
+        this.status =  res.status || '';
+        this.pageIndex = res.page || 1;
+        this.total = res.total || 10;
+    })
+  }
+
+  // 删除多余 路由参数
+  public processingData() {
+    let params = {
+      startAt:  '',
+      endAt:  '',
+      type: this.type || '',
+      status: this.status || '',
+      page: this.pageIndex || 1
+    }
+    let i = this.datePipe.gettime(this.startAt,this.endAt, params)
+    for (const key in params) {
+      if (params[key] === '') {
+        delete params[key]
+      }
+      if (params[key] === NaN) {
+        delete params[key]
+      }
+    }
+    this.data = params
+  }
+
+  public getList() {
+    this.processingData()
+    this.Http.articleList(this.data).subscribe((res: any) => {
+      if (res.code === 0) {
+        this.page = [];
+        const data = res.data.articleList;
+        this.articlelist = this.datePipe.article_list(data);
+        const page01 = Math.ceil((res.data.total) / 10);
+        this.total = page01;
+        for (let i = 0; i < page01; i++) { 
+          let c = i+1
+          let b = {
+            page: i+1,
+            color: +this.pageIndex === c?'bgc-fff color-337':''
+          }
+          this.page.push(b); 
+        }
+        this.expression = true
+      }
+    });
+  }
+
+  // 编辑
+  public edit(id) {
+    this.router.navigate(['main/edit'], { queryParams: {id:id} });
+  }
+
+  // 上、下线
+  public state(id, status) {
     let sta = null;
     switch (status) {
-      case '草稿' : sta = 2;
-                  break;
-      case '上线' : sta = 1;
-                  break;
+      case '草稿': sta = 2;
+        break;
+      case '上线': sta = 1;
+        break;
     }
     const idStatus: string = 'id=' + id + '&' + 'status=' + sta;
-    this.Http.status(idStatus).subscribe(( res: any) => {
-      console.log(idStatus);
-      console.log(res.code);
+    this.Http.status(idStatus).subscribe((res: any) => {
     });
+    this.router.navigate(['main/list'])
   }
-// 添加
-addarticle() {
-  this.router.navigate(['main/articleNew']);
-}
-// 删除
-  delete(id) {
+
+  // 删除
+  public delete(id) {
     this.Http.delete(id).subscribe((res: any) => {
-      console.log(res.code);
     });
+    this.router.navigate(['main/list'],{ queryParams: this.data })
+  }
+
+  // 清楚
+  public clear() {
+    this.router.navigate(['main/list'])
+  }
+
+  // 搜索
+  public search() {
+    this.processingData()
+    this.router.navigate(['main/list'], { queryParams: this.data })
+  }
+
+  // 分页
+  public paging(page) {
+    if (page === 0) {
+      this.pageIndex = this.total;
+    } else {
+      this.pageIndex = page;
+    }
+    this.processingData()
+    this.router.navigate(['main/list'], { queryParams: this.data })
   }
 
 
 
-// 清楚
-clear() {
-  console.log('清除');
-  //this.request.startAt = null;
-  //this.request.endAt = null;
-  this.request.type = null;
-  this.request.status = null;
-  this.router.navigate(['main/list'],{ queryParams: this.request }).then(() => {
-    window.location.reload();
-  });
-}
-// 搜索
-search() {
-  console.log('搜索');
-  this.transFormaTion();
-  console.log(this.transFormaTion());
-  this.router.navigate(['main/list'],{ queryParams: this.request }).then(() => {
-    window.location.reload();
-  });
-}
 
-
-
-// 分页
-  paging(page) {
-    console.log('分页');
-    if (page === 0){
-      this.request.page = this.total;
-    } else {
-      this.request.page = page;
-    }
-    this.transFormaTion();
-    this.router.navigate(['main/list'],{ queryParams: this.request }).then(() => {
-      window.location.reload();
-    });
-}
 
 
 
 
 }
+
+
+
+
 

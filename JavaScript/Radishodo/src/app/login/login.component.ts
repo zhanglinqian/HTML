@@ -11,7 +11,7 @@ import { HttpService } from '../service/http/http.service';
 })
 export class LoginComponent implements OnInit {
   private name: any;
-  private loginForm: FormGroup;
+  public loginForm: FormGroup;
   private pwd: any;
   constructor(
       private fb: FormBuilder,

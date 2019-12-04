@@ -2,7 +2,7 @@
     <div class="content">
         <div class="back burdre-r">
             <h1>登录</h1>
-            <form [formGroup] = 'loginForm' (ngSubmit) = 'onSubmit()'>
+            <form [formGroup] = 'loginForm' (ngSubmit) = 'onSubmit()' autocomplete="off">
                 <div class="input-style burdre-r">
                     <img src="./image/1.png" alt="">
                     <input  type="text" placeholder="用户名" formControlName = 'name'>

@@ -79,6 +79,8 @@ button{
 
 /*主体列表*/
 .article {
+    height: calc(100vh - 44px);
+    overflow: auto;
     padding:30px;
     background-color: #f5f5f5;
 
@@ -86,14 +88,14 @@ button{
 
 .art-list-t {
     width: 100%;
-    border-bottom: 1px #666 solid;
+    border-bottom: 1px #e0e0e0 solid;
 }
 .art-list-table>table {
     width: 100%;
     text-align: center;
 }
 .art-list-table>table>thead{
-    border-bottom: 1px #a1a1a1 solid;
+    border-bottom: 1px #e0e0e0 solid;
     background-color: #fff;
 }
 .art-list-table>table>thead th{
@@ -101,10 +103,10 @@ button{
     font-weight: 700;
 }
 .art-list-table>table>tbody td{
-    padding: 5px 5px;
+    padding: 15px 5px;
 }
 .art-list-table>table>tbody tr{
-    border-bottom: 1px #a1a1a1 solid;
+    border-bottom: 1px #e0e0e0 solid;
 }
 .art-list-table>table>tbody tr:nth-child(even){
     background-color: #f5f5f5;
@@ -132,14 +134,14 @@ button{
     padding: 10px;
     margin-left: 5px;
     margin-right: 5px;
-    border: 1px #fff solid;
+    border: 1px rgb(94, 182, 255) solid;
     border-radius: 5px;
     background-color: rgb(94, 182, 255);
     color: #fff;
     }
 }
 
-.paging-center {}
+
 
 .paging-botton  {
     > li:nth-child(1) {

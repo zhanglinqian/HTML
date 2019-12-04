@@ -1,1 +1,75 @@
-<p>newedits works!</p>
+<div class="content">
+    <div class="content-main">
+        <div class="content-title">{{pageTitle}}Article</div>
+        <div class="form">
+            <div nz-row>
+                <div nz-col nzSm='4'><span>标 题</span></div>
+                <div nz-col nzSm="8">
+                    <input nz-input placeholder="" [(ngModel)]="title" style='width:100%' />
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col nzSm='4'><span>类 型</span></div>
+                <div nz-col nzSm='8'>
+                    <div nz-row style="width: 100%">
+                        <div nz-col nzSm='11'>
+                            <nz-select style="width: 100%" [(ngModel)]="type" nzAllowClear>
+                                <nz-option nzValue="0" nzLabel="首页banner"></nz-option>
+                                <nz-option nzValue="1" nzLabel="找职位banner"></nz-option>
+                                <nz-option nzValue="2" nzLabel="找精英banner"></nz-option>
+                                <nz-option nzValue="3" nzLabel="行业大图"></nz-option>
+                                <nz-option nzValue="" nzLabel="请选择"></nz-option>
+                            </nz-select>
+                        </div>
+                        <div nz-col nzSm='11' nzOffset="2" *ngIf="type === '3' ">
+                            <nz-select style="width: 100%" [(ngModel)]="industry" nzAllowClear>
+                                <nz-option nzValue="0" nzLabel="移动互联网"></nz-option>
+                                <nz-option nzValue="1" nzLabel="电子商务"></nz-option>
+                                <nz-option nzValue="2" nzLabel="企业服务"></nz-option>
+                                <nz-option nzValue="3" nzLabel="o2o"></nz-option>
+                                <nz-option nzValue="4" nzLabel="教育"></nz-option>
+                                <nz-option nzValue="5" nzLabel="金融"></nz-option>
+                                <nz-option nzValue="6" nzLabel="游戏"></nz-option>
+                                <nz-option nzValue="" nzLabel=""></nz-option>
+                            </nz-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col nzSm="4"><span>说 明</span></div>
+                <div nz-col nzSm="8">
+                    <input nz-input placeholder="" [(ngModel)]="content" style='width:100%' />
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col nzSm="4"><span>跳转链接</span></div>
+                <div nz-col nzSm="8">
+                    <input nz-input placeholder="" [(ngModel)]="url" style='width:100%' />
+                </div>
+            </div>
+            <div nz-row>
+                <div nz-col nzSm="4"><span>图 片</span></div>
+                <div nz-col nzSm="8">
+                    <nz-upload nzAction="/a/u/img/task" [nzFileList]="fileList" nzMultiple [nzLimit]="2"
+                        [nzFilter]="filters" (nzChange)="handleChange($event)">
+                        <button nz-button><i nz-icon nzType="upload"></i><span>Upload</span></button>
+                    </nz-upload>
+                    <div style="width:100%" class="margin-top-30" *ngIf="img">
+                        <img [src]=img alt="" width="100%">
+                    </div>
+                </div>
+            </div>
+            <div class="" nz-row>
+                <div nz-col nzOffset="4" nzSm='12'>
+                    <button nz-button (click)="submitData('2')">立即上线</button>
+                    <button nz-button (click)="submitData('1')">存为草稿</button>
+                    <button nz-button (click)="delimg()">删除图片</button>
+                    <button nz-button (click)="cancel()">取消</button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

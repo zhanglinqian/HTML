@@ -1,35 +1,20 @@
 
-
-
-
-
-
-
-
-
-
 <div class="main">
 
     <header class="header">
-        <nav nz-row nzType="flex"  nzAlign="middle">
-            <div nz-col class="header-left ">
-                <p>萝卜多后台管理</p>
-            </div>
-            <div nz-col class=" header-right">
-                <div class=" color-337">
-                    <a>管路员</a>
-                    <a>|</a>
-                    <a>admin</a>
-                    <a>|</a>
-                    <a>退出</a>
-                </div>
-            </div>
-        </nav>
+        <div class="header-left ">
+            <p>萝卜多后台管理</p>
+        </div>
+        <div class=" header-right">
+            <div>管路员</div>
+            <div>admin</div>
+            <div>退出</div>
+        </div>
     </header>
 
-    <div nz-row nzType="flex" style=" flex-wrap: nowrap">
+    <div class="content">
         <!--侧边栏-->
-        <div  class="sidebar" nz-col >
+        <div  class="sidebar">
             <ul class="sidebar-main" (click)="sidebar($event)">
                 <li class="sidebar-select">
                     <div>
@@ -72,22 +57,21 @@
                     </ul>
                 </li>
             </ul>
+            <div class="sidebar-but" >
+                <div>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
         </div>
 
-        <div class="content" nz-col nz-col >
-
+        <div class="data-list">
             <router-outlet></router-outlet>
-
         </div>
 
     </div>
+
 </div>
-
-
-
-
-
-
-
-
-

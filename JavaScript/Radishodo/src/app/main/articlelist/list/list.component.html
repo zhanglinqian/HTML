@@ -1,112 +1,108 @@
-
-
-
-
 <div class="article">
 
     <div class=" search-bar ">
-        <div class=" search-bar-main " nz-row nzType="flex" nzJustify="start" nzAlign="top" >
-            <div class=" release " nz-row nzType="flex" nz-col nzXl = '8' nzLg = '8' nzMd = '12' nzSm="24" nzXs="24">
+        <div class=" search-bar-main " nz-row nzType="flex" nzJustify="start" nzAlign="top">
+            <div class=" release " nz-row nzType="flex" nz-col nzXl='8' nzLg='8' nzMd='12' nzSm="24" nzXs="24">
                 <div nz-col nzSpan="8">发布时间</div>
                 <div nz-col nzSpan="16">
-                    <nz-date-picker [nzDateRender]="tplRender" [(ngModel)]='startAt'></nz-date-picker>
+                    <nz-date-picker [(ngModel)]='startAt'></nz-date-picker>
                 </div>
             </div>
-            <div class=" deadline " nz-row nzType="flex" nz-col  nzXl = '8' nzLg = '8' nzMd = '12' nzSm="24" nzXs="24">
+            <div class=" deadline " nz-row nzType="flex" nz-col nzXl='8' nzLg='8' nzMd='12' nzSm="24" nzXs="24">
                 <div nz-col nzSpan="8">—</div>
                 <div nz-col nzSpan="16">
-                    <nz-date-picker [nzDateRender]="tplRender" [(ngModel)]='endAt'></nz-date-picker>
+                    <nz-date-picker [(ngModel)]='endAt'></nz-date-picker>
                 </div>
             </div>
-            <div class=" type " nz-row nzType="flex" nz-col  nzXl = '8' nzLg = '8' nzMd = '12' nzSm="24" nzXs="24">
+            <div class=" type " nz-row nzType="flex" nz-col nzXl='8' nzLg='8' nzMd='12' nzSm="24" nzXs="24">
                 <div nz-col nzSpan="8">类 型</div>
                 <div nz-col nzSpan="16">
-                    <nz-select style="width: 100%" [(ngModel)]="request.type" nzAllowClear >
+                    <nz-select style="width: 100%" [(ngModel)]="type" nzAllowClear>
                         <nz-option nzValue="0" nzLabel="首页banner"></nz-option>
                         <nz-option nzValue="1" nzLabel="找职位banner"></nz-option>
                         <nz-option nzValue="2" nzLabel="找精英banner"></nz-option>
                         <nz-option nzValue="3" nzLabel="行业大图"></nz-option>
+                        <nz-option nzValue="" nzLabel="全部"></nz-option>
                     </nz-select>
                 </div>
             </div>
-            <div class=" state " nz-row nzType="flex" nz-col  nzXl = '8' nzLg = '8' nzMd = '12' nzSm="24" nzXs="24">
+            <div class=" state " nz-row nzType="flex" nz-col nzXl='8' nzLg='8' nzMd='12' nzSm="24" nzXs="24">
                 <div nz-col nzSpan="8">状 态</div>
                 <div nz-col nzSpan="16">
-                    <nz-select style="width: 100%" [(ngModel)]="request.status" nzAllowClear >
+                    <nz-select style="width: 100%" [(ngModel)]="status" nzAllowClear>
                         <nz-option nzValue="1" nzLabel="草稿"></nz-option>
-                        <nz-option nzValue="2" nzLabel="上线" ></nz-option>
+                        <nz-option nzValue="2" nzLabel="上线"></nz-option>
+                        <nz-option nzValue="" nzLabel=''></nz-option>
                     </nz-select>
                 </div>
             </div>
-            <div class=" submit " nz-row nzType="flex" nz-col  nzXl = '24' nzLg = '24' nzMd = '24' nzSm="24" nzXs="24">
+            <div class=" submit " nz-row nzType="flex" nz-col nzXl='24' nzLg='24' nzMd='24' nzSm="24" nzXs="24">
                 <div>
-                    <button type="button" (click)="clear()">清除</button>
+                    <button type="button" (click)="clear()">全部</button>
                     <button type="button" (click)="search()">搜索</button>
                 </div>
             </div>
         </div>
     </div>
 
-        <div class="article-list border-r1 margin-top-30">
-            <div class="art-list-t  padding-15">
-                <strong class="padding-tb11">article列表</strong>
-                <button type="button"  (click)='addarticle()'>新增</button>
-            </div>
-            <div class="art-list-c padding-15 bgc-fff ">
-                <div class="border-r1 art-list-table border-r1">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>图片</th>
-                                <th>名称</th>
-                                <th>类型</th>
-                                <th>发布时间</th>
-                                <th>修改时间</th>
-                                <th>发布者</th>
-                                <th>状态</th>
-                                <th>操作</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor='let list of articlelist; let i = index'>
-                                <td>{{i+1}}</td>
-                                <td><img [src]="list.img" alt="" width="50px" height="50px"></td>
-                                <td>{{list.title}}</td>
-                                <td>{{list.type}}</td>
-                                <td>
-                                    <div>{{list.createAt_0}}</div>
-                                    <div>{{list.createAt_1}}</div>
-                                </td>
-                                <td>
-                                    <div>{{list.updateAt_0}}</div>
-                                    <div>{{list.updateAt_1}}</div>
-                                </td>
-                                <td>{{list.author}}</td>
-                                <td>{{list.status}}</td>
-                                <td>
-                                    <button class="  margin-lr" (click)= 'status(list.id,list.status)'>{{list.sta_but}}</button>
-                                    <button class="  margin-lr" (click)= 'edit(list)'>编辑</button>
-                                    <button class="  margin-lr" (click)= 'delete(list.id)'>删除</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+    <div class="article-list border-r1 margin-top-30">
+        <div class="art-list-t  padding-15">
+            <strong class="padding-tb11">article列表</strong>
+            <button type="button" (click)='edit("")'>新增</button>
         </div>
-
-        <div class="paging">
-            <ul class=" paging-center ">
-                <li (click)='paging(1)'>首页</li>
-                <li *ngFor='let _page of page;' (click)='paging(_page)'>{{_page}}</li>
-                <li (click)='paging(0)'>尾页</li>
-            </ul>
-            <ul class=" paging-botton ">
-                <li>跳转到<input type="number"  #input >页</li>
-                <li (click)='paging(input.value)'>确定</li>
-            </ul>
+        <div class="art-list-c padding-15 bgc-fff ">
+            <div class="border-r1 art-list-table border-r1">
+                <table style="table-layout:auto">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>图片</th>
+                            <th>名称</th>
+                            <th>类型</th>
+                            <th>发布时间</th>
+                            <th>修改时间</th>
+                            <th>发布者</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let list of articlelist; let i = index'>
+                            <td>{{i+1}}</td>
+                            <td><img [src]="list.img" alt="" width="50px"></td>
+                            <td>{{list?.title}}</td>
+                            <td>{{list?.type}}</td>
+                            <td>
+                                <div>{{list?.createAt_0}}</div>
+                                <div>{{list?.createAt_1}}</div>
+                            </td>
+                            <td>
+                                <div>{{list?.updateAt_0}}</div>
+                                <div>{{list?.updateAt_1}}</div>
+                            </td>
+                            <td>{{list?.author}}</td>
+                            <td class={{list?.color}}>{{list?.status}}</td>
+                            <td>
+                                <button class=" margin-lr"(click)='state(list?.id,list?.status)'>{{list.sta_but}}</button>   
+                                <button class=" margin-lr" (click)='edit(list?.id)'>编辑</button>
+                                <button class=" margin-lr" (click)='delete(list?.id)'>删除</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
-
+    <div class="paging">
+        <ul class=" paging-center ">
+            <li (click)='paging(1)'>首页</li>
+            <li *ngFor='let _page of page;' (click)='paging( _page?.page)' class={{_page?.color}}>{{ _page?.page}}</li>
+            <li (click)='paging(0)'>尾页</li>
+        </ul>
+        <ul class=" paging-botton ">
+            <li>跳转到<input type="number" [(ngModel)] = 'pageIndex' >页</li>
+            <li (click)='paging(input.value)'>确定</li>
+        </ul>
+    </div>
+</div>

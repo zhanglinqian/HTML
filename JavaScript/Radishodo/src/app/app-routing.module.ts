@@ -15,7 +15,6 @@ const routes: Routes = [
 		pathMatch: "full"
 	},
   { path: 'login', component: LoginComponent },
-  // angular 8.0 版本之后 的路由懒加载写法  为了遵循import() 标准
   { path: 'main',
     canActivate: [ GuardGuard ],
     loadChildren: () => import('../app/main/main.module').then( m => m.MainModule) },
@@ -24,7 +23,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{onSameUrlNavigation:'reload'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
